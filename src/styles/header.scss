@@ -1,0 +1,96 @@
+@mixin header-text {
+    color: $cultured;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 18px;
+    transition: 0.4s ease-in-out;
+
+    &:hover {
+        color: $lightgray;
+    }
+}
+
+.full-header-container {
+    .header-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 2em 2em 2em 2em;
+        background-color: $gunmetal;
+
+        .left-header {
+            .header-logo {
+                @include header-text;
+            }
+        }
+
+        .right-header {
+            .navigation-links-container {
+                .navigation-link {
+                    @include header-text;
+                    margin: 0px 6px 0px 6px;
+                }
+            }
+
+            .mobile-menu-icon-container {
+                display: none;
+
+                .mobile-menu-icon {
+                    @include header-text;
+                }
+            }
+        }
+    }
+
+    .mobile-menu {
+        display: none;
+    }
+
+    .mobile-menu.show-menu {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        background-color: $gunmetal;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .navigation-links-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            .navigation-link {
+                @include header-text;
+                font-size: 24px;
+                margin: 6px 0px 6px 0px;
+            }
+        }
+    }
+
+    .close-icon-wrapper {
+        position: fixed;
+        top: 2em;
+        right: 2em;
+
+        .close-icon {
+            @include header-text;
+        }
+    }
+}
+
+@media screen and (max-width: 615px) {
+    .full-header-container {
+        .header-container {
+            .right-header {
+                .navigation-links-container {
+                    display: none;
+                }
+
+                .mobile-menu-icon-container {
+                    display: contents;
+                }
+            }
+        }
+    }
+}
