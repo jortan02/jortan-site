@@ -20,14 +20,22 @@ const Header = () => {
     return (
         <div className="full-header-container">
             <div className={`mobile-menu ${menuOpen ? "show-menu" : ""}`}>
-                <div className="close-icon-wrapper">
-                    <FontAwesomeIcon onClick={closeMenu} className="close-icon" icon={faTimes} />
-                </div>
+                <button
+                        className="button-wrapper"
+                        onClick={handleToggle}
+                    >
+                        <div role="button" className="icon-wrapper">
+                            <FontAwesomeIcon
+                                icon={faTimes}
+                                className="icon"
+                            />
+                        </div>
+                    </button>
 
                 <div className="navigation-links-container">
                     <Link
                         to="/"
-                        onClick={() => closeMenu()} 
+                        onClick={() => closeMenu()}
                         className="navigation-link"
                     >
                         Home
@@ -87,13 +95,17 @@ const Header = () => {
                             Contact
                         </Link>
                     </div>
-                    <div className="mobile-menu-icon-container">
-                        <FontAwesomeIcon
-                            onClick={handleToggle}
-                            icon={faBars}
-                            className="mobile-menu-icon"
-                        />
-                    </div>
+                    <button
+                        className="button-wrapper"
+                        onClick={handleToggle}
+                    >
+                        <div role="button" className="icon-wrapper">
+                            <FontAwesomeIcon
+                                icon={faBars}
+                                className="icon"
+                            />
+                        </div>
+                    </button>
                 </div>
             </div>
         </div>
