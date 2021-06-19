@@ -1,9 +1,11 @@
 import React from "react";
 
 const Footer = () => {
-    return <div className="footer-container">
-        <p>Created by Jordan Tan</p>
-    </div>;
+    return (
+    <footer className="footer-container">
+        <p>Created by Jordan Tan | 2021</p>
+    </footer>
+    );
 };
 
 export default Footer;

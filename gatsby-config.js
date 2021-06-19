@@ -1,6 +1,29 @@
 module.exports = {
     siteMetadata: {
-        title: "Jordan Tan's Site",
+        title: "Jordan Tan",
+        description: "Jordan Tan's Personal Site | Resume | Blog | Portfolio",
+        menuLinks:[
+            {
+                name: "Home",
+                link: "/"
+            },
+            {
+                name: "About",
+                link: "/about"
+            },
+            {
+                name: "Blog",
+                link: "/blog"
+            },
+            {
+                name: "Portfolio",
+                link: "/portfolio"
+            },
+            {
+                name: "Contact",
+                link: "/contact"
+            },
+        ]
     },
     plugins: [
         "gatsby-plugin-sass",

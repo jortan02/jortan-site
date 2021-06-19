@@ -1,0 +1,13 @@
+.footer-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1.6em;
+    background-color: $gunmetal;
+
+    p {
+        color: $cultured;
+        font-size: 14px;
+        margin: 0;
+    }
+}

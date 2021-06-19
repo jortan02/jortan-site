@@ -1,4 +1,19 @@
 body {
     margin: 0;
+    padding: 0;
+    height: 100%;
     font-family: sans-serif;
+    display:flex; 
+    flex-direction:column;
+
+    .main-container {
+        display: flex;
+        min-height: 100vh;
+        flex-direction: column;
+
+        .content-container {
+            display: grid;
+            flex-grow: 1;
+        }
+    }
 }

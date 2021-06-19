@@ -1,10 +1,16 @@
 import React from "react";
+import Content from "../components/content";
 
 const NotFoundPage = () => {
   return (
-    <div>
-      <p>404 Page Not Found</p>
-    </div>
+    <Content siteTitle={`${process.env.NAME}'s Site | 404`}>
+      <div className="centered-container">
+        <div className="not-found-container">
+          <h1>:0</h1>
+          <p>404 Page Not Found</p>
+        </div>
+      </div>
+    </Content>
   )
 }
 

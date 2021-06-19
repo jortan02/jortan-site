@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Link } from "gatsby";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
-import "../styles/main.scss";
 
 // https://ibaslogic.com/how-to-add-hamburger-menu-in-react/
 
@@ -77,7 +76,7 @@ const Header = () => {
                         Jordan Tan
                     </Link>
                 </div>
-                <div className="right-header">
+                <nav className="right-header">
                     <div className="navigation-links-container">
                         <Link to="/" className="navigation-link">
                             Home
@@ -106,7 +105,7 @@ const Header = () => {
                             />
                         </div>
                     </button>
-                </div>
+                </nav>
             </div>
         </div>
     );

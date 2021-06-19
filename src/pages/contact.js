@@ -1,11 +1,11 @@
 import React from "react";
+import Content from "../components/content";
 
 const ContactPage = () => {
     return (
-        <div className="content-container">
-            <title>Jordan Tan's Site | Contact</title>
+        <Content siteTitle="Jordan Tan's Site | Contact">
             <h1>Contact</h1>
-        </div>
+        </Content>
     );
 };
 

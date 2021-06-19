@@ -1,11 +1,12 @@
 import React from "react";
+import Content from "../components/content";
+import Hero from "../components/hero";
 
 const IndexPage = () => {
     return (
-        <div className="content-container">
-            <title>Jordan Tan's Site</title>
-            <h1>Home</h1>
-        </div>
+        <Content siteTitle="Jordan Tan's Site">
+            <Hero />
+        </Content>
     )
 };
 
