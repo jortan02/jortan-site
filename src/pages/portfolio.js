@@ -3,7 +3,7 @@ import Content from "../components/content";
 
 const PortfolioPage = () => {
     return (
-        <Content siteTitle="Jordan Tan's Site | Portfolio">
+        <Content siteTitle="Portfolio">
             <h1>Portfolio</h1>
         </Content>
     )

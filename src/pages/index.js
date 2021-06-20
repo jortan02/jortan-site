@@ -4,7 +4,7 @@ import Hero from "../components/hero";
 
 const IndexPage = () => {
     return (
-        <Content siteTitle="Jordan Tan's Site">
+        <Content siteTitle="Home">
             <Hero />
         </Content>
     )

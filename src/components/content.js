@@ -6,7 +6,7 @@ import { graphql, StaticQuery } from "gatsby";
 //     return (
 //         <div className="content-container">
 //             <Helmet>
-//                 <title>{}</title>
+//                 <title>{siteTitle}</title>
 //             </Helmet>
 //             {children}
 //         </div>
@@ -21,7 +21,6 @@ const Content = ({ siteTitle, children }) => {
                     site {
                         siteMetadata {
                             title
-                            description
                         }
                     }
                 }
@@ -29,7 +28,7 @@ const Content = ({ siteTitle, children }) => {
             render={(data) => (
                 <div className="content-container">
                     <Helmet>
-                        <title>{siteTitle} | {data.site.siteMetadata.title}</title>
+                        <title>{siteTitle}{siteTitle ? " | ": ""}{data.site.siteMetadata.title}</title>
                     </Helmet>
                     {children}
                 </div>

@@ -3,7 +3,7 @@ import Content from "../components/content";
 
 const NotFoundPage = () => {
   return (
-    <Content siteTitle={`${process.env.NAME}'s Site | 404`}>
+    <Content siteTitle="404">
       <div className="centered-container">
         <div className="not-found-container">
           <h1>:0</h1>
