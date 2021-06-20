@@ -3,7 +3,7 @@ import Content from "../components/content";
 
 const BlogPage = () => {
     return (
-        <Content siteTitle="Blog">
+        <Content pageTitle="Blog">
             <h1>Blog</h1>
         </Content>
     );

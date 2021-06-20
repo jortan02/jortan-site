@@ -4,8 +4,11 @@ import Hero from "../components/hero";
 
 const IndexPage = () => {
     return (
-        <Content siteTitle="Home">
+        <Content pageTitle="Home">
             <Hero />
+            <div>
+                <p>Elit do nostrud consectetur dolor occaecat voluptate ea sunt.</p>
+            </div>
         </Content>
     )
 };

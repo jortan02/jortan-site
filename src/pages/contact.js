@@ -3,7 +3,7 @@ import Content from "../components/content";
 
 const ContactPage = () => {
     return (
-        <Content siteTitle="Contact">
+        <Content pageTitle="Contact">
             <h1>Contact</h1>
         </Content>
     );

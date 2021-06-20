@@ -1,18 +1,3 @@
-// import React from "react";
-// import Header from "../components/header";
-// import Footer from "../components/footer";
-
-// const Layout = ({ children }) => {
-//     return (
-//         <main className="main-container">
-//             <Header />
-//             {children}
-//             <Footer />
-//         </main>
-//     )
-// };
-// export default Layout;
-
 import React from "react";
 import { Helmet } from "react-helmet";
 import Header from "../components/header";
@@ -42,7 +27,7 @@ const Layout = ({ children }) => {
                         <title>{data.site.siteMetadata.title}</title>
                         <meta name="description" content={data.site.siteMetadata.description} />
                     </Helmet>
-                    <Header />
+                    <Header menuLinks={data.site.siteMetadata.menuLinks} siteTitle={data.site.siteMetadata.title} />
                         {children}
                     <Footer />
                 </main>

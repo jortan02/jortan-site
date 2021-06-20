@@ -1,11 +1,12 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 import { Link } from "gatsby";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
 
 // https://ibaslogic.com/how-to-add-hamburger-menu-in-react/
 
-const Header = () => {
+const Header = ({ menuLinks, siteTitle }) => {
     const [menuOpen, setMenuOpen] = useState(false);
 
     const handleToggle = () => {
@@ -19,96 +20,67 @@ const Header = () => {
     return (
         <div className="full-header-container">
             <div className={`mobile-menu ${menuOpen ? "show-menu" : ""}`}>
-                <button
-                        className="button-wrapper"
-                        onClick={handleToggle}
-                    >
-                        <div role="button" className="icon-wrapper">
-                            <FontAwesomeIcon
-                                icon={faTimes}
-                                className="icon"
-                            />
-                        </div>
-                    </button>
+                <button className="button-wrapper" onClick={handleToggle}>
+                    <div role="button" className="icon-wrapper">
+                        <FontAwesomeIcon icon={faTimes} className="icon" />
+                    </div>
+                </button>
 
-                <div className="navigation-links-container">
-                    <Link
-                        to="/"
-                        onClick={() => closeMenu()}
-                        className="navigation-link"
-                    >
-                        Home
-                    </Link>
-                    <Link
-                        to="/about"
-                        onClick={() => closeMenu()}
-                        className="navigation-link"
-                    >
-                        About
-                    </Link>
-                    <Link
-                        to="/blog"
-                        onClick={() => closeMenu()}
-                        className="navigation-link"
-                    >
-                        Blog
-                    </Link>
-                    <Link
-                        to="/portfolio"
-                        onClick={() => closeMenu()}
-                        className="navigation-link"
-                    >
-                        Portfolio
-                    </Link>
-                    <Link
-                        to="/contact"
-                        onClick={() => closeMenu()}
-                        className="navigation-link"
-                    >
-                        Contact
-                    </Link>
-                </div>
+                <nav>
+                    <ul className="links-container menu-links">
+                        {menuLinks.map((link) => (
+                            <li key={link.name}>
+                                <Link
+                                    to={link.link}
+                                    onClick={() => closeMenu()}
+                                    className="navigation-link"
+                                >
+                                    {link.name}
+                                </Link>
+                            </li>
+                        ))}
+                    </ul>
+                </nav>
             </div>
 
             <div className="header-container">
                 <div className="left-header">
                     <Link to="/" className="header-logo">
-                        Jordan Tan
+                        {siteTitle}
                     </Link>
                 </div>
-                <nav className="right-header">
-                    <div className="navigation-links-container">
-                        <Link to="/" className="navigation-link">
-                            Home
-                        </Link>
-                        <Link to="/about" className="navigation-link">
-                            About
-                        </Link>
-                        <Link to="/blog" className="navigation-link">
-                            Blog
-                        </Link>
-                        <Link to="/portfolio" className="navigation-link">
-                            Portfolio
-                        </Link>
-                        <Link to="/contact" className="navigation-link">
-                            Contact
-                        </Link>
-                    </div>
-                    <button
-                        className="button-wrapper"
-                        onClick={handleToggle}
-                    >
+                <div className="right-header">
+                    <nav role="navigation">
+                        <ul className="links-container header-links">
+                            {menuLinks.map((link) => (
+                                <li key={link.name}>
+                                    <Link
+                                        to={link.link}
+                                        className="navigation-link"
+                                    >
+                                        {link.name}
+                                    </Link>
+                                </li>
+                            ))}
+                        </ul>
+                    </nav>
+                    <button className="button-wrapper" onClick={handleToggle}>
                         <div role="button" className="icon-wrapper">
-                            <FontAwesomeIcon
-                                icon={faBars}
-                                className="icon"
-                            />
+                            <FontAwesomeIcon icon={faBars} className="icon" />
                         </div>
                     </button>
-                </nav>
+                </div>
             </div>
         </div>
     );
+};
+
+Header.propTypes = {
+    siteTitle: PropTypes.string,
+};
+
+Header.defaultProps = {
+    siteTitle: "Site",
 };
 
 export default Header;
