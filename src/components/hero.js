@@ -6,37 +6,39 @@ import { faPhoneAlt, faEnvelope } from "@fortawesome/free-solid-svg-icons";
 const Hero = () => {
     return (
         <div className="hero-container">
-            <div className="card-container">
-                <div className="profile-picture-container">
-                    <StaticImage
-                        src="../images/profile_picture.jpg"
-                        alt="Jordan Tan"
-                        width={150}
-                        height={150}
-                    />
+            <div className="info-container">
+                <div className="welcome-container">
+                    <h1>Hello.</h1>
+                    <hr />
+                    <p>I'm Jordan. I am a computer science student, and the purpose of this site is to experiment with creating a website for myself and to show some of my work. Nice to meet you!</p>
                 </div>
-                <div className="personal-info-container">
-                    <div className="name-container">
-                        <h1>Jordan Tan</h1>
-                        <h2>Student</h2>
+                <div className="card-container">
+                    <div className="profile-picture-container">
+                        <StaticImage
+                            src="../images/profile_picture.jpg"
+                            alt="Jordan Tan"
+                            width={150}
+                            height={150}
+                        />
                     </div>
-                    <div className="contact-info-container">
-                        <div className="contact-info">
-                            <FontAwesomeIcon icon={faPhoneAlt} />
-                            <span>435-823-0976</span>
+                    <div className="personal-info-container">
+                        <div className="name-container">
+                            <h2>Jordan Tan</h2>
+                            <h3>Student</h3>
                         </div>
-                        <div className="contact-info">
-                            <FontAwesomeIcon icon={faEnvelope} />
-                            <span>jortan2002@gmail.com</span>
+                        <div className="contact-info-container">
+                            <div className="contact-info">
+                                <FontAwesomeIcon icon={faPhoneAlt} className="icon"/>
+                                <span>435-823-0976</span>
+                            </div>
+                            <div className="contact-info">
+                                <FontAwesomeIcon icon={faEnvelope} className="icon"/>
+                                <span>jortan2002@gmail.com</span>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div className="welcome-container">
-                    {/* <h1>Hello,</h1>
-                    <h2>I'm Jordan. It's nice to meet you.</h2> */}
-                    <h3>Hello, I'm Jordan. It's nice to meet you.</h3>
-                </div>
         </div>
     );
 };

@@ -4,7 +4,11 @@ import Content from "../components/content";
 const PortfolioPage = () => {
     return (
         <Content pageTitle="Portfolio">
-            <h1>Portfolio</h1>
+            <div className="centered-container">
+                <div className="not-found-container">
+                    <h1>Coming Soon</h1>
+                </div>
+            </div>
         </Content>
     )
 };

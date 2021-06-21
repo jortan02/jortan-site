@@ -3,7 +3,8 @@ import React from "react";
 const Footer = () => {
     return (
     <footer className="footer-container">
-        <p>Created by Jordan Tan | 2021</p>
+        <span>&copy; 2021 Jordan Tan</span>
+        <span>Created using Gatsby</span>
     </footer>
     );
 };

@@ -4,7 +4,11 @@ import Content from "../components/content";
 const BlogPage = () => {
     return (
         <Content pageTitle="Blog">
-            <h1>Blog</h1>
+            <div className="centered-container">
+                <div className="not-found-container">
+                    <h1>Coming Soon</h1>
+                </div>
+            </div>
         </Content>
     );
 };

@@ -1,13 +1,13 @@
 .footer-container {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     padding: 0em 1.6em 0em 1.6em;
     height: 64px;
-    background-color: $gunmetal;
+    background-color: $black;
 
-    p {
-        color: $cultured;
+    span {
+        color: $white;
         font-size: 14px;
         margin: 0;
     }

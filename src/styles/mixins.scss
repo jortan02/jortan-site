@@ -1,12 +1,12 @@
 @mixin header-text {
-    color: $cultured;
+    color: $white;
     text-decoration: none;
     cursor: pointer;
     font-size: 18px;
     transition: 0.4s ease-in-out;
 
     &:hover {
-        color: $lightgray;
+        color: $grey;
     }
 }
 
@@ -17,7 +17,7 @@
     &:focus {
         .icon-wrapper {
             .icon {
-                color: $lightgray;
+                color: $grey;
             }
         }
     }
