@@ -1,5 +1,6 @@
 import React from "react";
 import Content from "../components/content";
+import "../styles/404.scss";
 
 const NotFoundPage = () => {
   return (

@@ -1,3 +1,5 @@
+@import "../styles/variables.module";
+
 @mixin header-text {
     color: $white;
     text-decoration: none;
@@ -20,5 +22,16 @@
                 color: $grey;
             }
         }
+    }
+}
+
+@mixin full-screen-container {
+    height: calc(100vh - 84px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @media screen and (max-width: 615px) {
+        height: auto;
     }
 }

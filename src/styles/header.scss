@@ -1,3 +1,6 @@
+@import "../styles/mixins";
+@import "../styles/variables.module";
+
 .header-container {
     display: flex;
     align-items: center;
@@ -62,7 +65,7 @@
         align-items: center;
 
         li {
-            margin: 6px 0px 6px 0px;
+            margin: 8px 0px 8px 8px;
 
             .navigation-link {
                 font-size: 24px;
@@ -81,9 +84,10 @@
     list-style: none;
 
     li {
+        margin: 0px 8px 0px 8px;
+        
         .navigation-link {
             @include header-text;
-            margin: 0px 6px 0px 6px;
         }
     }
 }

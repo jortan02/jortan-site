@@ -9,4 +9,13 @@ $white: #FAFAFA;
 $grey: #C2C2C2;
 $black: #1F1F1F;
 
-$offwhite: #F6EACB;
+$offwhite: #F3E3BA;
+
+:export {
+    darkBlue: $dark-blue;
+    red: $red;
+    white: $white;
+    grey: $grey;
+    black: $black;
+    offWhite: $offwhite;
+}
