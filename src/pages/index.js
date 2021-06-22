@@ -2,8 +2,9 @@ import React from "react";
 import Content from "../components/content";
 import Hero from "../components/hero";
 import { StaticImage } from "gatsby-plugin-image";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPhoneAlt, faEnvelope } from "@fortawesome/free-solid-svg-icons";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { faPhoneAlt, faEnvelope } from "@fortawesome/free-solid-svg-icons";
+import ContactInfo from "../components/contact-info";
 import "../styles/index.scss";
 import * as variables from "../styles/_variables.module.scss";
 
@@ -28,7 +29,7 @@ const IndexPage = () => {
                             <h2>Jordan Tan</h2>
                             <h3>Student</h3>
                         </div>
-                        <div className="contact-info-container">
+                        {/* <div className="contact-info-container">
                             <div className="contact-info">
                                 <FontAwesomeIcon icon={faPhoneAlt} className="icon" />
                                 <span>435-823-0976</span>
@@ -37,7 +38,8 @@ const IndexPage = () => {
                                 <FontAwesomeIcon icon={faEnvelope} className="icon" />
                                 <span>jortan2002@gmail.com</span>
                             </div>
-                        </div>
+                        </div> */}
+                        <ContactInfo />
                     </div>
                 </div>
             </Hero>

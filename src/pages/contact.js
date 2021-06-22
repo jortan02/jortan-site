@@ -2,8 +2,7 @@ import React from "react";
 import Content from "../components/content";
 import Hero from "../components/hero";
 import ContactForm from "../components/contact-form";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPhoneAlt, faEnvelope } from "@fortawesome/free-solid-svg-icons";
+import ContactInfo from "../components/contact-info";
 import "../styles/contact-form.scss";
 import * as variables from "../styles/_variables.module.scss";
 
@@ -17,14 +16,15 @@ const ContactPage = () => {
                 </div>
                 <div className="contact-info-container">
                     <h2>Jordan Tan</h2>
-                    <div className="contact-info">
+                    {/* <div className="contact-info">
                         <FontAwesomeIcon icon={faPhoneAlt} className="icon" />
                         <span>435-823-0976</span>
                     </div>
                     <div className="contact-info">
                         <FontAwesomeIcon icon={faEnvelope} className="icon" />
                         <span>jortan2002@gmail.com</span>
-                    </div>
+                    </div> */}
+                    <ContactInfo />
                 </div>
             </Hero>
         </Content>

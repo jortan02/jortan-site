@@ -20,7 +20,6 @@
 
     p {
         color: $white;
-        line-height: 1.5;
     }
 }
 
@@ -55,16 +54,6 @@
 
             h3 {
                 margin: 8px 0px 24px 0px;
-            }
-        }
-
-        .contact-info-container {
-            .contact-info {
-                display: flex;
-                margin-top: 16px;
-                .icon {
-                    margin-right: 10px;
-                }
             }
         }
     }

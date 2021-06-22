@@ -1,0 +1,22 @@
+@import "../styles/variables.module";
+
+.contact-info-container {
+    .contact-info {
+        display: flex;
+        margin-top: 16px;
+
+        .icon {
+            margin-right: 10px;
+        }
+
+        a {
+            color: black;
+            text-decoration: none;
+            transition: 0.4s ease-in-out;
+
+            &:hover {
+                color: $dark-grey;
+            }   
+        }
+    }
+}
