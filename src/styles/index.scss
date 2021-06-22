@@ -29,6 +29,7 @@
     border-top: 8px solid $red;
     border-radius: 18px;
     padding: 2.4em;
+    margin: 2.4em 0em 2.4em 0;
     max-width: 280px;
     max-height: 400px;
     display: flex;
@@ -78,6 +79,5 @@
     .card-container {
         order: 1;
         align-self: center;
-        margin-top: 1.8em;
     }
 }

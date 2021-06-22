@@ -11,6 +11,7 @@
     }
 }
 
+
 @media screen and (max-width: 615px) {
     .hero-container {
         height: auto;
@@ -19,5 +20,12 @@
         .info-container {
             flex-direction: column;
         }
+    }
+}
+
+@media screen and (max-height: 615px) {
+    .hero-container {
+        height: auto;
+        min-height: calc(100vh - 84px);
     }
 }
