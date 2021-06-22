@@ -2,6 +2,8 @@ module.exports = {
     siteMetadata: {
         title: "Jordan Tan",
         description: "Jordan Tan's Personal Site | Resume | Blog | Portfolio",
+        // phoneNumber: "435-823-0976",
+        // emailAddress: "jortan2002@gmail.com",
         menuLinks:[
             {
                 name: "Home",

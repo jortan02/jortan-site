@@ -3,11 +3,12 @@ import PropTypes from "prop-types";
 import { Link } from "gatsby";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
+import Links from "./links";
 import "../styles/header.scss";
 
 // https://ibaslogic.com/how-to-add-hamburger-menu-in-react/
 
-const Header = ({ menuLinks, siteTitle }) => {
+const Header = ({ menuLinks, siteTitle }) => {  
     const [menuOpen, setMenuOpen] = useState(false);
 
     const handleToggle = () => {
@@ -19,7 +20,7 @@ const Header = ({ menuLinks, siteTitle }) => {
     };
 
     return (
-        <div className="full-header-container">
+        <header>
             <div className={`mobile-menu ${menuOpen ? "show-menu" : ""}`}>
                 <button className="button-wrapper" onClick={handleToggle}>
                     <div role="button" className="icon-wrapper">
@@ -28,19 +29,7 @@ const Header = ({ menuLinks, siteTitle }) => {
                 </button>
 
                 <nav>
-                    <ul className="links-container menu-links">
-                        {menuLinks.map((link) => (
-                            <li key={link.name}>
-                                <Link
-                                    to={link.link}
-                                    onClick={() => closeMenu()}
-                                    className="navigation-link"
-                                >
-                                    {link.name}
-                                </Link>
-                            </li>
-                        ))}
-                    </ul>
+                    <Links menuLinks={menuLinks} styleClass="menu-links" handleClick={closeMenu} />
                 </nav>
             </div>
 
@@ -52,18 +41,7 @@ const Header = ({ menuLinks, siteTitle }) => {
                 </div>
                 <div className="right-header">
                     <nav role="navigation">
-                        <ul className="links-container header-links">
-                            {menuLinks.map((link) => (
-                                <li key={link.name}>
-                                    <Link
-                                        to={link.link}
-                                        className="navigation-link"
-                                    >
-                                        {link.name}
-                                    </Link>
-                                </li>
-                            ))}
-                        </ul>
+                        <Links menuLinks={menuLinks} styleClass="header-links"/>
                     </nav>
                     <button className="button-wrapper" onClick={handleToggle}>
                         <div role="button" className="icon-wrapper">
@@ -72,7 +50,7 @@ const Header = ({ menuLinks, siteTitle }) => {
                     </button>
                 </div>
             </div>
-        </div>
+        </header>
     );
 };
 

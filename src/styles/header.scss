@@ -93,16 +93,14 @@
 }
 
 @media screen and (max-width: 615px) {
-    .full-header-container {
-        .header-container {
-            .right-header {
-                .header-links {
-                    display: none;
-                }
+    .header-container {
+        .right-header {
+            .header-links {
+                display: none;
+            }
 
-                .button-wrapper {
-                    display: inline;
-                }
+            .button-wrapper {
+                display: inline;
             }
         }
     }

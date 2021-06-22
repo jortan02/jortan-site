@@ -16,7 +16,7 @@ const Content = ({ pageTitle, children }) => {
                 }
             `}
             render={(data) => (
-                <div className="content-container">
+                <main>
                     <Helmet>
                         <title>
                             {pageTitle}
@@ -25,7 +25,7 @@ const Content = ({ pageTitle, children }) => {
                         </title>
                     </Helmet>
                     {children}
-                </div>
+                </main>
             )}
         />
     );

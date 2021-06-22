@@ -1,0 +1,32 @@
+import React from "react";
+
+const ContactForm = () => {
+  return (
+    <form
+      // action="https://formspree.io/f/xleankyo"
+      action="#"
+      method="POST"
+    >
+      <label>
+        Name
+        <input type="text" name="name" id="name" />
+      </label>
+      <label>
+        Email
+        <input type="email" name="email" id="email" />
+      </label>
+      <label>
+        Subject
+        <input type="text" name="subject" id="subject" />
+      </label>
+      <label>
+        Message
+        <textarea name="message" id="message" rows="5" />
+      </label>
+      <button type="submit">Send</button>
+      <input type="reset" value="Clear" />
+    </form>
+  );
+}
+
+export default ContactForm;

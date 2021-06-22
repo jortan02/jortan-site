@@ -3,10 +3,10 @@ import "../styles/footer.scss";
 
 const Footer = () => {
     return (
-    <footer className="footer-container">
-        <span>&copy; 2021 Jordan Tan</span>
-        <span>Created using Gatsby</span>
-    </footer>
+        <footer>
+            <span>&copy; 2021 Jordan Tan</span>
+            <span>Created using Gatsby</span>
+        </footer>
     );
 };
 
