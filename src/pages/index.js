@@ -2,16 +2,14 @@ import React from "react";
 import Content from "../components/content";
 import Hero from "../components/hero";
 import { StaticImage } from "gatsby-plugin-image";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { faPhoneAlt, faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import ContactInfo from "../components/contact-info";
-import "../styles/index.scss";
 import * as variables from "../styles/_variables.module.scss";
+import "../styles/index.scss";
 
 const IndexPage = () => {
     return (
         <Content pageTitle="Home">
-            <Hero backgroundColor={variables.darkBlue}>
+            <Hero backgroundColor={variables.darkBlue} id="home">
                 <div className="welcome-container">
                     <h1>Hello.</h1>
                     <hr />
@@ -21,7 +19,7 @@ const IndexPage = () => {
                     <StaticImage
                         src="../images/profile_picture.jpg"
                         alt="Jordan Tan"
-                        className="profile-picture-container"
+                        className="profile-picture-wrapper"
                         imgClassName="profile-picture"
                     />
                     <div className="personal-info-container">

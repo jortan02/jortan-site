@@ -1,5 +1,5 @@
 @import "../styles/mixins";
-@import "../styles/variables.module";
+@import "./variables.module";
 
 .header-container {
     display: flex;
@@ -10,8 +10,10 @@
     background-color: $dark-blue;
 
     .left-header {
-        .header-logo {
-            @include header-text;
+        .logo-wrapper {
+            .logo {
+                height: 20px;
+            }
         }
     }
 

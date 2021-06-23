@@ -1,0 +1,29 @@
+#contact {
+    .info-container {
+        .contact-form-container {
+            margin: 2.4em 20% 2.4em 0;
+
+            h1 {
+                margin: 0px 0px 20px 0;
+            }
+        }
+
+        .personal-info-container {
+            margin: 2.8em 0em 2.4em 0em;
+
+            h2 {
+                margin: 0px 0px 0px 0;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 615px) {
+    #contact {
+        .info-container {
+            .personal-info-container {
+                margin: 0em 0em 2.4em 0em;
+            }
+        }
+    }
+}

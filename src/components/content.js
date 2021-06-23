@@ -19,8 +19,7 @@ const Content = ({ pageTitle, children }) => {
                 <main>
                     <Helmet>
                         <title>
-                            {pageTitle}
-                            {pageTitle ? " | " : ""}
+                            {pageTitle ? `${pageTitle} | ` : ""}
                             {data.site.siteMetadata.title}
                         </title>
                     </Helmet>

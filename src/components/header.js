@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
+// import { StaticImage } from "gatsby-plugin-image";
+import Logo from "../images/logos/jt-logo.svg";
 import { Link } from "gatsby";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
@@ -8,7 +10,7 @@ import "../styles/header.scss";
 
 // https://ibaslogic.com/how-to-add-hamburger-menu-in-react/
 
-const Header = ({ menuLinks, siteTitle }) => {  
+const Header = ({ menuLinks, siteTitle }) => {
     const [menuOpen, setMenuOpen] = useState(false);
 
     const handleToggle = () => {
@@ -35,13 +37,15 @@ const Header = ({ menuLinks, siteTitle }) => {
 
             <div className="header-container">
                 <div className="left-header">
-                    <Link to="/" className="header-logo">
-                        {siteTitle}
+                    <Link to="/" className="header-title">
+                        <div className="logo-wrapper">
+                            <img src={Logo} alt="JT Logo" className="logo"/>
+                        </div>
                     </Link>
                 </div>
                 <div className="right-header">
                     <nav role="navigation">
-                        <Links menuLinks={menuLinks} styleClass="header-links"/>
+                        <Links menuLinks={menuLinks} styleClass="header-links" />
                     </nav>
                     <button className="button-wrapper" onClick={handleToggle}>
                         <div role="button" className="icon-wrapper">

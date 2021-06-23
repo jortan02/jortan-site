@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import "../styles/hero.scss";
 
-const Hero = ({ backgroundColor, /*backgroundImage,*/ children }) => {
+const Hero = ({ backgroundColor, /*backgroundImage,*/ id, children }) => {
 
     const heroBackgroundStyle = {
         backgroundColor: backgroundColor ? backgroundColor : "",
@@ -10,7 +10,7 @@ const Hero = ({ backgroundColor, /*backgroundImage,*/ children }) => {
     }
 
     return (
-        <div className="hero-container" style={heroBackgroundStyle}>
+        <div style={heroBackgroundStyle} className="hero-container" id={id}>
             <div className="info-container">
                 {children}
             </div>

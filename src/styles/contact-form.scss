@@ -1,4 +1,29 @@
+@import "./variables.module";
+@import "./mixins";
+
 form {
     display: flex;
     flex-direction: column;
+
+    .input-type {
+        p {
+            margin-bottom: 5px;
+        }
+    }
+
+    input {
+        min-width: 350px;
+        font-size: 14px;
+    }
+
+    textarea {
+        min-width: 350px;
+        resize: none;
+    }
+
+    button {
+        @include button;
+        margin-top: 16px;
+        min-width: 350px;
+    }
 }

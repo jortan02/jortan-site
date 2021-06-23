@@ -34,22 +34,6 @@ module.exports = {
         "gatsby-plugin-mdx",
         "gatsby-plugin-sharp",
         "gatsby-transformer-sharp",
-        // {
-        //   resolve: "gatsby-source-filesystem",
-        //   options: {
-        //     name: "images",
-        //     path: "./src/images/",
-        //   },
-        //   __key: "images",
-        // },
-        // {
-        //   resolve: "gatsby-source-filesystem",
-        //   options: {
-        //     name: "pages",
-        //     path: "./src/pages/",
-        //   },
-        //   __key: "pages",
-        // },
         {
             resolve: "gatsby-source-filesystem",
             options: {
@@ -57,6 +41,34 @@ module.exports = {
                 path: `${__dirname}/blog-posts`,
             },
         },
+        {
+            resolve: "gatsby-source-filesystem",
+            options: {
+                name: `portfolio-items`,
+                path: `${__dirname}/portfolio-items`,
+            },
+        },
+        {
+            resolve: `gatsby-plugin-manifest`,
+            options: {
+            //   name: `GatsbyJS`,
+            //   short_name: `GatsbyJS`,
+            //   start_url: `/`,
+            //   background_color: `#f7f0eb`,
+            //   theme_color: `#a2466c`,
+            //   display: `standalone`,
+              icon: `src/images/logos/jt-logo-bg.svg`,
+              cache_busting_mode: 'none',
+            },
+          },
+          {
+            resolve: 'gatsby-plugin-offline',
+            options: {
+               workboxConfig: {
+                  globPatterns: ['**/src/images/*']
+               }
+            }
+         },
     ],
     flags: {
         DEV_SSR: false,

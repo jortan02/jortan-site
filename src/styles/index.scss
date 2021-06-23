@@ -1,72 +1,81 @@
-@import "../styles/variables.module";
+@import "./variables.module";
 
-.welcome-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin: 2.4em 15% 2.4em 0;
-    max-width: 500px;
-
-    h1 {
-        margin: 0px 0px 5px 0px;
-        color: $white;
-    }
-
-    hr {
-        width: 35px;
-        margin: 0;
-        border: 3px solid $red;
-    }
-
-    p {
-        color: $white;
+#home {
+    .info-container {
+        .welcome-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            margin: 2.4em 15% 2.4em 0;
+            max-width: 500px;
+        
+            h1 {
+                margin-bottom: 5px;
+                color: $white;
+            }
+        
+            hr {
+                width: 35px;
+                margin: 0;
+                border: 3px solid $red;
+            }
+        
+            p {
+                color: $white;
+            }
+        }
+        
+        .card-container {
+            background-color: $yellow;
+            border-top: 8px solid $red;
+            border-radius: 18px;
+            padding: 2.4em;
+            margin: 1.8em 0em 1.8em 0;
+            max-width: 280px;
+            max-height: 400px;
+            display: flex;
+            flex-direction: column;
+        
+            .profile-picture-wrapper {
+                align-self: center;
+                width: 145px;
+                height: 145px;
+                border: 5px solid $white;
+                border-radius: 100%;
+        
+                .profile-picture {
+                    border-radius: 100%;
+                }
+            }
+        
+            .personal-info-container {
+                .name-container {
+                    h2 {
+                        margin: 24px 0px 0px 0px;
+                    }
+        
+                    h3 {
+                        margin: 8px 0px 24px 0px;
+                    }
+                }
+            }
+        }
     }
 }
 
-.card-container {
-    background-color: $yellow;
-    border-top: 8px solid $red;
-    border-radius: 18px;
-    padding: 2.4em;
-    margin: 2.4em 0em 2.4em 0;
-    max-width: 280px;
-    max-height: 400px;
-    display: flex;
-    flex-direction: column;
-
-    .profile-picture-container {
-        align-self: center;
-        width: 145px;
-        height: 145px;
-        border: 5px solid $white;
-        border-radius: 100%;
-
-        .profile-picture {
-            border-radius: 100%;
-        }
-    }
-
-    .personal-info-container {
-        .name-container {
-            h2 {
-                margin: 24px 0px 0px 0px;
-            }
-
-            h3 {
-                margin: 8px 0px 24px 0px;
-            }
-        }
-    }
-}
 
 @media screen and (max-width: 615px) {
-    .welcome-container {
-        order: 2;
-        margin-right: 0em;
-    }
+    #home {
+        .info-container {
+            .welcome-container {
+                order: 2;
+                margin-right: 0em;
+            }
 
-    .card-container {
-        order: 1;
-        align-self: center;
+            .card-container {
+                order: 1;
+                align-self: center;
+            }
+        }
     }
 }
