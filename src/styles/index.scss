@@ -1,6 +1,10 @@
 @import "./variables.module";
+@import "./mixins";
 
 #home {
+    @include white-text;
+    background-color: $dark-blue;
+
     .info-container {
         .welcome-container {
             display: flex;
@@ -11,21 +15,13 @@
         
             h1 {
                 margin-bottom: 5px;
-                color: $white;
             }
-        
-            hr {
-                width: 35px;
-                margin: 0;
-                border: 3px solid $red;
-            }
-        
-            p {
-                color: $white;
-            }
+
+            @include break;
         }
         
         .card-container {
+            position:relative;
             background-color: $yellow;
             border-top: 8px solid $red;
             border-radius: 18px;
@@ -35,6 +31,24 @@
             max-height: 400px;
             display: flex;
             flex-direction: column;
+            
+            .button-wrapper {
+                position: absolute;
+                top: 1.6em;
+                right: 1.6em;
+                @include header-button;
+
+                .icon {
+                    font-size: 18px;
+                }
+            }
+
+            .qr-code-wrapper {
+                align-self: center;
+                width: 145px;
+                height: 145px;
+                border: 5px solid transparent;
+            }
         
             .profile-picture-wrapper {
                 align-self: center;
@@ -50,6 +64,8 @@
         
             .personal-info-container {
                 .name-container {
+                    @include black-text;
+
                     h2 {
                         margin: 24px 0px 0px 0px;
                     }

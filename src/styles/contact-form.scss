@@ -12,12 +12,19 @@ form {
     }
 
     input {
+        padding: 0.5em;
+        border: none;
+        border-radius: 5px;
         min-width: 350px;
         font-size: 14px;
     }
 
     textarea {
+        padding: 0.5em;
+        border: none;
+        border-radius: 5px;
         min-width: 350px;
+        font-family: sans-serif;
         resize: none;
     }
 

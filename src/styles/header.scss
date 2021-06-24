@@ -6,7 +6,7 @@
     align-items: center;
     justify-content: space-between;
     padding: 0em 2em 0em 2em;
-    height: 84px;
+    height: 72px;
     background-color: $dark-blue;
 
     .left-header {
@@ -51,8 +51,8 @@
     .button-wrapper {
         @include header-button;
         position: fixed;
-        top: 2.4em;
-        right: 2.4em;
+        top: 1.95em;
+        right: 2.55em;
 
         .icon-wrapper {
             .icon {

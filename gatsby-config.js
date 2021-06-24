@@ -10,8 +10,8 @@ module.exports = {
                 link: "/"
             },
             {
-                name: "About",
-                link: "/about"
+                name: "Resume",
+                link: "/resume"
             },
             {
                 name: "Blog",

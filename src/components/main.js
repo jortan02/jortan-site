@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { Helmet } from "react-helmet";
 import { graphql, StaticQuery } from "gatsby";
 
-const Content = ({ pageTitle, children }) => {
+const Main = ({ pageTitle, children }) => {
     return (
         <StaticQuery
             query={graphql`
@@ -30,12 +30,12 @@ const Content = ({ pageTitle, children }) => {
     );
 };
 
-Content.propTypes = {
+Main.propTypes = {
     pageTitle: PropTypes.string,
 };
 
-Content.defaultProps = {
+Main.defaultProps = {
     pageTitle: "",
 };
 
-export default Content;
+export default Main;

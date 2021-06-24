@@ -1,16 +1,15 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-// import { StaticImage } from "gatsby-plugin-image";
-import Logo from "../images/logos/jt-logo.svg";
-import { Link } from "gatsby";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
+import Logo from "../images/logos/jt-logo.svg";
+import { Link } from "gatsby";
 import Links from "./links";
 import "../styles/header.scss";
 
 // https://ibaslogic.com/how-to-add-hamburger-menu-in-react/
 
-const Header = ({ menuLinks, siteTitle }) => {
+const Header = ({ menuLinks }) => {
     const [menuOpen, setMenuOpen] = useState(false);
 
     const handleToggle = () => {

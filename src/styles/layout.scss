@@ -1,4 +1,5 @@
 @import "./variables.module";
+@import "./mixins";
 
 html {
     overflow-y: scroll;
@@ -8,20 +9,22 @@ html {
         padding: 0;
         height: 100%;
         font-family: sans-serif;
-        display: flex; 
-        flex-direction:column;
-    
+        display: flex;
+        flex-direction: column;
+
         .site-container {
             display: flex;
             min-height: 100vh;
             flex-direction: column;
-    
+
             main {
+                @include white-text;
+                background-color: $dark-blue;
                 display: flex;
-                flex-direction: column; 
+                flex-direction: column;
                 flex: 1 0 auto;
             }
-    
+
             footer {
                 flex-shrink: 0;
             }
@@ -29,7 +32,14 @@ html {
     }
 }
 
-h1, h2, h3, h4, h5, h6, p, span {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span {
     color: $black;
 }
 

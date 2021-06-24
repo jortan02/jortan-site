@@ -13,10 +13,17 @@
 }
 
 @mixin header-button {
-    border: transparent;
+    border: none;
+    cursor: pointer;
     background-color: transparent;
 
-    &:focus {
+    .icon-wrapper {
+        .icon {
+            transition: 0.4s ease-in-out;
+        }
+    }
+
+    &:hover {
         .icon-wrapper {
             .icon {
                 color: $grey;
@@ -42,11 +49,31 @@
     cursor: pointer;
     background-color: $black;
     color: $white;
-    transition: 0.4s ease-in-out;
     border-radius: 5px;
     border: transparent;
+    transition: 0.4s ease-in-out;
 
     &:hover {
         background-color: $dark-grey;
+    }
+}
+
+@mixin black-text {
+    h1, h2, h3, h4, h5, h6, p, span {
+        color: $black;
+    }
+}
+
+@mixin white-text {
+    h1, h2, h3, h4, h5, h6, p, span {
+        color: $white;
+    }
+}
+
+@mixin break {
+    hr {
+        width: 35px;
+        margin: 0;
+        border: 3px solid $red;
     }
 }

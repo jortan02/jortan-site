@@ -1,15 +1,15 @@
 import React from "react";
-import Content from "../components/content";
+import Main from "../components/main";
 
 const BlogPage = () => {
     return (
-        <Content pageTitle="Blog">
+        <Main pageTitle="Blog">
             <div className="centered-container">
                 <div className="not-found-container">
                     <h1>Coming Soon</h1>
                 </div>
             </div>
-        </Content>
+        </Main>
     );
 };
 

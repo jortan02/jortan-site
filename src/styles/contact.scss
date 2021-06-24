@@ -1,4 +1,10 @@
+@import "./variables.module";
+@import "./mixins";
+
 #contact {
+    @include black-text;
+    background-color: $off-white;
+
     .info-container {
         .contact-form-container {
             margin: 2.4em 20% 2.4em 0;
@@ -9,10 +15,19 @@
         }
 
         .personal-info-container {
-            margin: 2.8em 0em 2.4em 0em;
+            display: flex;
+            flex-direction: column;
+            margin: 2.4em 0em 2.4em 0em;
+            align-items: center;
+
+            .qr-code-wrapper {
+                width: 200px;
+                height: 200px;
+            }
 
             h2 {
-                margin: 0px 0px 0px 0;
+                // align-self: flex-start;
+                margin: 0.8em 0 0 0;
             }
         }
     }

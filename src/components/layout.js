@@ -28,7 +28,7 @@ const Layout = ({ children }) => {
                         <title>{data.site.siteMetadata.title}</title>
                         <meta name="description" content={data.site.siteMetadata.description} />
                     </Helmet>
-                    <Header menuLinks={data.site.siteMetadata.menuLinks} siteTitle={data.site.siteMetadata.title} />
+                    <Header menuLinks={data.site.siteMetadata.menuLinks} />
                     {children}
                     <Footer />
                 </div>
