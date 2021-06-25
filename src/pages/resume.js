@@ -13,11 +13,11 @@ const ResumePage = () => {
                     <hr />
                     <p>
                         I'm from a small town called Roosevelt, and I have lived
-                        in Utah for my entire life. I'm interested in
-                        technology, programs, design, and a little bit of
-                        everything in between. I'm also passionate about
-                        learning new things, especially when it benefits myself
-                        or others.
+                        in Utah for my entire life. I'm currently attending the
+                        University of Utah, and I'm interested in technology,
+                        programs, design, and everything else in between. I'm
+                        also passionate about learning new things, especially
+                        when it benefits myself or others.
                     </p>
                 </div>
                 <figure>
