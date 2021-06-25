@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { StaticImage } from "gatsby-plugin-image";
+import { Link } from "gatsby";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faQrcode } from "@fortawesome/free-solid-svg-icons";
 import Main from "../components/main";
@@ -14,10 +15,6 @@ const IndexPage = () => {
         setQrOpen((prev) => !prev);
     };
 
-    // const closeQrCode = () => {
-    //     setQrOpen(false);
-    // };
-
     return (
         <Main pageTitle="Home">
             <Hero id="home">
@@ -30,6 +27,7 @@ const IndexPage = () => {
                         website for myself and to show some of my work. Nice to
                         meet you!
                     </p>
+                    <Link to="/resume"><button>View my resume</button></Link>
                 </div>
                 <div className="card-container">
                     <button className="button-wrapper" onClick={handleToggle}>

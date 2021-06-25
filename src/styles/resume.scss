@@ -2,12 +2,42 @@
 @import "./mixins";
 
 .content-container {
+    display: flex;
+    flex-direction: column;
     padding: 2.4em 30% 2.4em 30%;
+
+    @include title;
+
+    .resume-wrapper {
+        margin: 1.8em 0 1.8em 0;
+    }
+
+    figure {
+        margin: 0;
+    }
+
+    #resume-text {
+        // https://stackoverflow.com/questions/26032089/in-html-how-can-i-have-text-that-is-only-accessible-for-screen-readers-i-e-fo
+        position: absolute;
+        height: 1px; width: 1px;
+        overflow: hidden;
+        clip: rect(1px 1px 1px 1px);
+        clip: rect(1px, 1px, 1px, 1px);
+    }
+
+    a {
+        align-self: center;
+
+        button {
+            @include button;
+            padding: 0.8em;
+        }
+    }
 }
 
 
 @media screen and (max-width: 615px) {
     .content-container {
-        padding: 0 15% 0 15%;
+        padding: 1.8em 15% 1.8em 15%;
     }
 }

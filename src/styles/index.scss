@@ -12,12 +12,13 @@
             justify-content: center;
             margin: 2.4em 15% 2.4em 0;
             max-width: 500px;
-        
-            h1 {
-                margin-bottom: 5px;
-            }
 
-            @include break;
+            @include title;
+
+            button {
+                @include button;
+                padding: .8em;
+            }
         }
         
         .card-container {

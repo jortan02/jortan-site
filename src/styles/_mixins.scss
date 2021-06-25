@@ -71,9 +71,17 @@
 }
 
 @mixin break {
-    hr {
         width: 35px;
         margin: 0;
         border: 3px solid $red;
+}
+
+@mixin title {
+    h1 {
+        margin-bottom: 5px;
+    }
+
+    hr {
+        @include break;
     }
 }

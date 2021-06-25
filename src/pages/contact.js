@@ -17,7 +17,7 @@ const ContactPage = () => {
                 <div className="personal-info-container">
                     <StaticImage
                         src="../images/qr-code.png"
-                        alt="QR code with contact information"
+                        alt="QR code with Jordan Tan's contact information"
                         className="qr-code-wrapper"
                         imgClassName="qr-code"
                     />
