@@ -1,0 +1,6 @@
+@import "./variables.module";
+@import "./mixins";
+
+.title-container {
+    @include title;
+}

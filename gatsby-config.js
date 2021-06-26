@@ -37,15 +37,27 @@ module.exports = {
         {
             resolve: "gatsby-source-filesystem",
             options: {
-                name: `blog-posts`,
-                path: `${__dirname}/blog-posts`,
+                name: `blog`,
+                path: `${__dirname}/src/pages/blog`,
             },
         },
         {
             resolve: "gatsby-source-filesystem",
             options: {
-                name: `portfolio-items`,
-                path: `${__dirname}/portfolio-items`,
+                name: `portfolio`,
+                path: `${__dirname}/src/pages/portfolio`,
+            },
+        },
+        {
+            resolve: "gatsby-plugin-page-creator",
+            options: {
+              path: `${__dirname}/src/pages/blog`,
+            },
+        },
+        {
+            resolve: "gatsby-plugin-page-creator",
+            options: {
+              path: `${__dirname}/src/pages/portfolio`,
             },
         },
         {

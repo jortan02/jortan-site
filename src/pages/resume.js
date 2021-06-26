@@ -8,7 +8,7 @@ const ResumePage = () => {
     return (
         <Main pageTitle="About">
             <div className="content-container">
-                <div className="about-container">
+                <div className="title-container">
                     <h1>A few things about me.</h1>
                     <hr />
                     <p>

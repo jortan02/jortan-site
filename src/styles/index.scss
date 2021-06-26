@@ -6,7 +6,7 @@
     background-color: $dark-blue;
 
     .info-container {
-        .welcome-container {
+        .title-container {
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -84,7 +84,7 @@
 @media screen and (max-width: 615px) {
     #home {
         .info-container {
-            .welcome-container {
+            .title-container {
                 order: 2;
                 margin-right: 0em;
             }

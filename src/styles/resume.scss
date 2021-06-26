@@ -6,7 +6,9 @@
     flex-direction: column;
     padding: 2.4em 30% 2.4em 30%;
 
-    @include title;
+    .title-container {
+        @include title;
+    }
 
     .resume-wrapper {
         margin: 1.8em 0 1.8em 0;

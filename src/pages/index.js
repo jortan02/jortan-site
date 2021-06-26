@@ -18,7 +18,7 @@ const IndexPage = () => {
     return (
         <Main pageTitle="Home">
             <Hero id="home">
-                <div className="welcome-container">
+                <div className="title-container">
                     <h1>Hello.</h1>
                     <hr />
                     <p>
