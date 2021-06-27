@@ -1,0 +1,11 @@
+@import "./variables.module";
+@import "./mixins";
+
+main {
+    @include white-text;
+    background-color: $dark-blue;
+    display: flex;
+    flex-direction: column;
+    flex: 1 0 auto;
+    // padding: 2.4em 30% 2.4em 30%;
+}

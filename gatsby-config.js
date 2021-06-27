@@ -31,7 +31,6 @@ module.exports = {
         "gatsby-plugin-sass",
         "gatsby-plugin-gatsby-cloud",
         "gatsby-plugin-image",
-        "gatsby-plugin-mdx",
         "gatsby-plugin-sharp",
         "gatsby-transformer-sharp",
         {
@@ -61,14 +60,16 @@ module.exports = {
             },
         },
         {
+            resolve: `gatsby-plugin-mdx`,
+            options: {
+              defaultLayouts: {
+                default: require.resolve("./src/components/blog-post.js"),
+              },
+            },
+        },
+        {
             resolve: `gatsby-plugin-manifest`,
             options: {
-            //   name: `GatsbyJS`,
-            //   short_name: `GatsbyJS`,
-            //   start_url: `/`,
-            //   background_color: `#f7f0eb`,
-            //   theme_color: `#a2466c`,
-            //   display: `standalone`,
               icon: `src/images/logos/jt-logo-bg.svg`,
               cache_busting_mode: 'none',
             },

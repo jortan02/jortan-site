@@ -1,15 +1,16 @@
 import React from "react";
 import { StaticImage } from "gatsby-plugin-image";
 import Main from "../components/main";
+import Content from "../components/content";
 import ResumeFile from "../files/Resume - Jordan Tan.pdf";
 import "../styles/resume.scss";
 
 const ResumePage = () => {
     return (
         <Main pageTitle="About">
-            <div className="content-container">
+            <Content id="resume">
                 <div className="title-container">
-                    <h1>A few things about me.</h1>
+                    <h1>A Few Things about Me.</h1>
                     <hr />
                     <p>
                         I'm from a small town called Roosevelt, and I have lived
@@ -96,7 +97,7 @@ const ResumePage = () => {
                 <a href={ResumeFile} download>
                     <button>View PDF of resume</button>
                 </a>
-            </div>
+            </Content>
         </Main>
     );
 };

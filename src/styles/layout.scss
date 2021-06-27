@@ -16,18 +16,6 @@ html {
             display: flex;
             min-height: 100vh;
             flex-direction: column;
-
-            main {
-                @include white-text;
-                background-color: $dark-blue;
-                display: flex;
-                flex-direction: column;
-                flex: 1 0 auto;
-            }
-
-            footer {
-                flex-shrink: 0;
-            }
         }
     }
 }

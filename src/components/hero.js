@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import "../styles/hero.scss";
 
 const Hero = ({ id, children }) => {
@@ -10,5 +11,13 @@ const Hero = ({ id, children }) => {
         </div>
     );
 };
+
+Hero.propTypes = {
+    id: PropTypes.string,
+}
+
+Hero.defaultProps = {
+    id: "",
+}
 
 export default Hero;

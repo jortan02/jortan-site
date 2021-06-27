@@ -11,19 +11,21 @@ form {
         }
     }
 
+    input, textarea, button {
+        min-width: 350px;
+    }
+
     input {
-        padding: 0.5em;
         border: none;
         border-radius: 5px;
-        min-width: 350px;
+        padding: 0.5em;
         font-size: 14px;
     }
 
     textarea {
-        padding: 0.5em;
         border: none;
         border-radius: 5px;
-        min-width: 350px;
+        padding: 0.5em;
         font-family: sans-serif;
         resize: none;
     }
@@ -31,6 +33,11 @@ form {
     button {
         @include button;
         margin-top: 16px;
-        min-width: 350px;
+    }
+}
+
+@media screen and (max-width: 615px) {
+    input, textarea, button {
+        min-width: 325px;
     }
 }
