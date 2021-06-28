@@ -6,8 +6,26 @@
         @include title;
     }
 
-    .post-container {
-        display: flex;
-        justify-content: space-between;
+    .blog-posts-container {
+        list-style: none;
+
+        li {
+            .blog-title-container {
+                display: flex;
+                justify-content: space-between;
+
+                .link {
+                    color: $white;
+                    text-decoration: none;
+
+                    h2 {
+                        transition: 0.4s ease-in-out;
+                        &:hover {
+                            color: $grey;
+                        }
+                    }
+                }
+            }
+        }
     }
 }

@@ -30,6 +30,14 @@ module.exports = {
     plugins: [
         "gatsby-plugin-sass",
         "gatsby-plugin-gatsby-cloud",
+        {
+            resolve: `gatsby-plugin-mdx`,
+            options: {
+              defaultLayouts: {
+                default: require.resolve("./src/components/blog-post.js"),
+              },
+            },
+        },
         "gatsby-plugin-image",
         "gatsby-plugin-sharp",
         "gatsby-transformer-sharp",
@@ -37,34 +45,26 @@ module.exports = {
             resolve: "gatsby-source-filesystem",
             options: {
                 name: `blog`,
-                path: `${__dirname}/src/pages/blog`,
+                path: `${__dirname}/blog`,
             },
         },
         {
             resolve: "gatsby-source-filesystem",
             options: {
                 name: `portfolio`,
-                path: `${__dirname}/src/pages/portfolio`,
+                path: `${__dirname}/portfolio`,
             },
         },
         {
             resolve: "gatsby-plugin-page-creator",
             options: {
-              path: `${__dirname}/src/pages/blog`,
+              path: `${__dirname}/blog`,
             },
         },
         {
             resolve: "gatsby-plugin-page-creator",
             options: {
-              path: `${__dirname}/src/pages/portfolio`,
-            },
-        },
-        {
-            resolve: `gatsby-plugin-mdx`,
-            options: {
-              defaultLayouts: {
-                default: require.resolve("./src/components/blog-post.js"),
-              },
+              path: `${__dirname}/portfolio`,
             },
         },
         {
