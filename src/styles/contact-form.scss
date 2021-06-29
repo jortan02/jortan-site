@@ -11,7 +11,9 @@ form {
         }
     }
 
-    input, textarea, button {
+    input,
+    textarea,
+    button {
         min-width: 350px;
     }
 
@@ -37,7 +39,11 @@ form {
 }
 
 @media screen and (max-width: 615px) {
-    input, textarea, button {
-        min-width: 325px;
+    form {
+        input,
+        textarea,
+        button {
+            min-width: 325px;
+        }
     }
 }
