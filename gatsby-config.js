@@ -30,6 +30,14 @@ module.exports = {
     plugins: [
         "gatsby-plugin-sass",
         "gatsby-plugin-gatsby-cloud",
+        {
+            resolve: `gatsby-plugin-mdx`,
+            options: {
+              defaultLayouts: {
+                default: require.resolve("./src/templates/blog-post.js"),
+              },
+            },
+        },
         "gatsby-plugin-image",
         "gatsby-plugin-sharp",
         "gatsby-transformer-sharp",
