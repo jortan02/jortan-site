@@ -28,6 +28,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   const result = await graphql(`
     query {
       allMdx(
+        filter: {frontmatter: {type: {eq: "Blog"}}}
         sort: { fields: [frontmatter___date], order: DESC }
         limit: 1000
       ) {
@@ -52,6 +53,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
   // Create blog post pages.
   const posts = result.data.allMdx.edges
+
 
   // you'll call `createPage` for each result
   posts.forEach((post, index) => {
