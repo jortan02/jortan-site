@@ -1,6 +1,6 @@
 import React from "react";
 import { StaticImage } from "gatsby-plugin-image";
-import Main from "../components/main";
+import Layout from "../components/layout";
 import Hero from "../components/hero";
 import ContactForm from "../components/contact-form";
 import ContactInfo from "../components/contact-info";
@@ -8,7 +8,7 @@ import "../styles/contact.scss";
 
 const ContactPage = () => {
     return (
-        <Main pageTitle="Contact">
+        <Layout pageTitle="Contact">
             <Hero id="contact">
                 <div className="contact-form-container">
                     <h1>Let's get in touch.</h1>
@@ -27,7 +27,7 @@ const ContactPage = () => {
                     </div>
                 </div>
             </Hero>
-        </Main>
+        </Layout>
     );
 };
 

@@ -3,7 +3,7 @@ import { StaticImage } from "gatsby-plugin-image";
 import { Link } from "gatsby";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faQrcode } from "@fortawesome/free-solid-svg-icons";
-import Main from "../components/main";
+import Layout from "../components/layout";
 import Hero from "../components/hero";
 import ContactInfo from "../components/contact-info";
 import "../styles/index.scss";
@@ -16,7 +16,7 @@ const IndexPage = () => {
     };
 
     return (
-        <Main pageTitle="Home">
+        <Layout pageTitle="Home">
             <Hero id="home">
                 <div className="title-container">
                     <h1>Hello.</h1>
@@ -59,7 +59,7 @@ const IndexPage = () => {
                     </div>
                 </div>
             </Hero>
-        </Main>
+        </Layout>
     );
 };
 

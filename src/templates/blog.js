@@ -1,17 +1,16 @@
 import React from "react";
 import { Link, graphql } from "gatsby";
-import Main from "../components/main";
-import Content from "../components/content";
+import Layout from "../components/layout";
 import "../styles/blog.scss";
 
 const BlogPage = ({ data }) => {
   const { edges: posts } = data.allMdx;
 
   return (
-      <Main pageTitle="Blog">
-          <Content id="blog">
+      <Layout pageTitle="Blog">
+          <main className="content-container" id="blog">
               <div className="title-container">
-                  <h1>Blog Posts</h1>
+                  <h1>My Blog Posts</h1>
                   <hr />
               </div>
               <ul className="blog-posts-container">
@@ -29,8 +28,8 @@ const BlogPage = ({ data }) => {
                       </li>
                   ))}
               </ul>
-          </Content>
-      </Main>
+          </main>
+      </Layout>
   );
 };
 

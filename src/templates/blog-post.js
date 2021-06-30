@@ -3,8 +3,7 @@ import { graphql } from "gatsby"
 import { MDXProvider } from "@mdx-js/react"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import { Link } from "gatsby"
-import Main from "../components/main";
-import Content from "../components/content";
+import Layout from "../components/layout";
 
 // https://www.gatsbyjs.com/docs/mdx/programmatically-creating-pages/
 
@@ -12,14 +11,14 @@ const shortcodes = { Link } // Provide common components here
 
 const BlogPost = ({ data: { mdx } }) => {
     return (
-        <Main pageTitle={mdx.frontmatter.title}>
-            <Content>
+        <Layout pageTitle={mdx.frontmatter.title}>
+            <main className="content-container">
                 <h1>{mdx.frontmatter.title}</h1>
                 <MDXProvider components={shortcodes}>
                     <MDXRenderer frontmatter={mdx.frontmatter}>{mdx.body}</MDXRenderer>
                 </MDXProvider>
-            </Content>
-        </Main>
+            </main>
+        </Layout>
     );
 } 
 

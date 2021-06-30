@@ -1,14 +1,13 @@
 import React from "react";
 import { StaticImage } from "gatsby-plugin-image";
-import Main from "../components/main";
-import Content from "../components/content";
+import Layout from "../components/layout";
 import ResumeFile from "../files/Resume - Jordan Tan.pdf";
 import "../styles/resume.scss";
 
 const ResumePage = () => {
     return (
-        <Main pageTitle="About">
-            <Content id="resume">
+        <Layout pageTitle="About">
+            <main className="content-container" id="resume">
                 <div className="title-container">
                     <h1>A Few Things about Me.</h1>
                     <hr />
@@ -97,8 +96,8 @@ const ResumePage = () => {
                 <a href={ResumeFile} download>
                     <button>View PDF of resume</button>
                 </a>
-            </Content>
-        </Main>
+            </main>
+        </Layout>
     );
 };
 
