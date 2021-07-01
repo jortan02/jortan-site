@@ -7,7 +7,7 @@ import "../styles/resume.scss";
 const ResumePage = () => {
     return (
         <Layout pageTitle="About">
-            <main className="content-container" id="resume">
+            <article className="content-container" id="resume">
                 <div className="title-container">
                     <h1>A Few Things about Me.</h1>
                     <hr />
@@ -96,7 +96,7 @@ const ResumePage = () => {
                 <a href={ResumeFile} download>
                     <button>View PDF of resume</button>
                 </a>
-            </main>
+            </article>
         </Layout>
     );
 };

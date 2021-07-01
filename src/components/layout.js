@@ -32,9 +32,9 @@ const Layout = ({ pageTitle, children }) => {
         <meta name="description" content={data.site.siteMetadata.description} />
       </Helmet>
       <Header menuLinks={data.site.siteMetadata.menuLinks} />
-        <div className="main-container">
+        <main className="main-container">
           {children}
-        </div>
+        </main>
       <Footer />
     </div>
   );

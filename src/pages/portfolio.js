@@ -4,11 +4,11 @@ import Layout from "../components/layout";
 const PortfolioPage = () => {
     return (
         <Layout pageTitle="Portfolio">
-            <main className="centered-container">
+            <div className="centered-container">
                 <div className="not-found-container">
                     <h1>Coming Soon</h1>
                 </div>
-            </main>
+            </div>
         </Layout>
     )
 };

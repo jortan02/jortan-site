@@ -1,4 +1,4 @@
-@import "./variables.module";
+@import "./variables";
 
 @mixin header-text {
     color: $white;
@@ -78,10 +78,21 @@
 
 @mixin title {
     h1 {
+        font-size: 2em;
         margin-bottom: 5px;
     }
 
     hr {
         @include break;
+    }
+}
+
+@mixin pagination-text {
+    font-size: 18px;
+    color: $grey;
+    transition: 0.4s ease-in-out;
+
+    &:hover {
+        color: $white;
     }
 }

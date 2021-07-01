@@ -1,4 +1,4 @@
-@import "./variables.module";
+@import "./variables";
 @import "./mixins";
 
 #blog {
@@ -20,6 +20,7 @@
                     text-decoration: none;
 
                     h2 {
+                        margin-bottom: 0.4em;
                         transition: 0.4s ease-in-out;
                         &:hover {
                             color: $grey;
@@ -28,10 +29,51 @@
                 }
 
                 p {
+                    margin: 0;
                     align-self: center;
                 }
             }
         }
     }
+
+    .blog-navigation-container {
+        display: flex;
+        justify-content: center;
+
+        .first, .prev, .number, .next, .last {
+            text-decoration: none;
+            padding: 0 .4em 0 .4em;
+
+            p {
+                @include pagination-text;
+            }
+
+            &.active-link {
+                p {
+                    color: $white;
+                }
+            }
+
+            &.disabled-link {
+                visibility: hidden;
+            }
+        }
+    }
 }
 
+@media screen and (max-width: 615px) {
+    #blog {
+        .blog-posts-container {
+            li {
+                .blog-title-container {
+                    flex-direction: column;
+                    justify-content: start;
+
+                    p {
+                        align-self: start;
+                    }
+                }
+            }
+        }
+    }
+}

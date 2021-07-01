@@ -1,4 +1,4 @@
-@import "./variables.module";
+@import "./variables";
 @import "./mixins";
 
 #home {
@@ -49,6 +49,7 @@
                 width: 145px;
                 height: 145px;
                 border: 5px solid transparent;
+                border-radius: 18px;
             }
         
             .profile-picture-wrapper {

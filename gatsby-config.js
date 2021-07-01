@@ -30,12 +30,22 @@ module.exports = {
     plugins: [
         "gatsby-plugin-sass",
         "gatsby-plugin-gatsby-cloud",
+        // "gatsby-remark-images",
         {
             resolve: `gatsby-plugin-mdx`,
             options: {
               defaultLayouts: {
                 default: require.resolve("./src/templates/blog-post.js"),
               },
+            //   gatsbyRemarkPlugins: [
+            //     {
+            //       resolve: `gatsby-remark-images`,
+            //       options: {
+            //         maxWidth: 1035,
+            //         sizeByPixelDensity: true,
+            //       },
+            //     },
+            //   ],
             },
         },
         "gatsby-plugin-image",
