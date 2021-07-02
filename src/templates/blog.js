@@ -15,8 +15,8 @@ const BlogPage = ({ pageContext, data }) => {
   // const nextPage = "/" + (currentPage + 1);
 
   return (
-    <Layout pageTitle="Blog">
-      <section className="content-container" id="blog">
+    <Layout pageTitle="Blog" id="blog">
+      <section className="content-container">
         <div className="title-container">
           <h1>My Blog Posts</h1>
           <hr />

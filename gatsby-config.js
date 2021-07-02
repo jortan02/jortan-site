@@ -4,50 +4,32 @@ module.exports = {
         description: "Jordan Tan's Personal Site | Resume | Blog | Portfolio",
         phoneNumber: "435-823-0976",
         emailAddress: "jortan2002@gmail.com",
-        menuLinks:[
+        menuLinks: [
             {
                 name: "Home",
-                link: "/"
+                link: "/",
             },
             {
                 name: "Resume",
-                link: "/resume"
+                link: "/resume",
             },
             {
                 name: "Blog",
-                link: "/blog"
+                link: "/blog",
             },
             {
                 name: "Portfolio",
-                link: "/portfolio"
+                link: "/portfolio",
             },
             {
                 name: "Contact",
-                link: "/contact"
+                link: "/contact",
             },
-        ]
+        ],
     },
     plugins: [
         "gatsby-plugin-sass",
         "gatsby-plugin-gatsby-cloud",
-        // "gatsby-remark-images",
-        {
-            resolve: `gatsby-plugin-mdx`,
-            options: {
-              defaultLayouts: {
-                default: require.resolve("./src/templates/blog-post.js"),
-              },
-            //   gatsbyRemarkPlugins: [
-            //     {
-            //       resolve: `gatsby-remark-images`,
-            //       options: {
-            //         maxWidth: 1035,
-            //         sizeByPixelDensity: true,
-            //       },
-            //     },
-            //   ],
-            },
-        },
         "gatsby-plugin-image",
         "gatsby-plugin-sharp",
         "gatsby-transformer-sharp",
@@ -68,38 +50,47 @@ module.exports = {
         {
             resolve: "gatsby-plugin-page-creator",
             options: {
-              path: `${__dirname}/blog`,
+                path: `${__dirname}/blog`,
             },
         },
         {
             resolve: "gatsby-plugin-page-creator",
             options: {
-              path: `${__dirname}/portfolio`,
+                path: `${__dirname}/portfolio`,
             },
         },
+        "gatsby-remark-images",
         {
-            resolve: `gatsby-plugin-mdx`,
+            resolve: "gatsby-plugin-mdx",
             options: {
-              defaultLayouts: {
-                default: require.resolve("./src/templates/blog-post.js"),
-              },
+                gatsbyRemarkPlugins: [
+                    {
+                        resolve: `gatsby-remark-images`,
+                        options: {
+                            maxWidth: 590,
+                        },
+                    },
+                ],
+                defaultLayouts: {
+                    default: require.resolve("./src/templates/blog-post.js"),
+                },
             },
         },
         {
             resolve: `gatsby-plugin-manifest`,
             options: {
-              icon: `src/images/logos/jt-logo-bg.svg`,
-              cache_busting_mode: 'none',
+                icon: `src/images/logos/jt-logo-bg.svg`,
+                cache_busting_mode: "none",
             },
-          },
-          {
-            resolve: 'gatsby-plugin-offline',
+        },
+        {
+            resolve: "gatsby-plugin-offline",
             options: {
-               workboxConfig: {
-                  globPatterns: ['**/src/images/*']
-               }
-            }
-         },
+                workboxConfig: {
+                    globPatterns: ["**/src/images/*"],
+                },
+            },
+        },
     ],
     flags: {
         DEV_SSR: false,

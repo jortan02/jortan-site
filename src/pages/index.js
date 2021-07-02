@@ -16,8 +16,8 @@ const IndexPage = () => {
     };
 
     return (
-        <Layout pageTitle="Home">
-            <Hero id="home">
+        <Layout pageTitle="Home" id="home">
+            <Hero>
                 <div className="title-container">
                     <h1>Hello.</h1>
                     <hr />

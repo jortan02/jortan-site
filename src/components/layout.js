@@ -5,7 +5,7 @@ import Footer from "./footer";
 import { graphql, useStaticQuery } from "gatsby";
 import "../styles/layout.scss";
 
-const Layout = ({ pageTitle, children }) => {
+const Layout = ({ pageTitle, id, children }) => {
   const data = useStaticQuery(graphql`
     {
       site {
@@ -23,7 +23,7 @@ const Layout = ({ pageTitle, children }) => {
   `)
 
   return (
-    <div className="site-container">
+    <div className="site-container" id={id}>
       <Helmet
         defaultTitle={data.site.siteMetadata.title}
         titleTemplate={`%s | ${data.site.siteMetadata.title}`}

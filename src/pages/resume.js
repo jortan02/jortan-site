@@ -6,8 +6,8 @@ import "../styles/resume.scss";
 
 const ResumePage = () => {
     return (
-        <Layout pageTitle="About">
-            <article className="content-container" id="resume">
+        <Layout pageTitle="About" id="resume">
+            <article className="content-container">
                 <div className="title-container">
                     <h1>A Few Things about Me.</h1>
                     <hr />

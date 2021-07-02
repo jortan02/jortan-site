@@ -8,8 +8,8 @@ import "../styles/contact.scss";
 
 const ContactPage = () => {
     return (
-        <Layout pageTitle="Contact">
-            <Hero id="contact">
+        <Layout pageTitle="Contact" id="contact">
+            <Hero>
                 <div className="contact-form-container">
                     <h1>Let's get in touch.</h1>
                     <ContactForm />
