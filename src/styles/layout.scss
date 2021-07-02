@@ -23,6 +23,19 @@ html {
                 display: flex;
                 flex-direction: column;
                 flex: 1 0 auto;
+
+                .content-container {
+                    // display: flex;
+                    // flex-direction: column;
+                    padding: 2.4em 30% 2.4em 30%;
+                }
+
+                // .content-container-center {
+                //     display: flex;
+                //     flex-direction: column;
+                //     justify-content: center;
+                //     padding: 2.4em 0 2.4em 0;
+                // }
             }
         }
         
@@ -44,14 +57,16 @@ p {
     line-height: 1.5;
 }
 
-.content-container {
-    display: flex;
-    flex-direction: column;
-    padding: 2.4em 30% 2.4em 30%;
-}
-
 @media screen and (max-width: 615px) {
-    .content-container {
-        padding: 1.8em 15% 1.8em 15%;
+    html {
+        body {
+            .site-container {
+                .main-container {
+                    .content-container {
+                        padding: 1.8em 15% 1.8em 15%;
+                    }
+                }
+            }
+        }
     }
 }

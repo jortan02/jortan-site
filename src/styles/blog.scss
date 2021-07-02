@@ -2,78 +2,149 @@
 @import "./mixins";
 
 #blog {
-    .title-container {
-        @include title;
-    }
+    .content-container {
+        padding-left: 2.4em;
+        padding-right: 2.4em;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
 
-    .blog-posts-container {
-        padding: 0;
-        margin-top: 2em;
-        list-style: none;
+        .title-container {
+            @include title;
+        }
 
-        li {
-            margin-bottom: 2em;
+        .blog-posts-container {
+            padding: 0;
+            margin-top: 2em;
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            max-width: 37.5em;
 
-            .blog-title-container {
-                display: flex;
-                justify-content: space-between;
+            .link {
+                text-decoration: none;
 
-                .link {
-                    color: $white;
-                    text-decoration: none;
+                .blog-post-container {
+                    @include black-text;
+                    @include BoxShadow(4);
+                    background: $white;
+                    margin-bottom: 1.6em;
+                    border-radius: 18px;
+                    padding: 1.2em;
+                    display: flex;
+                    flex-direction: column;
+                    transition: 0.4s ease-in-out;
 
-                    h2 {
-                        margin: 0;
-                        transition: 0.4s ease-in-out;
-                        &:hover {
-                            color: $grey;
+                    .title-container {
+                        display: flex;
+                        align-items: center;
+
+                        .picture-wrapper {
+                            background-color: $grey;
+                            border-radius: 18px;
+                            width: 160px;
+                            height: 160px;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+
+                            .icon {
+                                font-size: 64px;
+                                color: $white;
+                            }
+                        }
+
+                        .text-container {
+                            max-width: calc(100% - 11.25em);
+                            margin-left: 1.25em;
+                            display: flex;
+                            flex-direction: column;
+                            // justify-content: center;
+
+                            h2,
+                            p {
+                                color: $black;
+                                text-decoration: none;
+                            }
+
+                            .title {
+                                margin: 0 0 0.4em 0;
+                            }
+
+                            .date {
+                                margin: 0 0 1em 0;
+                            }
+
+                            .excerpt {
+                                margin: 0;
+                            }
                         }
                     }
-                }
 
-                p {
-                    align-self: center;
-                    margin: 0;
+                    .excerpt-mobile {
+                        display: none;
+                        margin-bottom: 0;
+                    }
+
+                    &:hover {
+                        background-color: $off-white;
+                    }
                 }
             }
         }
-    }
 
-    .blog-navigation-container {
-        display: flex;
-        justify-content: center;
+        .blog-navigation-container {
+            display: flex;
+            justify-content: center;
 
-        .first, .prev, .number, .next, .last {
-            text-decoration: none;
-            padding: 0 .4em 0 .4em;
+            .first,
+            .prev,
+            .number,
+            .next,
+            .last {
+                text-decoration: none;
+                padding: 0 0.4em 0 0.4em;
 
-            p {
-                @include pagination-text;
-            }
-
-            &.active-link {
                 p {
-                    color: $white;
+                    @include pagination-text;
                 }
-            }
 
-            &.disabled-link {
-                visibility: hidden;
+                &.active-link {
+                    p {
+                        color: $white;
+                    }
+                }
+
+                &.disabled-link {
+                    visibility: hidden;
+                }
             }
         }
     }
 }
 
+
+// TODO: learn why !important is needed
 @media screen and (max-width: 615px) {
     #blog {
         .blog-posts-container {
-            li {
-                .blog-title-container {
-                    flex-direction: column;
-                    justify-content: start;
+            .link {
+                .blog-post-container {
+                    .title-container {
+                        .text-container {
+                            .date {
+                                margin-bottom: 0 !important;
+                            }
 
-                    p {
-                        align-self: start;
+                            .excerpt {
+                                display: none;
+                            }
+                        }
+                    }
+
+                    .excerpt-mobile {
+                        display: block !important;
                     }
                 }
             }
