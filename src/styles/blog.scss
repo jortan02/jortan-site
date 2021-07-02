@@ -3,149 +3,153 @@
 
 #blog {
     .content-container {
+        @include flex-center;
         padding-left: 2.4em;
         padding-right: 2.4em;
-        display: flex;
         flex-direction: column;
-        justify-content: center;
-        align-items: center;
 
         .title-container {
             @include title;
         }
 
         .blog-posts-container {
-            padding: 0;
-            margin-top: 2em;
-            list-style: none;
             display: flex;
             flex-direction: column;
+            padding: 0;
+            margin-top: 2em;
             max-width: 37.5em;
+            list-style: none;
 
-            .link {
-                text-decoration: none;
+            .blog-post-container {
+                @include black-text;
+                @include BoxShadow(4);
+                display: flex;
+                flex-direction: column;
+                position: relative;
+                background: $white;
+                margin-bottom: 1.6em;
+                border-radius: 18px;
+                padding: 1.2em;
+                transition: 0.4s ease-in-out;
 
-                .blog-post-container {
-                    @include black-text;
-                    @include BoxShadow(4);
-                    background: $white;
-                    margin-bottom: 1.6em;
-                    border-radius: 18px;
-                    padding: 1.2em;
+                .title-container {
                     display: flex;
-                    flex-direction: column;
-                    transition: 0.4s ease-in-out;
+                    align-items: center;
 
-                    .title-container {
+                    .picture-wrapper {
+                        @include flex-center;
+                        background-color: $grey;
+                        border-radius: 18px;
+                        width: 160px;
+                        height: 160px;
+
+                        .icon {
+                            font-size: 64px;
+                            color: $white;
+                        }
+                    }
+
+                    .text-container {
                         display: flex;
-                        align-items: center;
+                        max-width: calc(100% - 11.25em);
+                        margin-left: 1.25em;
+                        flex-direction: column;
 
-                        .picture-wrapper {
-                            background-color: $grey;
-                            border-radius: 18px;
-                            width: 160px;
-                            height: 160px;
-                            display: flex;
-                            justify-content: center;
-                            align-items: center;
+                        .link {
+                            text-decoration: none;
 
-                            .icon {
-                                font-size: 64px;
-                                color: $white;
+                            // https://heydon.github.io/Inclusive-Components/cards-pseudo-content/
+                            &::after {
+                                content: "";
+                                position: absolute;
+                                left: 0;
+                                top: 0;
+                                right: 0;
+                                bottom: 0;
                             }
                         }
 
-                        .text-container {
-                            max-width: calc(100% - 11.25em);
-                            margin-left: 1.25em;
-                            display: flex;
-                            flex-direction: column;
-                            // justify-content: center;
+                        h2,
+                        p {
+                            color: $black;
+                            text-decoration: none;
+                        }
 
-                            h2,
-                            p {
-                                color: $black;
-                                text-decoration: none;
-                            }
+                        .title {
+                            margin: 0 0 0.4em 0;
+                        }
 
-                            .title {
-                                margin: 0 0 0.4em 0;
-                            }
+                        .date {
+                            margin: 0 0 0.8em 0;
+                        }
 
-                            .date {
-                                margin: 0 0 1em 0;
-                            }
-
-                            .excerpt {
-                                margin: 0;
-                            }
+                        .excerpt {
+                            margin: 0;
                         }
                     }
+                }
 
-                    .excerpt-mobile {
-                        display: none;
-                        margin-bottom: 0;
-                    }
+                .excerpt-mobile {
+                    display: none;
+                    margin-bottom: 0;
+                }
 
-                    &:hover {
-                        background-color: $off-white;
-                    }
+                &:hover {
+                    background-color: $off-white;
+                    @include BoxShadow(6);
                 }
             }
         }
+    }
 
-        .blog-navigation-container {
-            display: flex;
-            justify-content: center;
+    .blog-navigation-container {
+        display: flex;
+        justify-content: center;
 
-            .first,
-            .prev,
-            .number,
-            .next,
-            .last {
-                text-decoration: none;
-                padding: 0 0.4em 0 0.4em;
+        .first,
+        .prev,
+        .number,
+        .next,
+        .last {
+            text-decoration: none;
+            padding: 0 0.4em 0 0.4em;
 
+            p {
+                @include pagination-text;
+            }
+
+            &.active-link {
                 p {
-                    @include pagination-text;
+                    color: $white;
                 }
+            }
 
-                &.active-link {
-                    p {
-                        color: $white;
-                    }
-                }
-
-                &.disabled-link {
-                    visibility: hidden;
-                }
+            &.disabled-link {
+                visibility: hidden;
             }
         }
     }
 }
 
-
 // TODO: learn why !important is needed
 @media screen and (max-width: 615px) {
     #blog {
         .blog-posts-container {
-            .link {
-                .blog-post-container {
-                    .title-container {
-                        .text-container {
-                            .date {
-                                margin-bottom: 0 !important;
-                            }
+            .blog-post-container {
+                .title-container {
+                    .text-container {
+                        .date {
+                            margin-bottom: 0 !important;
+                        }
 
-                            .excerpt {
-                                display: none;
-                            }
+                        .excerpt {
+                            display: none;
                         }
                     }
+                }
 
-                    .excerpt-mobile {
-                        display: block !important;
-                    }
+                .excerpt-mobile {
+                    display: block !important;
                 }
             }
         }

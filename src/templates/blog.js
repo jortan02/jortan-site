@@ -24,35 +24,33 @@ const BlogPage = ({ pageContext, data }) => {
                     </div>
                     <ul className="blog-posts-container">
                         {posts.map(({ node: post }) => (
-                            <Link to={post.fields.slug} className="link">
-                                <li
-                                    key={post.id}
-                                    className="blog-post-container"
-                                >
-                                    <div className="title-container">
-                                        <div className="picture-wrapper">
-                                            <FontAwesomeIcon
-                                                icon={faShapes}
-                                                className="icon"
-                                            />
-                                        </div>
-                                        <div className="text-container">
+                            <li key={post.id} className="blog-post-container">
+                                <div className="title-container">
+                                    <div className="picture-wrapper">
+                                        <FontAwesomeIcon
+                                            icon={faShapes}
+                                            className="icon"
+                                        />
+                                    </div>
+                                    <div className="text-container">
+                                        <Link
+                                            to={post.fields.slug}
+                                            className="link"
+                                        >
                                             <h2 className="title">
                                                 {post.frontmatter.title}
                                             </h2>
-                                            <p className="date">
-                                                {post.frontmatter.date}
-                                            </p>
-                                            <p className="excerpt">
-                                                {post.excerpt}
-                                            </p>
-                                        </div>
+                                        </Link>
+                                        <p className="date">
+                                            {post.frontmatter.date}
+                                        </p>
+                                        <p className="excerpt">
+                                            {post.excerpt}
+                                        </p>
                                     </div>
-                                    <p className="excerpt-mobile">
-                                        {post.excerpt}
-                                    </p>
-                                </li>
-                            </Link>
+                                </div>
+                                <p className="excerpt-mobile">{post.excerpt}</p>
+                            </li>
                         ))}
                     </ul>
                     <div className="blog-navigation-container">

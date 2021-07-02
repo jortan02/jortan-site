@@ -1,8 +1,8 @@
+@import "../styles/mixins";
+
 .hero-container {
+    @include flex-center;
     height: calc(100vh - 72px);
-    display: flex;
-    justify-content: center;
-    align-items: center;
 
     .info-container {
         display: flex;

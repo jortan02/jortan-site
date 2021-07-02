@@ -32,17 +32,6 @@
     }
 }
 
-@mixin full-screen-container {
-    height: calc(100vh - 84px);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    @media screen and (max-width: 615px) {
-        height: auto;
-    }
-}
-
 @mixin button {
     padding: 0.5em;
     font-size: 14px;
@@ -95,6 +84,12 @@
     &:hover {
         color: $white;
     }
+}
+
+@mixin flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 // https://gist.github.com/serglo/f9f0be9a66fd6755a0bda85f9c64e85f
