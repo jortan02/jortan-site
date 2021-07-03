@@ -50,7 +50,9 @@ export const pageQuery = graphql`
                 date(formatString: "MM/DD/YYYY")
                 image {
                     childImageSharp {
-                        gatsbyImageData(layout: FIXED)
+                        gatsbyImageData(
+                          layout: CONSTRAINED
+                          )
                     }
                 }
             }
