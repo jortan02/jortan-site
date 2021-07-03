@@ -15,7 +15,7 @@ const BlogPost = ({ data: { mdx } }) => {
     return (
         <Layout pageTitle={mdx.frontmatter.title} id="blog-post">
             <article className="content-container">
-                <div className="title-container">
+                <div className="featured-image-container">
                     {mdx.frontmatter.image && (
                         <div className="center-wrapper">
                             <GatsbyImage
@@ -27,8 +27,8 @@ const BlogPost = ({ data: { mdx } }) => {
                             />
                         </div>
                     )}
-                    <h1>{mdx.frontmatter.title}</h1>
-                    <p>{mdx.frontmatter.date}</p>
+                    <h2 className="title">{mdx.frontmatter.title}</h2>
+                    <p className="date">{mdx.frontmatter.date}</p>
                 </div>
                 <MDXProvider components={shortcodes}>
                     <MDXRenderer frontmatter={mdx.frontmatter}>
