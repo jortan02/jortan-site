@@ -1,5 +1,6 @@
 import React from "react";
 import { Link, graphql } from "gatsby";
+import { GatsbyImage } from "gatsby-plugin-image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShapes } from "@fortawesome/free-solid-svg-icons";
 import Layout from "../components/layout";
@@ -26,12 +27,24 @@ const BlogPage = ({ pageContext, data }) => {
                         {posts.map(({ node: post }) => (
                             <li key={post.id} className="blog-post-container">
                                 <div className="title-container">
-                                    <div className="picture-wrapper">
-                                        <FontAwesomeIcon
-                                            icon={faShapes}
-                                            className="icon"
+                                    {post.frontmatter.image ? (
+                                        <GatsbyImage
+                                            image={
+                                                post.frontmatter.image
+                                                    .childImageSharp
+                                                    .gatsbyImageData
+                                            }
+                                            alt=""
+                                            className="picture-wrapper"
                                         />
-                                    </div>
+                                    ) : (
+                                        <div className="picture-wrapper">
+                                            <FontAwesomeIcon
+                                                icon={faShapes}
+                                                className="icon"
+                                            />
+                                        </div>
+                                    )}
                                     <div className="text-container">
                                         <Link
                                             to={post.fields.slug}
@@ -100,6 +113,15 @@ export const listQuery = graphql`
                     frontmatter {
                         title
                         date(formatString: "MM/DD/YYYY")
+                        image {
+                            childImageSharp {
+                                gatsbyImageData(
+                                    width: 160
+                                    height: 160
+                                    layout: FIXED
+                                )
+                            }
+                        }
                     }
                     fields {
                         slug

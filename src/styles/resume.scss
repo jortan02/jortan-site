@@ -23,12 +23,15 @@
         clip: rect(1px, 1px, 1px, 1px);
     }
 
-    a {
-        align-self: center;
+    .link-wrapper {
+        display: flex;
+        justify-content: center;
 
-        button {
-            @include button;
-            padding: 0.8em;
+        a {
+            button {
+                @include button;
+                padding: 0.8em;
+            }
         }
     }
 }

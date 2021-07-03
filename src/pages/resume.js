@@ -93,9 +93,11 @@ const ResumePage = () => {
                         <dl>AUG 2018 - MAY 2020</dl>
                     </dl>
                 </dl>
-                <a href={ResumeFile} download>
-                    <button>View PDF of resume</button>
-                </a>
+                <div className="link-wrapper">
+                    <a href={ResumeFile} download>
+                        <button>View PDF of resume</button>
+                    </a>
+                </div>
             </article>
         </Layout>
     );
