@@ -26,6 +26,20 @@
                     height: 200px;
                     border-radius: 18px;
                 }
+
+                .circle-links-container {
+                    margin-top: 1em;
+    
+                    .icon {
+                        margin: 0 0.4em 0 0;
+                        color: $white;
+                        background-color: $black;
+    
+                        &:hover {
+                            background-color: $dark-grey;
+                        }
+                    }
+                }
             }
         }
     }

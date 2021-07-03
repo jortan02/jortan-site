@@ -26,10 +26,8 @@
             @include header-button;
             display: none;
 
-            .icon-wrapper {
-                .icon {
-                    @include header-text;
-                }
+            .icon {
+                @include header-text;
             }
         }
     }
@@ -51,10 +49,8 @@
         top: 1.95em;
         right: 2.55em;
 
-        .icon-wrapper {
-            .icon {
-                @include header-text;
-            }
+        .icon {
+            @include header-text;
         }
     }
 
@@ -85,7 +81,7 @@
 
     li {
         margin: 0px 8px 0px 8px;
-        
+
         .navigation-link {
             @include header-text;
         }

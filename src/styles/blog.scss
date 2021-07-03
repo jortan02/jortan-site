@@ -8,8 +8,13 @@
         padding-right: 2.4em;
         flex-direction: column;
 
-        .title-container {
-            @include title;
+        .center-wrapper {
+            @include flex-center;
+
+            .title-container {
+                @include title;
+                align-self: center;
+            }
         }
 
         .blog-posts-container {
@@ -17,7 +22,7 @@
             flex-direction: column;
             padding: 0;
             margin-top: 2em;
-            max-width: 40em;
+            max-width: 45em;
             list-style: none;
 
             .blog-post-container {
@@ -29,10 +34,10 @@
                 background: $white;
                 margin-bottom: 1.6em;
                 border-radius: 18px;
-                padding: 1.1em;
+                padding: 1em;
                 transition: 0.4s ease-in-out;
 
-                .title-container {
+                .blog-content-container {
                     display: flex;
                     align-items: center;
 
@@ -40,8 +45,8 @@
                         @include flex-center;
                         background-color: $grey;
                         border-radius: 18px;
-                        width: 160px;
-                        height: 160px;
+                        width: 175px;
+                        height: 175px;
 
                         .icon {
                             font-size: 64px;
@@ -51,7 +56,7 @@
 
                     .text-container {
                         display: flex;
-                        max-width: calc(100% - 11.25em);
+                        max-width: calc(100% - 12.25em);
                         margin-left: 1.25em;
                         flex-direction: column;
 
@@ -71,11 +76,11 @@
                         }
 
                         .title {
-                            margin: 0 0 0.2em 0;
+                            margin: 0 0 0.3em 0;
                         }
 
                         .date {
-                            margin: 0 0 0.6em 0;
+                            margin: 0 0 1em 0;
                         }
 
                         .excerpt {
@@ -134,7 +139,7 @@
         .content-container {
             .blog-posts-container {
                 .blog-post-container {
-                    .title-container {
+                    .blog-content-container {
                         .picture-wrapper {
                             width: 140px !important;
                             height: 140px !important;

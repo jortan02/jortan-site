@@ -22,15 +22,17 @@ const Header = ({ menuLinks }) => {
 
     return (
         <header>
+            {/* TODO: Turn this into an accessible modal using react-modal */}
             <div className={`mobile-menu ${menuOpen ? "show-menu" : ""}`}>
-                <button className="button-wrapper" onClick={handleToggle}>
-                    <div role="button" className="icon-wrapper">
-                        <FontAwesomeIcon icon={faTimes} className="icon" />
-                    </div>
+                <button onClick={handleToggle} aria-label="Close site menu" className="button-wrapper">
+                    <FontAwesomeIcon icon={faTimes} className="icon" />
                 </button>
-
                 <nav>
-                    <Links menuLinks={menuLinks} styleClass="menu-links" handleClick={closeMenu} />
+                    <Links
+                        menuLinks={menuLinks}
+                        styleClass="menu-links"
+                        handleClick={closeMenu}
+                    />
                 </nav>
             </div>
 
@@ -38,18 +40,19 @@ const Header = ({ menuLinks }) => {
                 <div className="left-header">
                     <Link to="/" className="header-title">
                         <div className="logo-wrapper">
-                            <img src={Logo} alt="JT Logo" className="logo"/>
+                            <img src={Logo} alt="JT Logo" className="logo" />
                         </div>
                     </Link>
                 </div>
                 <div className="right-header">
                     <nav role="navigation">
-                        <Links menuLinks={menuLinks} styleClass="header-links" />
+                        <Links
+                            menuLinks={menuLinks}
+                            styleClass="header-links"
+                        />
                     </nav>
-                    <button className="button-wrapper" onClick={handleToggle}>
-                        <div role="button" className="icon-wrapper">
-                            <FontAwesomeIcon icon={faBars} className="icon" />
-                        </div>
+                    <button onClick={handleToggle} aria-label="Open site menu" className="button-wrapper" >
+                        <FontAwesomeIcon icon={faBars} className="icon" />
                     </button>
                 </div>
             </div>

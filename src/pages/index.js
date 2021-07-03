@@ -31,9 +31,7 @@ const IndexPage = () => {
                 </div>
                 <div className="card-container">
                     <button className="button-wrapper" onClick={handleToggle}>
-                        <div role="button" className="icon-wrapper">
                             <FontAwesomeIcon icon={faQrcode} className="icon" />
-                        </div>
                     </button>
                     {qrOpenCode ? (
                         <StaticImage

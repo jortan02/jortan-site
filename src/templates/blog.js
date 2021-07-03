@@ -18,15 +18,16 @@ const BlogPage = ({ pageContext, data }) => {
     return (
         <Layout pageTitle="Blog" id="blog">
             <section className="content-container">
-                <div>
-                    <div className="title-container">
-                        <h1>My Blog Posts</h1>
-                        <hr />
+                    <div className="center-wrapper">
+                        <div className="title-container">
+                            <h1>My Blog Posts</h1>
+                            <hr />
+                        </div>
                     </div>
                     <ul className="blog-posts-container">
                         {posts.map(({ node: post }) => (
                             <li key={post.id} className="blog-post-container">
-                                <div className="title-container">
+                                <div className="blog-content-container">
                                     {post.frontmatter.image ? (
                                         <GatsbyImage
                                             image={
@@ -92,7 +93,6 @@ const BlogPage = ({ pageContext, data }) => {
                             <p>{`>>`}</p>
                         </Link>
                     </div>
-                </div>
             </section>
         </Layout>
     );
@@ -116,8 +116,8 @@ export const listQuery = graphql`
                         image {
                             childImageSharp {
                                 gatsbyImageData(
-                                    width: 160
-                                    height: 160
+                                    width: 175
+                                    height: 175
                                     layout: FIXED
                                 )
                             }
