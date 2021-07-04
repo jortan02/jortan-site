@@ -52,7 +52,7 @@ export const pageQuery = graphql`
                     childImageSharp {
                         gatsbyImageData(
                           layout: CONSTRAINED
-                          )
+                        )
                     }
                 }
             }

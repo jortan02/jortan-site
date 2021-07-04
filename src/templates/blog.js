@@ -5,15 +5,16 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShapes } from "@fortawesome/free-solid-svg-icons";
 import Layout from "../components/layout";
 import "../styles/blog.scss";
+import "../styles/pagination.scss";
 
 // https://nickymeuleman.netlify.app/blog/gatsby-pagination
 // https://dev.to/steelvoltage/tip-disabling-buttons-as-links-in-gatsby-3o5n
 
 const BlogPage = ({ pageContext, data }) => {
     const { edges: posts } = data.allMdx;
-    const { currentPage, numPages } = pageContext;
+    const { currentPage, blogNumPages } = pageContext;
     const isFirst = currentPage === 1;
-    const isLast = currentPage === numPages;
+    const isLast = currentPage === blogNumPages;
 
     return (
         <Layout pageTitle="Blog" id="blog">
@@ -67,30 +68,30 @@ const BlogPage = ({ pageContext, data }) => {
                             </li>
                         ))}
                     </ul>
-                    <div className="blog-navigation-container">
+                    <div className="pagination-container">
                         <Link
                             to="/blog"
                             className={`first ${
                                 !isFirst ? "" : "disabled-link"
                             }`}
                         >
-                            <p>{`<<`}</p>
+                            <span>{`<<`}</span>
                         </Link>
-                        {Array.from({ length: numPages }, (_, i) => (
+                        {Array.from({ length: blogNumPages }, (_, i) => (
                             <Link
                                 key={`blog-number-${i + 1}`}
                                 to={`/blog${i === 0 ? "" : "/" + (i + 1)}`}
                                 activeClassName="active-link"
                                 className="number"
                             >
-                                <p>{i + 1}</p>
+                                <span>{i + 1}</span>
                             </Link>
                         ))}
                         <Link
-                            to={`/blog${numPages ? "/" + numPages : ""}`}
+                            to={`/blog${blogNumPages ? "/" + blogNumPages : ""}`}
                             className={`last ${!isLast ? "" : "disabled-link"}`}
                         >
-                            <p>{`>>`}</p>
+                            <span>{`>>`}</span>
                         </Link>
                     </div>
             </section>
@@ -101,7 +102,7 @@ const BlogPage = ({ pageContext, data }) => {
 export const listQuery = graphql`
     query BlogListQuery($skip: Int!, $limit: Int!) {
         allMdx(
-            filter: { frontmatter: { type: { eq: "Blog" } } }
+            filter: { fields: { collection: { eq: "blog" } } }
             sort: { fields: [frontmatter___date], order: DESC }
             limit: $limit
             skip: $skip

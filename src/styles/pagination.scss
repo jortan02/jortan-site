@@ -1,0 +1,29 @@
+@import "./mixins";
+
+.pagination-container {
+    display: flex;
+    justify-content: center;
+
+    .first,
+    .prev,
+    .number,
+    .next,
+    .last {
+        text-decoration: none;
+        padding: 0 0.4em 0 0.4em;
+
+        span {
+            @include pagination-text;
+        }
+
+        &.active-link {
+            span {
+                color: $white;
+            }
+        }
+
+        &.disabled-link {
+            visibility: hidden;
+        }
+    }
+}

@@ -29,19 +29,24 @@
             background-color: $yellow;
             border-top: 8px solid $red;
             border-radius: 18px;
-            padding: 2.2em;
+            padding: 2em 2.4em 2em 2.4em;
             margin: 1.8em 0em 1.8em 0;
             max-width: 17.5em;
             max-height: 25em;
             
             .button-wrapper {
                 position: absolute;
-                top: 1.6em;
-                right: 1.6em;
+                top: 1.5em;
+                right: 1.5em;
                 @include header-button;
 
                 .icon {
-                    font-size: 18px;
+                    font-size: 20px;
+                    transition: 0.4s ease-in-out;
+                    
+                    &:hover {
+                        color: $dark-grey;
+                    }
                 }
             }
 
