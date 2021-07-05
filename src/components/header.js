@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import ReactModal from "react-modal";
 import PropTypes from "prop-types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
@@ -22,8 +23,7 @@ const Header = ({ menuLinks }) => {
 
     return (
         <header>
-            {/* TODO: Turn this into an accessible modal using react-modal */}
-            <div className={`mobile-menu ${menuOpen ? "show-menu" : ""}`}>
+            <ReactModal isOpen={menuOpen} className="mobile-menu">
                 <button onClick={handleToggle} aria-label="Close site menu" className="button-wrapper">
                     <FontAwesomeIcon icon={faTimes} className="icon" />
                 </button>
@@ -34,7 +34,7 @@ const Header = ({ menuLinks }) => {
                         handleClick={closeMenu}
                     />
                 </nav>
-            </div>
+            </ReactModal>
 
             <div className="header-container">
                 <div className="left-header">

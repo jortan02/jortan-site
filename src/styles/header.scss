@@ -36,8 +36,6 @@
 .mobile-menu {
     @include flex-center;
     position: fixed;
-    visibility: hidden;
-    opacity: 0;
     z-index: 100;
     left: 0;
     top: 0;
@@ -69,12 +67,6 @@
             }
         }
     }
-}
-
-.mobile-menu.show-menu {
-    transition: 0.2s ease-in;
-    visibility: visible;
-    opacity: 1;
 }
 
 .links-container {
