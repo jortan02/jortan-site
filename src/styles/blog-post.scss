@@ -1,6 +1,12 @@
+@import "../styles/mixins";
+
 #blog-post {
     .center-wrapper {
         display: flex;
         justify-content: center;
+    }
+
+    button {
+        @include button;
     }
 }

@@ -28,13 +28,20 @@ const BlogPost = ({ data: { mdx } }) => {
                         </div>
                     )}
                     <h2 className="title">{mdx.frontmatter.title}</h2>
-                    {mdx.frontmatter.date && (<p className="date">{mdx.frontmatter.date}</p>)}
+                    {mdx.frontmatter.date && (
+                        <p className="date">{mdx.frontmatter.date}</p>
+                    )}
                 </div>
                 <MDXProvider components={shortcodes}>
                     <MDXRenderer frontmatter={mdx.frontmatter}>
                         {mdx.body}
                     </MDXRenderer>
                 </MDXProvider>
+                {mdx.frontmatter.github && (
+                    <Link to={mdx.frontmatter.github} className="link">
+                        <button>View on Github</button>
+                    </Link>
+                )}
             </article>
         </Layout>
     );
@@ -50,11 +57,10 @@ export const pageQuery = graphql`
                 date(formatString: "MM/DD/YYYY")
                 image {
                     childImageSharp {
-                        gatsbyImageData(
-                          layout: CONSTRAINED
-                        )
+                        gatsbyImageData(layout: CONSTRAINED)
                     }
                 }
+                github
             }
         }
     }

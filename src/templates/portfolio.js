@@ -43,26 +43,33 @@ const PortfolioPage = ({ pageContext, data }) => {
                             key={post.id}
                             className="portfolio-project-container"
                         >
-                                {post.frontmatter.image && (
-                                    <GatsbyImage
-                                        image={
-                                            post.frontmatter.image
-                                                .childImageSharp.gatsbyImageData
-                                        }
-                                        alt=""
-                                        className="picture-wrapper"
-                                    />
-                                )}
-                                <div className="text-container">
-                                    <h2 className="title">
-                                        {post.frontmatter.title}
-                                    </h2>
-                                    <p className="excerpt">{post.excerpt}</p>
+                            {post.frontmatter.image && (
+                                <GatsbyImage
+                                    image={
+                                        post.frontmatter.image.childImageSharp
+                                            .gatsbyImageData
+                                    }
+                                    alt=""
+                                    className="picture-wrapper"
+                                />
+                            )}
+                            <div className="text-container">
+                                <h2 className="title">
+                                    {post.frontmatter.title}
+                                </h2>
+                                <p className="excerpt">{post.excerpt}</p>
+                                <Link to={post.fields.slug} className="link">
+                                    <button>Read More</button>
+                                </Link>
+                                {post.frontmatter.github && (
                                     <Link
-                                        to={post.fields.slug}
+                                        to={post.frontmatter.github}
                                         className="link"
-                                    ><button>View Project</button></Link>
-                                </div>
+                                    >
+                                        <button>View on Github</button>
+                                    </Link>
+                                )}
+                            </div>
                         </li>
                     ))}
                 </ul>
@@ -114,6 +121,7 @@ export const listQuery = graphql`
                                 gatsbyImageData(layout: CONSTRAINED)
                             }
                         }
+                        github
                     }
                     fields {
                         slug
