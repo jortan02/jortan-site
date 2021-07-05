@@ -2,9 +2,9 @@ import React from "react";
 import PropTypes from "prop-types";
 import "../styles/hero.scss";
 
-const Hero = ({ id, children }) => {
+const Hero = ({ children }) => {
     return (
-        <div className="hero-container" id={id}>
+        <div className="hero-container">
             <div className="info-container">
                 {children}
             </div>

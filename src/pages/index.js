@@ -27,7 +27,7 @@ const IndexPage = () => {
                         website for myself and to show some of my work. Nice to
                         meet you!
                     </p>
-                    <Link to="/resume"><button>View my resume</button></Link>
+                    <Link to="/resume"><button>View My Resume</button></Link>
                 </div>
                 <div className="card-container">
                     <button className="button-wrapper" onClick={handleToggle}>

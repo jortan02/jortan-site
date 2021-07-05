@@ -8,10 +8,51 @@
 
         .info-container {
             .contact-form-container {
-                margin: 2.4em 20% 2.4em 0;
+                flex-shrink: 0;
+                display: flex;
+                flex-direction: column;
+                margin: 2.4em 15% 2.4em 0;
+                width: 60%;
 
                 h1 {
                     margin-top: 0px;
+                }
+
+                form {
+                    display: flex;
+                    flex-direction: column;
+
+                    .input-type {
+                        display: flex;
+                        flex-direction: column;
+
+                        p {
+                            margin-bottom: 5px;
+                        }
+                    }
+
+
+                    input {
+                        border: none;
+                        border-radius: 5px;
+                        padding: 0.5em;
+                        font-size: 16px;
+                    }
+
+                    textarea {
+                        border: none;
+                        border-radius: 5px;
+                        padding: 0.5em;
+                        font-family: sans-serif;
+                        font-size: 16px;
+                        resize: none;
+                    }
+
+                    button {
+                        @include button;
+                        margin-top: 16px;
+                        font-size: 16px;
+                    }
                 }
             }
 
@@ -22,19 +63,19 @@
                 margin: 2.4em 0em 2.4em 0em;
 
                 .qr-code-wrapper {
-                    width: 200px;
-                    height: 200px;
+                    width: 180px;
+                    height: 180px;
                     border-radius: 18px;
                 }
 
                 .circle-links-container {
                     margin-top: 1em;
-    
+
                     .icon {
                         margin: 0 0.4em 0 0;
                         color: $white;
                         background-color: $black;
-    
+
                         &:hover {
                             background-color: $dark-grey;
                         }
@@ -49,6 +90,11 @@
     #contact {
         .hero-container {
             .info-container {
+                .contact-form-container {
+                    width: auto;
+                    margin-right: 0;
+                }
+
                 .personal-info-container {
                     margin: 0em 0em 2.4em 0em;
                 }

@@ -28,7 +28,7 @@ const BlogPost = ({ data: { mdx } }) => {
                         </div>
                     )}
                     <h2 className="title">{mdx.frontmatter.title}</h2>
-                    <p className="date">{mdx.frontmatter.date}</p>
+                    {mdx.frontmatter.date && (<p className="date">{mdx.frontmatter.date}</p>)}
                 </div>
                 <MDXProvider components={shortcodes}>
                     <MDXRenderer frontmatter={mdx.frontmatter}>

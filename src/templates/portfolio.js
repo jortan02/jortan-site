@@ -24,37 +24,45 @@ import "../styles/pagination.scss";
 
 const PortfolioPage = ({ pageContext, data }) => {
     const { edges: posts } = data.allMdx;
-    const { currentPage, portfolioNumPages } = pageContext;
+    const { currentPage, numPages } = pageContext;
     const isFirst = currentPage === 1;
-    const isLast = currentPage === portfolioNumPages;
+    const isLast = currentPage === numPages;
 
     return (
         <Layout pageTitle="Portfolio" id="portfolio">
             <section className="content-container">
                 <div className="center-wrapper">
                     <div className="title-container">
-                        <h1>My Work</h1>
+                        <h1>My Previous Work</h1>
                         <hr />
                     </div>
                 </div>
-                <ul className="portfolio-items-container">
+                <ul className="portfolio-projects-container">
                     {posts.map(({ node: post }) => (
-                        <li key={post.id} className="portfolio-item-container">
-                            <div className="portfolio-content-container">
-                                {post.frontmatter.image && (<GatsbyImage
-                                    image={
-                                        post.frontmatter.image.childImageSharp
-                                            .gatsbyImageData
-                                    }
-                                    alt=""
-                                    className="picture-wrapper"
-                                />)}
+                        <li
+                            key={post.id}
+                            className="portfolio-project-container"
+                        >
+                                {post.frontmatter.image && (
+                                    <GatsbyImage
+                                        image={
+                                            post.frontmatter.image
+                                                .childImageSharp.gatsbyImageData
+                                        }
+                                        alt=""
+                                        className="picture-wrapper"
+                                    />
+                                )}
                                 <div className="text-container">
                                     <h2 className="title">
                                         {post.frontmatter.title}
                                     </h2>
+                                    <p className="excerpt">{post.excerpt}</p>
+                                    <Link
+                                        to={post.fields.slug}
+                                        className="link"
+                                    ><button>View Project</button></Link>
                                 </div>
-                            </div>
                         </li>
                     ))}
                 </ul>
@@ -65,7 +73,7 @@ const PortfolioPage = ({ pageContext, data }) => {
                     >
                         <span>{`<<`}</span>
                     </Link>
-                    {Array.from({ length: portfolioNumPages }, (_, i) => (
+                    {Array.from({ length: numPages }, (_, i) => (
                         <Link
                             key={`portfolio-number-${i + 1}`}
                             to={`/portfolio${i === 0 ? "" : "/" + (i + 1)}`}
@@ -76,7 +84,7 @@ const PortfolioPage = ({ pageContext, data }) => {
                         </Link>
                     ))}
                     <Link
-                        to={`/portfolio${portfolioNumPages ? "/" + portfolioNumPages : ""}`}
+                        to={`/portfolio${numPages ? "/" + numPages : ""}`}
                         className={`last ${!isLast ? "" : "disabled-link"}`}
                     >
                         <span>{`>>`}</span>
@@ -91,13 +99,14 @@ export const listQuery = graphql`
     query PortfolioListQuery($skip: Int!, $limit: Int!) {
         allMdx(
             filter: { fields: { collection: { eq: "portfolio" } } }
-            sort: { fields: [frontmatter___date], order: DESC }
+            sort: { fields: [frontmatter___order], order: DESC }
             limit: $limit
             skip: $skip
         ) {
             edges {
                 node {
                     id
+                    excerpt(pruneLength: 280)
                     frontmatter {
                         title
                         image {
@@ -105,6 +114,9 @@ export const listQuery = graphql`
                                 gatsbyImageData(layout: CONSTRAINED)
                             }
                         }
+                    }
+                    fields {
+                        slug
                     }
                 }
             }

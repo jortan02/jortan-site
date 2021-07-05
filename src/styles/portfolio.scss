@@ -1,0 +1,80 @@
+@import "./variables";
+@import "./mixins";
+
+#portfolio {
+    .content-container {
+        @include flex-center;
+        padding-left: 2.4em;
+        padding-right: 2.4em;
+        flex-direction: column;
+
+        .center-wrapper {
+            @include flex-center;
+
+            .title-container {
+                @include title;
+                align-self: center;
+            }
+        }
+
+        .portfolio-projects-container {
+            margin-top: 3em;
+            padding: 0;
+            list-style: none;
+
+            .portfolio-project-container {
+                display: flex;
+                align-items: center;
+                margin-bottom: 2em;
+
+                .picture-wrapper {
+                    width: 47.5%;
+                    border-radius: 18px;
+                    flex-shrink: 0;
+                }
+
+                .text-container {
+                    margin-left: 3em;
+
+                    button {
+                        @include button;
+                    }
+                }
+
+                &:nth-child(even) {
+                    .picture-wrapper {
+                        order: 2;
+                    }
+    
+                    .text-container {
+                        order: 1;
+                        margin-left: 0;
+                        margin-right: 3em;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 615px) {
+    #portfolio {
+        .content-container {
+            .portfolio-projects-container {
+                .portfolio-project-container {
+                    flex-direction: column;
+
+                    .picture-wrapper {
+                        order: 1 !important;
+                        width: auto;
+                    }
+
+                    .text-container {
+                        order: 2 !important;
+                        margin: 0;
+                    }
+                }
+            }
+        }
+    }
+}

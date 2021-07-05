@@ -12,88 +12,83 @@ import "../styles/pagination.scss";
 
 const BlogPage = ({ pageContext, data }) => {
     const { edges: posts } = data.allMdx;
-    const { currentPage, blogNumPages } = pageContext;
+    const { currentPage, numPages } = pageContext;
     const isFirst = currentPage === 1;
-    const isLast = currentPage === blogNumPages;
+    const isLast = currentPage === numPages;
 
     return (
         <Layout pageTitle="Blog" id="blog">
             <section className="content-container">
-                    <div className="center-wrapper">
-                        <div className="title-container">
-                            <h1>My Blog Posts</h1>
-                            <hr />
-                        </div>
+                <div className="center-wrapper">
+                    <div className="title-container">
+                        <h1>My Blog Posts</h1>
+                        <hr />
                     </div>
-                    <ul className="blog-posts-container">
-                        {posts.map(({ node: post }) => (
-                            <li key={post.id} className="blog-post-container">
-                                <div className="blog-content-container">
-                                    {post.frontmatter.image ? (
-                                        <GatsbyImage
-                                            image={
-                                                post.frontmatter.image
-                                                    .childImageSharp
-                                                    .gatsbyImageData
-                                            }
-                                            alt=""
-                                            className="picture-wrapper"
+                </div>
+                <ul className="blog-posts-container">
+                    {posts.map(({ node: post }) => (
+                        <li key={post.id} className="blog-post-container">
+                            <div className="blog-content-container">
+                                {post.frontmatter.image ? (
+                                    <GatsbyImage
+                                        image={
+                                            post.frontmatter.image
+                                                .childImageSharp.gatsbyImageData
+                                        }
+                                        alt=""
+                                        className="picture-wrapper"
+                                    />
+                                ) : (
+                                    <div className="picture-wrapper">
+                                        <FontAwesomeIcon
+                                            icon={faShapes}
+                                            className="icon"
                                         />
-                                    ) : (
-                                        <div className="picture-wrapper">
-                                            <FontAwesomeIcon
-                                                icon={faShapes}
-                                                className="icon"
-                                            />
-                                        </div>
-                                    )}
-                                    <div className="text-container">
+                                    </div>
+                                )}
+                                <div className="text-container">
+                                    <h2 className="title">
                                         <Link
                                             to={post.fields.slug}
                                             className="link"
                                         >
-                                            <h2 className="title">
-                                                {post.frontmatter.title}
-                                            </h2>
+                                            {post.frontmatter.title}
                                         </Link>
-                                        <p className="date">
-                                            {post.frontmatter.date}
-                                        </p>
-                                        <p className="excerpt">
-                                            {post.excerpt}
-                                        </p>
-                                    </div>
+                                    </h2>
+                                    <p className="date">
+                                        {post.frontmatter.date}
+                                    </p>
+                                    <p className="excerpt">{post.excerpt}</p>
                                 </div>
-                                <p className="excerpt-mobile">{post.excerpt}</p>
-                            </li>
-                        ))}
-                    </ul>
-                    <div className="pagination-container">
+                            </div>
+                            <p className="excerpt-mobile">{post.excerpt}</p>
+                        </li>
+                    ))}
+                </ul>
+                <div className="pagination-container">
+                    <Link
+                        to="/blog"
+                        className={`first ${!isFirst ? "" : "disabled-link"}`}
+                    >
+                        <span>{`<<`}</span>
+                    </Link>
+                    {Array.from({ length: numPages }, (_, i) => (
                         <Link
-                            to="/blog"
-                            className={`first ${
-                                !isFirst ? "" : "disabled-link"
-                            }`}
+                            key={`blog-number-${i + 1}`}
+                            to={`/blog${i === 0 ? "" : "/" + (i + 1)}`}
+                            activeClassName="active-link"
+                            className="number"
                         >
-                            <span>{`<<`}</span>
+                            <span>{i + 1}</span>
                         </Link>
-                        {Array.from({ length: blogNumPages }, (_, i) => (
-                            <Link
-                                key={`blog-number-${i + 1}`}
-                                to={`/blog${i === 0 ? "" : "/" + (i + 1)}`}
-                                activeClassName="active-link"
-                                className="number"
-                            >
-                                <span>{i + 1}</span>
-                            </Link>
-                        ))}
-                        <Link
-                            to={`/blog${blogNumPages ? "/" + blogNumPages : ""}`}
-                            className={`last ${!isLast ? "" : "disabled-link"}`}
-                        >
-                            <span>{`>>`}</span>
-                        </Link>
-                    </div>
+                    ))}
+                    <Link
+                        to={`/blog${numPages ? "/" + numPages : ""}`}
+                        className={`last ${!isLast ? "" : "disabled-link"}`}
+                    >
+                        <span>{`>>`}</span>
+                    </Link>
+                </div>
             </section>
         </Layout>
     );
@@ -110,7 +105,7 @@ export const listQuery = graphql`
             edges {
                 node {
                     id
-                    excerpt
+                    excerpt(pruneLength: 120)
                     frontmatter {
                         title
                         date(formatString: "MM/DD/YYYY")

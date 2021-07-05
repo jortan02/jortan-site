@@ -1,17 +1,42 @@
 @import "./variables";
+@import "./mixins";
 
 footer {
-    display: flex;
-    flex-shrink: 0;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0em 1.6em 0em 1.6em;
-    height: 72px;
     background-color: $black;
+    flex-shrink: 0;
 
-    span {
-        color: $white;
-        font-size: 14px;
-        margin: 0;
+    .circle-links-mobile {
+        display: none;
+    }
+
+
+    .footer-container {
+        display: flex;
+        flex-basis: 500px;
+        align-items: center;
+        justify-content: space-between;
+        flex-grow: 1;
+        padding: 0em 1.6em 0em 1.6em;
+        height: 72px;
+
+        span {
+            color: $white;
+            font-size: 14px;
+            margin: 0;
+        }
+    
+    }
+}
+
+@media screen and (max-width: 615px) {
+    footer {
+        .circle-links-mobile {
+            @include flex-center;
+            padding-top: 1.2em;
+        }
+
+        .circle-links {
+            display: none;
+        }
     }
 }
