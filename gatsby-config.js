@@ -35,20 +35,6 @@ module.exports = {
         "gatsby-plugin-image",
         "gatsby-plugin-sharp",
         "gatsby-transformer-sharp",
-        // {
-        //     resolve: "gatsby-source-filesystem",
-        //     options: {
-        //         name: `blog`,
-        //         path: `${__dirname}/blog`,
-        //     },
-        // },
-        // {
-        //     resolve: "gatsby-source-filesystem",
-        //     options: {
-        //         name: `portfolio`,
-        //         path: `${__dirname}/portfolio`,
-        //     },
-        // },
         {
             resolve: "gatsby-source-filesystem",
             options: {
@@ -63,18 +49,6 @@ module.exports = {
               collectionTypes: ["blog-posts", "blog-categories", "portfolio-projects", "portfolio-categories"],
               singleTypes: ["global"],
               queryLimit: 1000,
-            },
-        },
-        {
-            resolve: "gatsby-plugin-page-creator",
-            options: {
-                path: `${__dirname}/blog`,
-            },
-        },
-        {
-            resolve: "gatsby-plugin-page-creator",
-            options: {
-                path: `${__dirname}/portfolio`,
             },
         },
         "gatsby-remark-images",
