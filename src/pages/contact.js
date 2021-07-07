@@ -6,8 +6,12 @@ import ContactInfo from "../components/contact-info";
 import "../styles/contact.scss";
 
 const ContactPage = () => {
+    const seo = {
+        metaTitle: "Contact",
+    };
+
     return (
-        <Layout pageTitle="Contact" id="contact">
+        <Layout seo={seo} id="contact">
             <Hero>
                 <div className="contact-form-container">
                     <h1>Let's get in touch.</h1>

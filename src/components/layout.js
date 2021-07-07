@@ -1,37 +1,15 @@
 import React from "react";
-import { Helmet } from "react-helmet";
 import Header from "./header";
 import Footer from "./footer";
-import { graphql, useStaticQuery } from "gatsby";
 import "../styles/layout.scss";
+import Seo from "./seo";
 
-const Layout = ({ pageTitle, id, children }) => {
-  const data = useStaticQuery(graphql`
-    {
-      site {
-        id
-        siteMetadata {
-          title
-          description
-          menuLinks {
-              link
-              name
-          }
-        }
-      }
-    }
-  `)
+const Layout = ({ seo, id, children }) => {
 
   return (
     <div className="site-container" id={id}>
-      <Helmet
-        defaultTitle={data.site.siteMetadata.title}
-        titleTemplate={`%s | ${data.site.siteMetadata.title}`}
-      >
-        <title>{pageTitle}</title>
-        <meta name="description" content={data.site.siteMetadata.description} />
-      </Helmet>
-      <Header menuLinks={data.site.siteMetadata.menuLinks} />
+      <Seo seo={seo}/>
+      <Header />
         <main className="main-container">
           {children}
         </main>

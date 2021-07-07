@@ -1,20 +1,3 @@
-// import React from "react";
-// import Layout from "../components/layout";
-
-// const PortfolioPage = () => {
-//     return (
-//         <Layout pageTitle="Portfolio">
-//             <div className="centered-container">
-//                 <div className="not-found-container">
-//                     <h1>Coming Soon</h1>
-//                 </div>
-//             </div>
-//         </Layout>
-//     )
-// };
-
-// export default PortfolioPage;
-
 import React from "react";
 import { Link, graphql } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
@@ -23,13 +6,17 @@ import "../styles/portfolio.scss";
 import "../styles/pagination.scss";
 
 const PortfolioPage = ({ pageContext, data }) => {
-    const { edges: posts } = data.allMdx;
+    const seo = {
+        metaTitle: "Portfolio",
+    };
+
+    const { edges: posts } = data.allStrapiPortfolios;
     const { currentPage, numPages } = pageContext;
     const isFirst = currentPage === 1;
     const isLast = currentPage === numPages;
 
     return (
-        <Layout pageTitle="Portfolio" id="portfolio">
+        <Layout seo={seo} id="portfolio">
             <section className="content-container">
                 <div className="center-wrapper">
                     <div className="title-container">
@@ -43,10 +30,10 @@ const PortfolioPage = ({ pageContext, data }) => {
                             key={post.id}
                             className="portfolio-project-container"
                         >
-                            {post.frontmatter.image && (
+                            {post.image && (
                                 <GatsbyImage
                                     image={
-                                        post.frontmatter.image.childImageSharp
+                                        post.image.localFile.childImageSharp
                                             .gatsbyImageData
                                     }
                                     alt=""
@@ -54,18 +41,13 @@ const PortfolioPage = ({ pageContext, data }) => {
                                 />
                             )}
                             <div className="text-container">
-                                <h2 className="title">
-                                    {post.frontmatter.title}
-                                </h2>
-                                <p className="excerpt">{post.excerpt}</p>
-                                <Link to={post.fields.slug} className="link">
+                                <h2 className="title">{post.title}</h2>
+                                <p className="excerpt">{post.description}</p>
+                                <Link to={post.slug} className="link">
                                     <button>Read More</button>
                                 </Link>
-                                {post.frontmatter.github && (
-                                    <Link
-                                        to={post.frontmatter.github}
-                                        className="link"
-                                    >
+                                {post.github && (
+                                    <Link to={post.github} className="link">
                                         <button>View on Github</button>
                                     </Link>
                                 )}
@@ -104,27 +86,25 @@ const PortfolioPage = ({ pageContext, data }) => {
 
 export const listQuery = graphql`
     query PortfolioListQuery($skip: Int!, $limit: Int!) {
-        allMdx(
-            filter: { fields: { collection: { eq: "portfolio" } } }
-            sort: { fields: [frontmatter___order], order: DESC }
+        allStrapiPortfolios(
+            sort: { fields: order, order: DESC }
             limit: $limit
             skip: $skip
         ) {
             edges {
                 node {
                     id
-                    excerpt(pruneLength: 280)
-                    frontmatter {
-                        title
-                        image {
+                    slug
+                    title
+                    description
+                    content
+                    github
+                    image {
+                        localFile {
                             childImageSharp {
                                 gatsbyImageData(layout: CONSTRAINED)
                             }
                         }
-                        github
-                    }
-                    fields {
-                        slug
                     }
                 }
             }

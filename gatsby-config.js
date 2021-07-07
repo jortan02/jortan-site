@@ -35,18 +35,34 @@ module.exports = {
         "gatsby-plugin-image",
         "gatsby-plugin-sharp",
         "gatsby-transformer-sharp",
+        // {
+        //     resolve: "gatsby-source-filesystem",
+        //     options: {
+        //         name: `blog`,
+        //         path: `${__dirname}/blog`,
+        //     },
+        // },
+        // {
+        //     resolve: "gatsby-source-filesystem",
+        //     options: {
+        //         name: `portfolio`,
+        //         path: `${__dirname}/portfolio`,
+        //     },
+        // },
         {
             resolve: "gatsby-source-filesystem",
             options: {
-                name: `blog`,
-                path: `${__dirname}/blog`,
+                name: `images`,
+                path: `${__dirname}/src/images`,
             },
         },
         {
-            resolve: "gatsby-source-filesystem",
+            resolve: "gatsby-source-strapi",
             options: {
-                name: `portfolio`,
-                path: `${__dirname}/portfolio`,
+              apiURL: process.env.API_URL || "http://localhost:1337",
+              collectionTypes: ["blogs", "blog-categories", "portfolios", "portfolio-categories"],
+              singleTypes: ["global"],
+              queryLimit: 1000,
             },
         },
         {
@@ -74,7 +90,7 @@ module.exports = {
                     },
                 ],
                 defaultLayouts: {
-                    default: require.resolve("./src/templates/blog-post.js"),
+                    default: require.resolve("./src/components/layout.js"),
                 },
             },
         },

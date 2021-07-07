@@ -11,47 +11,49 @@ import "../styles/blog-post.scss";
 
 const shortcodes = { Link }; // Provide common components here
 
-const BlogPost = ({ data: { strapiBlogs } }) => {
+const PortfolioProject = ({ data: { strapiPortfolios } }) => {
     const seo = {
-        metaTitle: strapiBlogs.title,
+        metaTitle: strapiPortfolios.title,
     };
 
     return (
         <Layout seo={seo} id="blog-post">
             <article className="content-container">
                 <div className="featured-image-container">
-                    {strapiBlogs.image && (
+                    {strapiPortfolios.image && (
                         <div className="center-wrapper">
                             <GatsbyImage
                                 image={
-                                    strapiBlogs.image.localFile.childImageSharp
+                                    strapiPortfolios.image.localFile.childImageSharp
                                         .gatsbyImageData
                                 }
                                 alt=""
                             />
                         </div>
                     )}
-                    <h2 className="title">{strapiBlogs.title}</h2>
-                    {strapiBlogs.date && (
-                        <p className="date">{strapiBlogs.date}</p>
-                    )}
+                    <h2 className="title">{strapiPortfolios.title}</h2>
                 </div>
                 <MDXProvider components={shortcodes}>
                     <MDXRenderer>
-                        {strapiBlogs.childStrapiBlogsContent.childMdx.body}
+                        {strapiPortfolios.childStrapiPortfoliosContent.childMdx.body}
                     </MDXRenderer>
                 </MDXProvider>
+                {strapiPortfolios.github && (
+                    <Link to={strapiPortfolios.github} className="link">
+                        <button>View on Github</button>
+                    </Link>
+                )}
             </article>
         </Layout>
     );
 };
 
 export const pageQuery = graphql`
-    query BlogPostQuery($id: String) {
-        strapiBlogs(id: { eq: $id }) {
+    query PortfolioProjectQuery($id: String) {
+        strapiPortfolios(id: { eq: $id }) {
             id
             title
-            date(formatString: "MM/DD/YYYY")
+            github
             image {
                 localFile {
                     childImageSharp {
@@ -59,7 +61,7 @@ export const pageQuery = graphql`
                     }
                 }
             }
-            childStrapiBlogsContent {
+            childStrapiPortfoliosContent {
                 childMdx {
                     body
                 }
@@ -68,4 +70,4 @@ export const pageQuery = graphql`
     }
 `;
 
-export default BlogPost;
+export default PortfolioProject;

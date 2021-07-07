@@ -11,13 +11,17 @@ import "../styles/pagination.scss";
 // https://dev.to/steelvoltage/tip-disabling-buttons-as-links-in-gatsby-3o5n
 
 const BlogPage = ({ pageContext, data }) => {
-    const { edges: posts } = data.allMdx;
+    const seo = {
+        metaTitle: "Blog",
+    };
+
+    const { edges: posts } = data.allStrapiBlogs;
     const { currentPage, numPages } = pageContext;
     const isFirst = currentPage === 1;
     const isLast = currentPage === numPages;
 
     return (
-        <Layout pageTitle="Blog" id="blog">
+        <Layout seo={seo} id="blog">
             <section className="content-container">
                 <div className="center-wrapper">
                     <div className="title-container">
@@ -29,11 +33,10 @@ const BlogPage = ({ pageContext, data }) => {
                     {posts.map(({ node: post }) => (
                         <li key={post.id} className="blog-post-container">
                             <div className="blog-content-container">
-                                {post.frontmatter.image ? (
+                                {post.image ? (
                                     <GatsbyImage
                                         image={
-                                            post.frontmatter.image
-                                                .childImageSharp.gatsbyImageData
+                                            post.image.localFile.childImageSharp.gatsbyImageData
                                         }
                                         alt=""
                                         className="picture-wrapper"
@@ -49,19 +52,19 @@ const BlogPage = ({ pageContext, data }) => {
                                 <div className="text-container">
                                     <h2 className="title">
                                         <Link
-                                            to={post.fields.slug}
+                                            to={post.slug}
                                             className="link"
                                         >
-                                            {post.frontmatter.title}
+                                            {post.title}
                                         </Link>
                                     </h2>
                                     <p className="date">
-                                        {post.frontmatter.date}
+                                        {post.date}
                                     </p>
-                                    <p className="excerpt">{post.excerpt}</p>
+                                    <p className="excerpt">{post.description}</p>
                                 </div>
                             </div>
-                            <p className="excerpt-mobile">{post.excerpt}</p>
+                            <p className="excerpt-mobile">{post.description}</p>
                         </li>
                     ))}
                 </ul>
@@ -96,20 +99,20 @@ const BlogPage = ({ pageContext, data }) => {
 
 export const listQuery = graphql`
     query BlogListQuery($skip: Int!, $limit: Int!) {
-        allMdx(
-            filter: { fields: { collection: { eq: "blog" } } }
-            sort: { fields: [frontmatter___date], order: DESC }
+        allStrapiBlogs(
+            sort: { fields: date, order: DESC }
             limit: $limit
             skip: $skip
         ) {
             edges {
                 node {
                     id
-                    excerpt(pruneLength: 120)
-                    frontmatter {
-                        title
-                        date(formatString: "MM/DD/YYYY")
-                        image {
+                    slug
+                    date(formatString: "MM/DD/YYYY")
+                    title
+                    description
+                    image {
+                        localFile {
                             childImageSharp {
                                 gatsbyImageData(
                                     width: 175
@@ -118,9 +121,6 @@ export const listQuery = graphql`
                                 )
                             }
                         }
-                    }
-                    fields {
-                        slug
                     }
                 }
             }

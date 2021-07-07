@@ -9,6 +9,10 @@ import ContactInfo from "../components/contact-info";
 import "../styles/index.scss";
 
 const IndexPage = () => {
+    const seo = {
+        metaTitle: "Home",
+    };
+
     const [qrOpenCode, setQrOpen] = useState(false);
 
     const handleToggle = () => {
@@ -16,7 +20,7 @@ const IndexPage = () => {
     };
 
     return (
-        <Layout pageTitle="Home" id="home">
+        <Layout seo={seo} id="home">
             <Hero>
                 <div className="title-container">
                     <h1>Hello.</h1>
