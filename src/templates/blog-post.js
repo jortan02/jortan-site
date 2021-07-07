@@ -11,34 +11,34 @@ import "../styles/blog-post.scss";
 
 const shortcodes = { Link }; // Provide common components here
 
-const BlogPost = ({ data: { strapiBlogs } }) => {
+const BlogPost = ({ data: { strapiBlogPosts } }) => {
     const seo = {
-        metaTitle: strapiBlogs.title,
+        metaTitle: strapiBlogPosts.title,
     };
 
     return (
         <Layout seo={seo} id="blog-post">
             <article className="content-container">
                 <div className="featured-image-container">
-                    {strapiBlogs.image && (
+                    {strapiBlogPosts.image && (
                         <div className="center-wrapper">
                             <GatsbyImage
                                 image={
-                                    strapiBlogs.image.localFile.childImageSharp
+                                    strapiBlogPosts.image.localFile.childImageSharp
                                         .gatsbyImageData
                                 }
                                 alt=""
                             />
                         </div>
                     )}
-                    <h2 className="title">{strapiBlogs.title}</h2>
-                    {strapiBlogs.date && (
-                        <p className="date">{strapiBlogs.date}</p>
+                    <h2 className="title">{strapiBlogPosts.title}</h2>
+                    {strapiBlogPosts.date && (
+                        <p className="date">{strapiBlogPosts.date}</p>
                     )}
                 </div>
                 <MDXProvider components={shortcodes}>
                     <MDXRenderer>
-                        {strapiBlogs.childStrapiBlogsContent.childMdx.body}
+                        {strapiBlogPosts.childStrapiBlogPostsContent.childMdx.body}
                     </MDXRenderer>
                 </MDXProvider>
             </article>
@@ -48,7 +48,7 @@ const BlogPost = ({ data: { strapiBlogs } }) => {
 
 export const pageQuery = graphql`
     query BlogPostQuery($id: String) {
-        strapiBlogs(id: { eq: $id }) {
+        strapiBlogPosts(id: { eq: $id }) {
             id
             title
             date(formatString: "MM/DD/YYYY")
@@ -59,7 +59,7 @@ export const pageQuery = graphql`
                     }
                 }
             }
-            childStrapiBlogsContent {
+            childStrapiBlogPostsContent {
                 childMdx {
                     body
                 }

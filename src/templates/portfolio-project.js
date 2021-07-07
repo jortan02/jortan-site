@@ -11,35 +11,35 @@ import "../styles/blog-post.scss";
 
 const shortcodes = { Link }; // Provide common components here
 
-const PortfolioProject = ({ data: { strapiPortfolios } }) => {
+const PortfolioProject = ({ data: { strapiPortfolioProjects } }) => {
     const seo = {
-        metaTitle: strapiPortfolios.title,
+        metaTitle: strapiPortfolioProjects.title,
     };
 
     return (
         <Layout seo={seo} id="blog-post">
             <article className="content-container">
                 <div className="featured-image-container">
-                    {strapiPortfolios.image && (
+                    {strapiPortfolioProjects.image && (
                         <div className="center-wrapper">
                             <GatsbyImage
                                 image={
-                                    strapiPortfolios.image.localFile.childImageSharp
+                                    strapiPortfolioProjects.image.localFile.childImageSharp
                                         .gatsbyImageData
                                 }
                                 alt=""
                             />
                         </div>
                     )}
-                    <h2 className="title">{strapiPortfolios.title}</h2>
+                    <h2 className="title">{strapiPortfolioProjects.title}</h2>
                 </div>
                 <MDXProvider components={shortcodes}>
                     <MDXRenderer>
-                        {strapiPortfolios.childStrapiPortfoliosContent.childMdx.body}
+                        {strapiPortfolioProjects.childStrapiPortfolioProjectsContent.childMdx.body}
                     </MDXRenderer>
                 </MDXProvider>
-                {strapiPortfolios.github && (
-                    <Link to={strapiPortfolios.github} className="link">
+                {strapiPortfolioProjects.github && (
+                    <Link to={strapiPortfolioProjects.github} className="link">
                         <button>View on Github</button>
                     </Link>
                 )}
@@ -50,7 +50,7 @@ const PortfolioProject = ({ data: { strapiPortfolios } }) => {
 
 export const pageQuery = graphql`
     query PortfolioProjectQuery($id: String) {
-        strapiPortfolios(id: { eq: $id }) {
+        strapiPortfolioProjects(id: { eq: $id }) {
             id
             title
             github
@@ -61,7 +61,7 @@ export const pageQuery = graphql`
                     }
                 }
             }
-            childStrapiPortfoliosContent {
+            childStrapiPortfolioProjectsContent {
                 childMdx {
                     body
                 }

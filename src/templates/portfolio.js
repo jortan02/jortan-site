@@ -10,7 +10,7 @@ const PortfolioPage = ({ pageContext, data }) => {
         metaTitle: "Portfolio",
     };
 
-    const { edges: posts } = data.allStrapiPortfolios;
+    const { edges: posts } = data.allStrapiPortfolioProjects;
     const { currentPage, numPages } = pageContext;
     const isFirst = currentPage === 1;
     const isLast = currentPage === numPages;
@@ -86,7 +86,7 @@ const PortfolioPage = ({ pageContext, data }) => {
 
 export const listQuery = graphql`
     query PortfolioListQuery($skip: Int!, $limit: Int!) {
-        allStrapiPortfolios(
+        allStrapiPortfolioProjects(
             sort: { fields: order, order: DESC }
             limit: $limit
             skip: $skip

@@ -15,7 +15,7 @@ const BlogPage = ({ pageContext, data }) => {
         metaTitle: "Blog",
     };
 
-    const { edges: posts } = data.allStrapiBlogs;
+    const { edges: posts } = data.allStrapiBlogPosts;
     const { currentPage, numPages } = pageContext;
     const isFirst = currentPage === 1;
     const isLast = currentPage === numPages;
@@ -99,7 +99,7 @@ const BlogPage = ({ pageContext, data }) => {
 
 export const listQuery = graphql`
     query BlogListQuery($skip: Int!, $limit: Int!) {
-        allStrapiBlogs(
+        allStrapiBlogPosts(
             sort: { fields: date, order: DESC }
             limit: $limit
             skip: $skip
