@@ -1,6 +1,6 @@
 import React from "react";
 import { graphql } from "gatsby";
-import { GatsbyImage } from "gatsby-plugin-image";
+import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import { MDXProvider } from "@mdx-js/react";
 import { MDXRenderer } from "gatsby-plugin-mdx";
 import { Link } from "gatsby";
@@ -11,34 +11,32 @@ import "../styles/blog-post.scss";
 
 const shortcodes = { Link }; // Provide common components here
 
-const BlogPost = ({ data: { strapiBlogPosts } }) => {
+const BlogPost = ({ data: { strapiBlogPosts: post } }) => {
     const seo = {
-        metaTitle: strapiBlogPosts.title,
+        metaTitle: post.title,
+        metaDescription: post.description,
+        shareImage: post.image,
     };
 
     return (
         <Layout seo={seo} id="blog-post">
             <article className="content-container">
                 <div className="featured-image-container">
-                    {strapiBlogPosts.image && (
-                        <div className="center-wrapper">
+                    {post.image && (
                             <GatsbyImage
-                                image={
-                                    strapiBlogPosts.image.localFile.childImageSharp
-                                        .gatsbyImageData
-                                }
-                                alt=""
+                                image={getImage(post.image.localFile)}
+                                alt="Blog post image"
+                                className="center-wrapper"
                             />
-                        </div>
                     )}
-                    <h2 className="title">{strapiBlogPosts.title}</h2>
-                    {strapiBlogPosts.date && (
-                        <p className="date">{strapiBlogPosts.date}</p>
+                    <h2 className="title">{post.title}</h2>
+                    {post.date && (
+                        <p className="date">{post.date}</p>
                     )}
                 </div>
                 <MDXProvider components={shortcodes}>
                     <MDXRenderer>
-                        {strapiBlogPosts.childStrapiBlogPostsContent.childMdx.body}
+                        {post.childStrapiBlogPostsContent.childMdx.body}
                     </MDXRenderer>
                 </MDXProvider>
             </article>

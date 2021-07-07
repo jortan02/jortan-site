@@ -6,15 +6,10 @@ import "../styles/footer.scss";
 const Footer = () => {
     return (
         <footer>
-            <div className="circle-links-mobile">
-                <CircleLinks />
-            </div>
+            <CircleLinks />
             <div className="footer-container">
-                <span>&copy; 2021 Jordan Tan</span>
-                <div className="circle-links">
-                    <CircleLinks />
-                </div>
-                <span>Created using Gatsby</span>
+                <span className="copyright">&copy; 2021 Jordan Tan</span>
+                <span className="creation">Created using Gatsby</span>
             </div>
         </footer>
     );

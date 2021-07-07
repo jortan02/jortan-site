@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, graphql } from "gatsby";
-import { GatsbyImage } from "gatsby-plugin-image";
+import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShapes } from "@fortawesome/free-solid-svg-icons";
 import Layout from "../components/layout";
@@ -35,10 +35,8 @@ const BlogPage = ({ pageContext, data }) => {
                             <div className="blog-content-container">
                                 {post.image ? (
                                     <GatsbyImage
-                                        image={
-                                            post.image.localFile.childImageSharp.gatsbyImageData
-                                        }
-                                        alt=""
+                                        image={getImage(post.image.localFile)}
+                                        alt="Blog post image"
                                         className="picture-wrapper"
                                     />
                                 ) : (

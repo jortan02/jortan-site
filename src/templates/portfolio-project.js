@@ -1,6 +1,6 @@
 import React from "react";
 import { graphql } from "gatsby";
-import { GatsbyImage } from "gatsby-plugin-image";
+import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import { MDXProvider } from "@mdx-js/react";
 import { MDXRenderer } from "gatsby-plugin-mdx";
 import { Link } from "gatsby";
@@ -11,37 +11,35 @@ import "../styles/blog-post.scss";
 
 const shortcodes = { Link }; // Provide common components here
 
-const PortfolioProject = ({ data: { strapiPortfolioProjects } }) => {
+const PortfolioProject = ({ data: { strapiPortfolioProjects: project } }) => {
     const seo = {
-        metaTitle: strapiPortfolioProjects.title,
+        metaTitle: project.title,
+        metaDescription: project.description,
+        shareImage: project.image,
     };
 
     return (
         <Layout seo={seo} id="blog-post">
             <article className="content-container">
                 <div className="featured-image-container">
-                    {strapiPortfolioProjects.image && (
-                        <div className="center-wrapper">
+                    {project.image && (
                             <GatsbyImage
-                                image={
-                                    strapiPortfolioProjects.image.localFile.childImageSharp
-                                        .gatsbyImageData
-                                }
-                                alt=""
-                            />
-                        </div>
+                            image={getImage(project.image.localFile)}
+                            alt={`${project.title} image`}
+                            className="center-wrapper"
+                        />
                     )}
-                    <h2 className="title">{strapiPortfolioProjects.title}</h2>
+                    <h2 className="title">{project.title}</h2>
                 </div>
                 <MDXProvider components={shortcodes}>
                     <MDXRenderer>
-                        {strapiPortfolioProjects.childStrapiPortfolioProjectsContent.childMdx.body}
+                        {project.childStrapiPortfolioProjectsContent.childMdx.body}
                     </MDXRenderer>
                 </MDXProvider>
-                {strapiPortfolioProjects.github && (
-                    <Link to={strapiPortfolioProjects.github} className="link">
+                {project.github && (
+                    <a href={project.github} className="link">
                         <button>View on Github</button>
-                    </Link>
+                    </a>
                 )}
             </article>
         </Layout>

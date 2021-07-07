@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, graphql } from "gatsby";
-import { GatsbyImage } from "gatsby-plugin-image";
+import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import Layout from "../components/layout";
 import "../styles/portfolio.scss";
 import "../styles/pagination.scss";
@@ -10,7 +10,7 @@ const PortfolioPage = ({ pageContext, data }) => {
         metaTitle: "Portfolio",
     };
 
-    const { edges: posts } = data.allStrapiPortfolioProjects;
+    const { edges: projects } = data.allStrapiPortfolioProjects;
     const { currentPage, numPages } = pageContext;
     const isFirst = currentPage === 1;
     const isLast = currentPage === numPages;
@@ -25,31 +25,30 @@ const PortfolioPage = ({ pageContext, data }) => {
                     </div>
                 </div>
                 <ul className="portfolio-projects-container">
-                    {posts.map(({ node: post }) => (
+                    {projects.map(({ node: project }) => (
+                        
                         <li
-                            key={post.id}
+                            key={project.id}
                             className="portfolio-project-container"
                         >
-                            {post.image && (
+                            {project.image && (
                                 <GatsbyImage
-                                    image={
-                                        post.image.localFile.childImageSharp
-                                            .gatsbyImageData
-                                    }
-                                    alt=""
+                                    image={getImage(project.image.localFile)}
+                                    alt={`${project.title} image`}
                                     className="picture-wrapper"
+                                    imgClassName="picture"
                                 />
                             )}
                             <div className="text-container">
-                                <h2 className="title">{post.title}</h2>
-                                <p className="excerpt">{post.description}</p>
-                                <Link to={post.slug} className="link">
+                                <h2 className="title">{project.title}</h2>
+                                <p className="excerpt">{project.description}</p>
+                                <Link to={project.slug} className="link">
                                     <button>Read More</button>
                                 </Link>
-                                {post.github && (
-                                    <Link to={post.github} className="link">
+                                {project.github && (
+                                    <a href={project.github} className="link">
                                         <button>View on Github</button>
-                                    </Link>
+                                    </a>
                                 )}
                             </div>
                         </li>
