@@ -4,10 +4,10 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import { MDXProvider } from "@mdx-js/react";
 import { MDXRenderer } from "gatsby-plugin-mdx";
 import { Link } from "gatsby";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCircle } from "@fortawesome/free-solid-svg-icons";
+
 import Layout from "../components/layout";
 import "../styles/blog-post.scss";
+import BlogDate from "../components/blog-date";
 
 // https://www.gatsbyjs.com/docs/mdx/programmatically-creating-pages/
 
@@ -32,19 +32,7 @@ const BlogPost = ({ data: { strapiBlogPosts: post } }) => {
                         />
                     )}
                     <h2 className="title">{post.title}</h2>
-                    {/* TODO: Reduce redundancy: duplicate of date in blog.js */}
-                    <div className="date">
-                        {post.blog_category && (
-                            <>
-                                <span>{post.blog_category.category.toUpperCase()}</span>
-                                <FontAwesomeIcon
-                                    icon={faCircle}
-                                    className="icon"
-                                />
-                            </>
-                        )}
-                        <span>{post.date}</span>
-                    </div>
+                    <BlogDate post={post} />
                 </div>
                 <MDXProvider components={shortcodes}>
                     <MDXRenderer>

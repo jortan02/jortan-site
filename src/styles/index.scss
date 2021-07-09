@@ -87,6 +87,7 @@
         }
 
         .circle-links-container {
+            @include circle-links;
             justify-content: center;
             margin-top: 1.4em;
 

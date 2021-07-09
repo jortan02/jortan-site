@@ -4,7 +4,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPhoneAlt, faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { faGithubAlt, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import "../styles/contact-info.scss";
-import "../styles/circle-links.scss";
 
 const ContactInfo = () => {
     const data = useStaticQuery(graphql`

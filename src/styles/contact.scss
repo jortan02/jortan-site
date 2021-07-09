@@ -28,6 +28,7 @@
             }
 
             .circle-links-container {
+                @include circle-links;
                 margin-top: 1em;
 
                 .icon {

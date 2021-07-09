@@ -3,7 +3,7 @@ import { graphql, useStaticQuery } from "gatsby";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPhoneAlt, faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { faGithubAlt, faLinkedin } from "@fortawesome/free-brands-svg-icons";
-import "../styles/circle-links.scss";
+
 
 const CircleLinks = () => {
     const data = useStaticQuery(graphql`

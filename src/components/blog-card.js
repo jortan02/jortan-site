@@ -4,6 +4,7 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShapes, faCircle } from "@fortawesome/free-solid-svg-icons";
 import "../styles/blog-card.scss";
+import BlogDate from "./blog-date";
 
 const BlogCard = ({ post }) => {
     return (
@@ -26,20 +27,7 @@ const BlogCard = ({ post }) => {
                             {post.title}
                         </Link>
                     </h2>
-                    <div className="date">
-                        {post.blog_category && (
-                            <>
-                                <span>
-                                    {post.blog_category.category.toUpperCase()}
-                                </span>
-                                <FontAwesomeIcon
-                                    icon={faCircle}
-                                    className="icon"
-                                />
-                            </>
-                        )}
-                        <span>{post.date}</span>
-                    </div>
+                    <BlogDate post={post} />
                     <p className="excerpt">{post.description}</p>
                 </div>
             </div>
