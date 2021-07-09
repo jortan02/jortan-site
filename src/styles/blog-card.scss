@@ -2,6 +2,7 @@
 @import "./mixins";
 
 .blog-post-container {
+    @include black-text;
     @include BoxShadow(4);
     display: flex;
     flex-direction: column;
@@ -58,6 +59,7 @@
 
             .date {
                 @include blog-date;
+                font-size: 14px;
             }
 
             .excerpt {
@@ -78,23 +80,26 @@
 }
 
 @media screen and (max-width: 615px) {
-    .blog-content-container {
-        .picture-wrapper {
-            width: 140px !important;
-            height: 140px !important;
-        }
-
-        .text-container {
-            .date {
-                margin-bottom: 0;
+    .blog-post-container {
+        .blog-content-container {
+            .picture-wrapper {
+                width: 140px !important;
+                height: 140px !important;
             }
 
-            .excerpt {
-                display: none;
+            .text-container {
+                .date {
+                    margin-bottom: 0;
+                }
+
+                .excerpt {
+                    display: none;
+                }
             }
         }
-    }
-    .excerpt-mobile {
-        display: block;
+        
+        .excerpt-mobile {
+            display: block;
+        }
     }
 }
