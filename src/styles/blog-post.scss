@@ -3,6 +3,10 @@
 #blog-post {
     .date {
         @include blog-date;
+
+        svg {
+            color: $white;
+        }
     }
 
     .center-wrapper {

@@ -8,8 +8,8 @@ html {
         margin: 0;
         padding: 0;
         height: 100%;
-        font-family: sans-serif;
         display: flex;
+        font-family: Roboto, sans-serif;
         flex-direction: column;
 
         .site-container {
@@ -37,11 +37,14 @@ h2,
 h3,
 h4,
 h5,
-h6,
+h6 {
+    color: $white;
+    font-family: Poppins, sans-serif;
+}
+
 p,
 span {
     color: $white;
-    font-family: PT Sans, sans-serif;
 }
 
 p {
@@ -54,7 +57,7 @@ p {
             .site-container {
                 .main-container {
                     .content-container {
-                        padding: 1.8em 15% 1.8em 15%;
+                        padding: 1.8em 15%;
                     }
                 }
             }

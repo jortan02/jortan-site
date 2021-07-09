@@ -23,10 +23,6 @@ function createContentNode(node, actions, createNodeId, createContentDigest) {
             type: `${node.internal.type}Content`,
             mediaType: "text/markdown",
             contentDigest: createContentDigest(node.content),
-            // contentDigest: crypto
-            //     .createHash("md5")
-            //     .update(node.content || " ")
-            //     .digest("hex"),
         },
     };
     actions.createNode(newNode);

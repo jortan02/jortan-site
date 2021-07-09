@@ -4,12 +4,6 @@ require("dotenv").config({
 
 module.exports = {
     siteMetadata: {
-        title: "Jordan Tan",
-        description: "Jordan Tan's Personal Site | Resume | Blog | Portfolio",
-        phoneNumber: "435-823-0976",
-        emailAddress: "jortan2002@gmail.com",
-        github: "https://github.com/Nullindrome",
-        linkedin: "https://www.linkedin.com/in/jordan-t-843035215/",
         menuLinks: [
             {
                 name: "Home",
@@ -38,7 +32,7 @@ module.exports = {
             resolve: "gatsby-plugin-web-font-loader",
             options: {
                 google: {
-                    families: ["PT Sans"],
+                    families: ["Poppins", "Roboto"],
                 },
             },
         },

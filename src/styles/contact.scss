@@ -4,33 +4,39 @@
 #contact {
     .hero-container {
         @include black-text;
+        align-items: flex-start;
         background-color: $off-white;
 
-        .info-container {
+        .contact-form-container {
+            margin: 2.4em 5% 2.4em 2.4em;
+            width: 100%;
+            max-width: 30em;
 
-            .personal-info-container {
-                display: flex;
-                align-items: center;
-                flex-direction: column;
-                margin: 2.4em 0em 2.4em 0em;
+            h1 {
+                margin-top: 0px;
+                width: max-content;
+            }
+        }
 
-                .qr-code-wrapper {
-                    width: 180px;
-                    height: 180px;
-                    border-radius: 18px;
-                }
+        .personal-info-container {
+            margin: 2.4em 2.4em 2.4em 0;
 
-                .circle-links-container {
-                    margin-top: 1em;
+            .qr-code-wrapper {
+                width: 180px;
+                height: 180px;
+                border-radius: 18px;
+            }
 
-                    .icon {
-                        margin: 0 0.4em 0 0;
-                        color: $white;
-                        background-color: $black;
+            .circle-links-container {
+                margin-top: 1em;
 
-                        &:hover {
-                            background-color: $dark-grey;
-                        }
+                .icon {
+                    margin: 0 0.4em 0 0;
+                    color: $white;
+                    background-color: $black;
+
+                    &:hover {
+                        background-color: $dark-grey;
                     }
                 }
             }
@@ -41,15 +47,21 @@
 @media screen and (max-width: 615px) {
     #contact {
         .hero-container {
-            .info-container {
-                .contact-form-container {
-                    width: auto;
-                    margin-right: 0;
-                }
+            align-items: center;
 
-                .personal-info-container {
-                    margin: 0em 0em 2.4em 0em;
-                }
+            .contact-form-container {
+                display: flex;
+                flex-direction: column;
+                max-width: calc(100% - 4.8em);
+                margin-left: 0;
+                margin-right: 0;
+            }
+
+            .personal-info-container {
+                display: flex;
+                align-items: center;
+                flex-direction: column;
+                margin: 0 0 2.4em 0;
             }
         }
     }

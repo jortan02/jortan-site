@@ -3,11 +3,6 @@
 .hero-container {
     @include flex-center;
     height: calc(100vh - 72px);
-
-    .info-container {
-        display: flex;
-        justify-content: center;
-    }
 }
 
 
@@ -15,10 +10,7 @@
     .hero-container {
         height: auto;
         min-height: calc(100vh - 84px);
-
-        .info-container {
-            flex-direction: column;
-        }
+        flex-direction: column;
     }
 }
 

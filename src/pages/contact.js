@@ -14,7 +14,10 @@ const ContactPage = () => {
     return (
         <Layout seo={seo} id="contact">
             <Hero>
-                <ContactForm />
+                <div className="contact-form-container">
+                    <h1>Let's Get in Touch.</h1>
+                    <ContactForm />
+                </div>
                 <div className="personal-info-container">
                     <StaticImage
                         src="../images/qr-code.png"
