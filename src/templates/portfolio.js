@@ -1,9 +1,9 @@
 import React from "react";
-import { Link, graphql } from "gatsby";
+import { graphql } from "gatsby";
 import Layout from "../components/layout";
 import PortfolioCard from "../components/portfolio-card";
+import Pagination from "../components/pagination";
 import "../styles/portfolio.scss";
-import "../styles/pagination.scss";
 
 const PortfolioPage = ({ pageContext, data }) => {
     const seo = {
@@ -12,8 +12,6 @@ const PortfolioPage = ({ pageContext, data }) => {
 
     const { edges: projects } = data.allStrapiPortfolioProjects;
     const { currentPage, numPages } = pageContext;
-    const isFirst = currentPage === 1;
-    const isLast = currentPage === numPages;
 
     return (
         <Layout seo={seo} id="portfolio">
@@ -29,30 +27,7 @@ const PortfolioPage = ({ pageContext, data }) => {
                         <PortfolioCard key={project.id} project={project} />
                     ))}
                 </ul>
-                <div className="pagination-container">
-                    <Link
-                        to="/portfolio"
-                        className={`first ${!isFirst ? "" : "disabled-link"}`}
-                    >
-                        <span>{`<<`}</span>
-                    </Link>
-                    {Array.from({ length: numPages }, (_, i) => (
-                        <Link
-                            key={`portfolio-number-${i + 1}`}
-                            to={`/portfolio${i === 0 ? "" : "/" + (i + 1)}`}
-                            activeClassName="active-link"
-                            className="number"
-                        >
-                            <span>{i + 1}</span>
-                        </Link>
-                    ))}
-                    <Link
-                        to={`/portfolio${numPages ? "/" + numPages : ""}`}
-                        className={`last ${!isLast ? "" : "disabled-link"}`}
-                    >
-                        <span>{`>>`}</span>
-                    </Link>
-                </div>
+                <Pagination currentPage={currentPage} numPages={numPages} />
             </section>
         </Layout>
     );

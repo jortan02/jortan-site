@@ -1,9 +1,9 @@
 import React from "react";
-import { Link, graphql } from "gatsby";
+import { graphql } from "gatsby";
 import Layout from "../components/layout";
 import BlogCard from "../components/blog-card";
 import "../styles/blog.scss";
-import "../styles/pagination.scss";
+import Pagination from "../components/pagination";
 
 // https://nickymeuleman.netlify.app/blog/gatsby-pagination
 // https://dev.to/steelvoltage/tip-disabling-buttons-as-links-in-gatsby-3o5n
@@ -15,8 +15,6 @@ const BlogPage = ({ pageContext, data }) => {
 
     const { edges: posts } = data.allStrapiBlogPosts;
     const { currentPage, numPages } = pageContext;
-    const isFirst = currentPage === 1;
-    const isLast = currentPage === numPages;
 
     return (
         <Layout seo={seo} id="blog">
@@ -32,30 +30,7 @@ const BlogPage = ({ pageContext, data }) => {
                         <BlogCard key={post.id} post={post} />
                     ))}
                 </ul>
-                <div className="pagination-container">
-                    <Link
-                        to="/blog"
-                        className={`first ${!isFirst ? "" : "disabled-link"}`}
-                    >
-                        <span>{`<<`}</span>
-                    </Link>
-                    {Array.from({ length: numPages }, (_, i) => (
-                        <Link
-                            key={`blog-number-${i + 1}`}
-                            to={`/blog${i === 0 ? "" : "/" + (i + 1)}`}
-                            activeClassName="active-link"
-                            className="number"
-                        >
-                            <span>{i + 1}</span>
-                        </Link>
-                    ))}
-                    <Link
-                        to={`/blog${numPages ? "/" + numPages : ""}`}
-                        className={`last ${!isLast ? "" : "disabled-link"}`}
-                    >
-                        <span>{`>>`}</span>
-                    </Link>
-                </div>
+                <Pagination currentPage={currentPage} numPages={numPages} />
             </section>
         </Layout>
     );

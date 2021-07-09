@@ -1,22 +1,13 @@
-import React, { useState } from "react";
-import { StaticImage } from "gatsby-plugin-image";
+import React from "react";
 import { Link } from "gatsby";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faQrcode } from "@fortawesome/free-solid-svg-icons";
 import Layout from "../components/layout";
 import Hero from "../components/hero";
-import ContactInfo from "../components/contact-info";
 import "../styles/index.scss";
+import PersonalCard from "../components/personal-card";
 
 const IndexPage = () => {
     const seo = {
         metaTitle: "Home",
-    };
-
-    const [qrOpenCode, setQrOpen] = useState(false);
-
-    const handleToggle = () => {
-        setQrOpen((prev) => !prev);
     };
 
     return (
@@ -33,33 +24,7 @@ const IndexPage = () => {
                     </p>
                     <Link to="/resume"><button>View My Resume</button></Link>
                 </div>
-                <div className="card-container">
-                    <button className="button-wrapper" onClick={handleToggle}>
-                            <FontAwesomeIcon icon={faQrcode} className="icon" />
-                    </button>
-                    {qrOpenCode ? (
-                        <StaticImage
-                            src="../images/qr-code.png"
-                            alt="QR code with contact information"
-                            className="qr-code-wrapper"
-                            imgClassName="qr-code"
-                        />
-                    ) : (
-                        <StaticImage
-                            src="../images/profile_picture.jpg"
-                            alt="Jordan Tan"
-                            className="profile-picture-wrapper"
-                            imgClassName="profile-picture"
-                        />
-                    )}
-                    <div className="personal-info-container">
-                        <div className="name-container">
-                            <h2>Jordan Tan</h2>
-                            <h3>Student</h3>
-                        </div>
-                        <ContactInfo />
-                    </div>
-                </div>
+                <PersonalCard />
             </Hero>
         </Layout>
     );
