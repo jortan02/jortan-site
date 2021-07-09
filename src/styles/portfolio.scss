@@ -37,11 +37,18 @@
                     margin-left: 3em;
                     width: 47.5%;
 
+                    h3 {
+                        @include portfolio-category;
+                    }
+
                     button {
                         @include button;
                         margin-top: 0.5em;
-                        margin-bottom: 0.5em;
                         margin-right: 0.5em;
+                    }
+
+                    .skills-list {
+                        @include portfolio-skills;
                     }
                 }
 

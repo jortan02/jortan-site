@@ -5,7 +5,7 @@ import { MDXProvider } from "@mdx-js/react";
 import { MDXRenderer } from "gatsby-plugin-mdx";
 import { Link } from "gatsby";
 import Layout from "../components/layout";
-import "../styles/blog-post.scss";
+import "../styles/portfolio-project.scss";
 
 // https://www.gatsbyjs.com/docs/mdx/programmatically-creating-pages/
 
@@ -19,21 +19,38 @@ const PortfolioProject = ({ data: { strapiPortfolioProjects: project } }) => {
     };
 
     return (
-        <Layout seo={seo} id="blog-post">
+        <Layout seo={seo} id="portfolio-project">
             <article className="content-container">
                 <div className="featured-image-container">
                     {project.image && (
-                            <GatsbyImage
+                        <GatsbyImage
                             image={getImage(project.image.localFile)}
                             alt={`${project.title} image`}
                             className="center-wrapper"
                         />
                     )}
+                    {project.portfolio_category && (
+                        <h3>
+                            {project.portfolio_category.category.toUpperCase()}
+                        </h3>
+                    )}
                     <h2 className="title">{project.title}</h2>
+                    {project.portfolio_skills && (
+                    <ul className="skills-list">
+                        {project.portfolio_skills.map((portfolio_skill) => (
+                            <li key={portfolio_skill.id} className="skill">
+                                <span>{portfolio_skill.skill}</span>
+                            </li>
+                        ))}
+                    </ul>
+                )}
                 </div>
                 <MDXProvider components={shortcodes}>
                     <MDXRenderer>
-                        {project.childStrapiPortfolioProjectsContent.childMdx.body}
+                        {
+                            project.childStrapiPortfolioProjectsContent.childMdx
+                                .body
+                        }
                     </MDXRenderer>
                 </MDXProvider>
                 {project.github && (
@@ -52,6 +69,13 @@ export const pageQuery = graphql`
             id
             title
             github
+            portfolio_category {
+                category
+            }
+            portfolio_skills {
+                skill
+                id
+            }
             image {
                 localFile {
                     childImageSharp {

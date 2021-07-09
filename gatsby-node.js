@@ -5,6 +5,8 @@ const path = require("path");
 // https://www.gatsbyjs.com/docs/adding-pagination/
 // https://github.com/strapi/gatsby-source-strapi/issues/89
 
+// TODO: Create a tag system for blog and portfolio categories
+
 module.exports.onCreateNode = async ({ node, actions, createNodeId, createContentDigest }) => {
     if (node.internal.type === "StrapiBlogPosts" || node.internal.type === "StrapiPortfolioProjects") {
         createContentNode(node, actions, createNodeId, createContentDigest);

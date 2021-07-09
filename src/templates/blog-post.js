@@ -4,6 +4,8 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import { MDXProvider } from "@mdx-js/react";
 import { MDXRenderer } from "gatsby-plugin-mdx";
 import { Link } from "gatsby";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCircle } from "@fortawesome/free-solid-svg-icons";
 import Layout from "../components/layout";
 import "../styles/blog-post.scss";
 
@@ -23,16 +25,26 @@ const BlogPost = ({ data: { strapiBlogPosts: post } }) => {
             <article className="content-container">
                 <div className="featured-image-container">
                     {post.image && (
-                            <GatsbyImage
-                                image={getImage(post.image.localFile)}
-                                alt="Blog post image"
-                                className="center-wrapper"
-                            />
+                        <GatsbyImage
+                            image={getImage(post.image.localFile)}
+                            alt="Blog post image"
+                            className="center-wrapper"
+                        />
                     )}
                     <h2 className="title">{post.title}</h2>
-                    {post.date && (
-                        <p className="date">{post.date}</p>
-                    )}
+                    {/* TODO: Reduce redundancy: duplicate of date in blog.js */}
+                    <div className="date">
+                        {post.blog_category && (
+                            <>
+                                <span>{post.blog_category.category.toUpperCase()}</span>
+                                <FontAwesomeIcon
+                                    icon={faCircle}
+                                    className="icon"
+                                />
+                            </>
+                        )}
+                        <span>{post.date}</span>
+                    </div>
                 </div>
                 <MDXProvider components={shortcodes}>
                     <MDXRenderer>
@@ -50,6 +62,9 @@ export const pageQuery = graphql`
             id
             title
             date(formatString: "MM/DD/YYYY")
+            blog_category {
+                category
+            }
             image {
                 localFile {
                     childImageSharp {

@@ -1,3 +1,7 @@
+require("dotenv").config({
+    path: `.env.${process.env.NODE_ENV}`,
+});
+
 module.exports = {
     siteMetadata: {
         title: "Jordan Tan",
@@ -30,6 +34,14 @@ module.exports = {
         ],
     },
     plugins: [
+        {
+            resolve: "gatsby-plugin-web-font-loader",
+            options: {
+                google: {
+                    families: ["Open Sans"],
+                },
+            },
+        },
         "gatsby-plugin-sass",
         "gatsby-plugin-gatsby-cloud",
         "gatsby-plugin-image",
@@ -45,10 +57,15 @@ module.exports = {
         {
             resolve: "gatsby-source-strapi",
             options: {
-              apiURL: process.env.API_URL || "http://localhost:1337",
-              collectionTypes: ["blog-posts", "blog-categories", "portfolio-projects", "portfolio-categories"],
-              singleTypes: ["global"],
-              queryLimit: 1000,
+                apiURL: process.env.API_URL || "http://localhost:1337",
+                collectionTypes: [
+                    "blog-posts",
+                    "blog-categories",
+                    "portfolio-projects",
+                    "portfolio-categories",
+                ],
+                singleTypes: ["global"],
+                queryLimit: 1000,
             },
         },
         "gatsby-remark-images",

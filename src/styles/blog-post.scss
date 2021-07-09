@@ -1,6 +1,10 @@
 @import "../styles/mixins";
 
 #blog-post {
+    .date {
+        @include blog-date;
+    }
+
     .center-wrapper {
         display: flex;
         justify-content: center;

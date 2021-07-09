@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Helmet } from "react-helmet";
-import { getImage } from "gatsby-plugin-image";
+import { getSrc } from "gatsby-plugin-image";
 import { useStaticQuery, graphql } from "gatsby";
 
 // https://strapi.io/blog/build-a-static-blog-with-gatsby-and-strapi
@@ -15,11 +15,6 @@ const Seo = ({ seo = {} }) => {
     const fullSeo = { ...defaultSeo, ...seo };
 
     const getMetaTags = () => {
-        console.log(fullSeo);
-        console.log(fullSeo.shareImage.localFile.publicUR);
-
-        console.log(getImage(fullSeo.shareImage.localFile));
-
         const tags = [];
 
         if (fullSeo.metaDescription) {
@@ -32,7 +27,7 @@ const Seo = ({ seo = {} }) => {
         }
 
         if (fullSeo.shareImage) {
-            const image = getImage(fullSeo.shareImage.localFile);
+            const image = getSrc(fullSeo.shareImage.localFile);
             const imageUrl =
                 (process.env.GATSBY_ROOT_URL || "http://localhost:8000") +
                 image;
