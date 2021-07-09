@@ -5,6 +5,8 @@ import Hero from "../components/hero";
 import "../styles/index.scss";
 import PersonalCard from "../components/personal-card";
 
+// TODO: Add some blog posts and portfolio posts to the index page.
+
 const IndexPage = () => {
     const seo = {
         metaTitle: "Home",
