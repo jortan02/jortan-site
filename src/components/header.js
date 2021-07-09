@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { graphql, useStaticQuery } from "gatsby";
 import ReactModal from "react-modal";
 import PropTypes from "prop-types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -10,7 +11,20 @@ import "../styles/header.scss";
 
 // https://ibaslogic.com/how-to-add-hamburger-menu-in-react/
 
-const Header = ({ menuLinks }) => {
+const Header = () => {
+    const data = useStaticQuery(graphql`
+    {
+        site {
+          siteMetadata {
+            menuLinks {
+                link
+                name
+            }
+          }
+        }
+      }
+    `)
+
     const [menuOpen, setMenuOpen] = useState(false);
 
     const handleToggle = () => {
@@ -29,7 +43,7 @@ const Header = ({ menuLinks }) => {
                 </button>
                 <nav>
                     <Links
-                        menuLinks={menuLinks}
+                        menuLinks={data.site.siteMetadata.menuLinks}
                         styleClass="menu-links"
                         handleClick={closeMenu}
                     />
@@ -47,7 +61,7 @@ const Header = ({ menuLinks }) => {
                 <div className="right-header">
                     <nav role="navigation">
                         <Links
-                            menuLinks={menuLinks}
+                            menuLinks={data.site.siteMetadata.menuLinks}
                             styleClass="header-links"
                         />
                     </nav>

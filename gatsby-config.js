@@ -1,3 +1,7 @@
+require("dotenv").config({
+    path: `.env.${process.env.NODE_ENV}`,
+});
+
 module.exports = {
     siteMetadata: {
         title: "Jordan Tan",
@@ -30,6 +34,14 @@ module.exports = {
         ],
     },
     plugins: [
+        {
+            resolve: "gatsby-plugin-web-font-loader",
+            options: {
+                google: {
+                    families: ["PT Sans"],
+                },
+            },
+        },
         "gatsby-plugin-sass",
         "gatsby-plugin-gatsby-cloud",
         "gatsby-plugin-image",
@@ -38,27 +50,22 @@ module.exports = {
         {
             resolve: "gatsby-source-filesystem",
             options: {
-                name: `blog`,
-                path: `${__dirname}/blog`,
+                name: `images`,
+                path: `${__dirname}/src/images`,
             },
         },
         {
-            resolve: "gatsby-source-filesystem",
+            resolve: "gatsby-source-strapi",
             options: {
-                name: `portfolio`,
-                path: `${__dirname}/portfolio`,
-            },
-        },
-        {
-            resolve: "gatsby-plugin-page-creator",
-            options: {
-                path: `${__dirname}/blog`,
-            },
-        },
-        {
-            resolve: "gatsby-plugin-page-creator",
-            options: {
-                path: `${__dirname}/portfolio`,
+                apiURL: process.env.API_URL || "http://localhost:1337",
+                collectionTypes: [
+                    "blog-posts",
+                    "blog-categories",
+                    "portfolio-projects",
+                    "portfolio-categories",
+                ],
+                singleTypes: ["global"],
+                queryLimit: 1000,
             },
         },
         "gatsby-remark-images",
@@ -74,7 +81,7 @@ module.exports = {
                     },
                 ],
                 defaultLayouts: {
-                    default: require.resolve("./src/templates/blog-post.js"),
+                    default: require.resolve("./src/components/layout.js"),
                 },
             },
         },

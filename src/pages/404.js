@@ -3,8 +3,12 @@ import Layout from "../components/layout";
 import "../styles/404.scss";
 
 const NotFoundPage = () => {
+  const seo = {
+    metaTitle: "404",
+};
+  
   return (
-    <Layout pageTitle="404">
+    <Layout seo={seo}>
       <div className="centered-container">
         <div className="not-found-container">
           <h1>:0</h1>

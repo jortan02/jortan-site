@@ -1,0 +1,22 @@
+@import "../styles/mixins";
+
+#portfolio-project {
+
+    h3 {
+        @include portfolio-category;
+        margin-top: 2em;
+    }
+    
+    .center-wrapper {
+        display: flex;
+        justify-content: center;
+    }
+    
+    .skills-list {
+        @include portfolio-skills;
+    }
+
+    button {
+        @include button;
+    }
+}

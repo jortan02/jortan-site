@@ -1,9 +1,11 @@
 import React from "react";
 import { graphql } from "gatsby";
-import { GatsbyImage } from "gatsby-plugin-image";
+import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import { MDXProvider } from "@mdx-js/react";
 import { MDXRenderer } from "gatsby-plugin-mdx";
 import { Link } from "gatsby";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCircle } from "@fortawesome/free-solid-svg-icons";
 import Layout from "../components/layout";
 import "../styles/blog-post.scss";
 
@@ -11,37 +13,44 @@ import "../styles/blog-post.scss";
 
 const shortcodes = { Link }; // Provide common components here
 
-const BlogPost = ({ data: { mdx } }) => {
+const BlogPost = ({ data: { strapiBlogPosts: post } }) => {
+    const seo = {
+        metaTitle: post.title,
+        metaDescription: post.description,
+        shareImage: post.image,
+    };
+
     return (
-        <Layout pageTitle={mdx.frontmatter.title} id="blog-post">
+        <Layout seo={seo} id="blog-post">
             <article className="content-container">
                 <div className="featured-image-container">
-                    {mdx.frontmatter.image && (
-                        <div className="center-wrapper">
-                            <GatsbyImage
-                                image={
-                                    mdx.frontmatter.image.childImageSharp
-                                        .gatsbyImageData
-                                }
-                                alt=""
-                            />
-                        </div>
+                    {post.image && (
+                        <GatsbyImage
+                            image={getImage(post.image.localFile)}
+                            alt="Blog post image"
+                            className="center-wrapper"
+                        />
                     )}
-                    <h2 className="title">{mdx.frontmatter.title}</h2>
-                    {mdx.frontmatter.date && (
-                        <p className="date">{mdx.frontmatter.date}</p>
-                    )}
+                    <h2 className="title">{post.title}</h2>
+                    {/* TODO: Reduce redundancy: duplicate of date in blog.js */}
+                    <div className="date">
+                        {post.blog_category && (
+                            <>
+                                <span>{post.blog_category.category.toUpperCase()}</span>
+                                <FontAwesomeIcon
+                                    icon={faCircle}
+                                    className="icon"
+                                />
+                            </>
+                        )}
+                        <span>{post.date}</span>
+                    </div>
                 </div>
                 <MDXProvider components={shortcodes}>
-                    <MDXRenderer frontmatter={mdx.frontmatter}>
-                        {mdx.body}
+                    <MDXRenderer>
+                        {post.childStrapiBlogPostsContent.childMdx.body}
                     </MDXRenderer>
                 </MDXProvider>
-                {mdx.frontmatter.github && (
-                    <Link to={mdx.frontmatter.github} className="link">
-                        <button>View on Github</button>
-                    </Link>
-                )}
             </article>
         </Layout>
     );
@@ -49,18 +58,24 @@ const BlogPost = ({ data: { mdx } }) => {
 
 export const pageQuery = graphql`
     query BlogPostQuery($id: String) {
-        mdx(id: { eq: $id }) {
+        strapiBlogPosts(id: { eq: $id }) {
             id
-            body
-            frontmatter {
-                title
-                date(formatString: "MM/DD/YYYY")
-                image {
+            title
+            date(formatString: "MM/DD/YYYY")
+            blog_category {
+                category
+            }
+            image {
+                localFile {
                     childImageSharp {
                         gatsbyImageData(layout: CONSTRAINED)
                     }
                 }
-                github
+            }
+            childStrapiBlogPostsContent {
+                childMdx {
+                    body
+                }
             }
         }
     }

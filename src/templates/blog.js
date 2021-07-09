@@ -1,9 +1,7 @@
 import React from "react";
 import { Link, graphql } from "gatsby";
-import { GatsbyImage } from "gatsby-plugin-image";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faShapes } from "@fortawesome/free-solid-svg-icons";
 import Layout from "../components/layout";
+import BlogCard from "../components/blog-card";
 import "../styles/blog.scss";
 import "../styles/pagination.scss";
 
@@ -11,13 +9,17 @@ import "../styles/pagination.scss";
 // https://dev.to/steelvoltage/tip-disabling-buttons-as-links-in-gatsby-3o5n
 
 const BlogPage = ({ pageContext, data }) => {
-    const { edges: posts } = data.allMdx;
+    const seo = {
+        metaTitle: "Blog",
+    };
+
+    const { edges: posts } = data.allStrapiBlogPosts;
     const { currentPage, numPages } = pageContext;
     const isFirst = currentPage === 1;
     const isLast = currentPage === numPages;
 
     return (
-        <Layout pageTitle="Blog" id="blog">
+        <Layout seo={seo} id="blog">
             <section className="content-container">
                 <div className="center-wrapper">
                     <div className="title-container">
@@ -27,42 +29,7 @@ const BlogPage = ({ pageContext, data }) => {
                 </div>
                 <ul className="blog-posts-container">
                     {posts.map(({ node: post }) => (
-                        <li key={post.id} className="blog-post-container">
-                            <div className="blog-content-container">
-                                {post.frontmatter.image ? (
-                                    <GatsbyImage
-                                        image={
-                                            post.frontmatter.image
-                                                .childImageSharp.gatsbyImageData
-                                        }
-                                        alt=""
-                                        className="picture-wrapper"
-                                    />
-                                ) : (
-                                    <div className="picture-wrapper">
-                                        <FontAwesomeIcon
-                                            icon={faShapes}
-                                            className="icon"
-                                        />
-                                    </div>
-                                )}
-                                <div className="text-container">
-                                    <h2 className="title">
-                                        <Link
-                                            to={post.fields.slug}
-                                            className="link"
-                                        >
-                                            {post.frontmatter.title}
-                                        </Link>
-                                    </h2>
-                                    <p className="date">
-                                        {post.frontmatter.date}
-                                    </p>
-                                    <p className="excerpt">{post.excerpt}</p>
-                                </div>
-                            </div>
-                            <p className="excerpt-mobile">{post.excerpt}</p>
-                        </li>
+                        <BlogCard key={post.id} post={post} />
                     ))}
                 </ul>
                 <div className="pagination-container">
@@ -96,20 +63,23 @@ const BlogPage = ({ pageContext, data }) => {
 
 export const listQuery = graphql`
     query BlogListQuery($skip: Int!, $limit: Int!) {
-        allMdx(
-            filter: { fields: { collection: { eq: "blog" } } }
-            sort: { fields: [frontmatter___date], order: DESC }
+        allStrapiBlogPosts(
+            sort: { fields: date, order: DESC }
             limit: $limit
             skip: $skip
         ) {
             edges {
                 node {
                     id
-                    excerpt(pruneLength: 120)
-                    frontmatter {
-                        title
-                        date(formatString: "MM/DD/YYYY")
-                        image {
+                    slug
+                    date(formatString: "MM/DD/YYYY")
+                    title
+                    description
+                    blog_category {
+                        category
+                    }
+                    image {
+                        localFile {
                             childImageSharp {
                                 gatsbyImageData(
                                     width: 175
@@ -118,9 +88,6 @@ export const listQuery = graphql`
                                 )
                             }
                         }
-                    }
-                    fields {
-                        slug
                     }
                 }
             }

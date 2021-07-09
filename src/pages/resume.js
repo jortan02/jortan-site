@@ -5,8 +5,12 @@ import ResumeFile from "../files/Resume - Jordan Tan.pdf";
 import "../styles/resume.scss";
 
 const ResumePage = () => {
+    const seo = {
+        metaTitle: "Resume",
+    };
+        
     return (
-        <Layout pageTitle="About" id="resume">
+        <Layout seo={seo} id="resume">
             <article className="content-container">
                 <div className="title-container">
                     <h1>A Few Things about Me.</h1>

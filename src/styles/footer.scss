@@ -2,17 +2,20 @@
 @import "./mixins";
 
 footer {
+    position: relative;
     background-color: $black;
     flex-shrink: 0;
 
-    .circle-links-mobile {
-        display: none;
+    .circle-links-container {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
     }
 
 
     .footer-container {
         display: flex;
-        flex-basis: 500px;
         align-items: center;
         justify-content: space-between;
         flex-grow: 1;
@@ -30,7 +33,9 @@ footer {
 
 @media screen and (max-width: 615px) {
     footer {
-        .circle-links-mobile {
+        .circle-links-container {   
+            position: static;
+            transform: translate(0, 0);
             @include flex-center;
             padding-top: 1.2em;
         }
