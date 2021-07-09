@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, graphql } from "gatsby";
-import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import Layout from "../components/layout";
+import PortfolioCard from "../components/portfolio-card";
 import "../styles/portfolio.scss";
 import "../styles/pagination.scss";
 
@@ -26,45 +26,7 @@ const PortfolioPage = ({ pageContext, data }) => {
                 </div>
                 <ul className="portfolio-projects-container">
                     {projects.map(({ node: project }) => (
-                        <li
-                            key={project.id}
-                            className="portfolio-project-container"
-                        >
-                            {project.image && (
-                                <GatsbyImage
-                                    image={getImage(project.image.localFile)}
-                                    alt={`${project.title} image`}
-                                    className="picture-wrapper"
-                                    imgClassName="picture"
-                                />
-                            )}
-                            <div className="text-container">
-                                {project.portfolio_category && (
-                                    <h3>{project.portfolio_category.category.toUpperCase()}</h3>
-                                )}
-                                <h2 className="title">{project.title}</h2>
-                                <p className="excerpt">{project.description}</p>
-                                {project.portfolio_skills && (
-                                    <ul className="skills-list">
-                                        {project.portfolio_skills.map((portfolio_skill) => (
-                                            <li key={portfolio_skill.id} className="skill">
-                                                <span>{portfolio_skill.skill}</span>
-                                            </li>
-                                        ))}
-                                    </ul>
-                                        )}
-                                <span>
-                                    <Link to={project.slug} className="link">
-                                        <button>Read More</button>
-                                    </Link>
-                                    {project.github && (
-                                        <a href={project.github} className="link">
-                                            <button>View on Github</button>
-                                        </a>
-                                    )}
-                                </span>
-                            </div>
-                        </li>
+                        <PortfolioCard key={project.id} project={project} />
                     ))}
                 </ul>
                 <div className="pagination-container">

@@ -47,15 +47,15 @@
     }
 }
 
-@mixin black-text {
-    h1, h2, h3, h4, h5, h6, p, span {
-        color: $black;
-    }
-}
-
 @mixin white-text {
     h1, h2, h3, h4, h5, h6, p, span {
         color: $white;
+    }
+}
+
+@mixin black-text {
+    h1, h2, h3, h4, h5, h6, p, span {
+        color: $black;
     }
 }
 
