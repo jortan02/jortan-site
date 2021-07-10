@@ -54,15 +54,12 @@
             .contact-form-container {
                 display: flex;
                 flex-direction: column;
-                max-width: calc(100% - 4.8em);
                 margin-left: 0;
                 margin-right: 0;
             }
 
             .personal-info-container {
-                display: flex;
-                align-items: center;
-                flex-direction: column;
+                align-self: center;
                 margin: 0 0 2.4em 0;
             }
         }
