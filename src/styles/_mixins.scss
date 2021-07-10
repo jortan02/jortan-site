@@ -48,13 +48,13 @@
 }
 
 @mixin white-text {
-    h1, h2, h3, h4, h5, h6, p, span {
+    h1, h2, h3, h4, h5, h6, p, span, li {
         color: $white;
     }
 }
 
 @mixin black-text {
-    h1, h2, h3, h4, h5, h6, p, span {
+    h1, h2, h3, h4, h5, h6, p, span, li {
         color: $black;
     }
 }
@@ -168,11 +168,9 @@
     margin-bottom: 0.5em;
 
     li {
+        color: $white;
         padding-right: 1em;
-
-        span {
-            font-size: 14px;
-        }
+        font-size: 14px;
     }
 }
 

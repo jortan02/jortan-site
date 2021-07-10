@@ -15,7 +15,7 @@ const PortfolioCard = ({ project }) => {
             )}
             <div className="text-container">
                 {project.portfolio_category && (
-                    <h3>{project.portfolio_category.category.toUpperCase()}</h3>
+                    <span className="category">{project.portfolio_category.category.toUpperCase()}</span>
                 )}
                 <h2 className="title">{project.title}</h2>
                 <p className="excerpt">{project.description}</p>
@@ -23,14 +23,14 @@ const PortfolioCard = ({ project }) => {
                     <ul className="skills-list">
                         {project.portfolio_skills.map((portfolio_skill) => (
                             <li key={portfolio_skill.id} className="skill">
-                                <span>{portfolio_skill.skill}</span>
+                                {portfolio_skill.skill}
                             </li>
                         ))}
                     </ul>
                 )}
                 <span>
                     <Link to={project.fields.absoluteSlug} className="link">
-                        <button>Read More</button>
+                        <button>Go to Project</button>
                     </Link>
                     {project.github && (
                         <a href={project.github} className="link">

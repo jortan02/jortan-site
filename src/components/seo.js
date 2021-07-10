@@ -49,6 +49,9 @@ const Seo = ({ seo = {} }) => {
             title={fullSeo.metaTitle}
             titleTemplate={`%s | ${siteName}`}
             meta={metaTags}
+            htmlAttributes={{
+                lang: 'en',
+            }}
         />
     );
 };

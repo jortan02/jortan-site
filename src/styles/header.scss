@@ -11,8 +11,12 @@
 
     .left-header {
         .logo-wrapper {
+            height: 20px;
+            width: min-content;
+            
             .logo {
                 height: 20px;
+                width: auto;
             }
         }
     }

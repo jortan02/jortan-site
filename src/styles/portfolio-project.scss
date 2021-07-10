@@ -2,7 +2,7 @@
 
 #portfolio-project {
 
-    h3 {
+    .category {
         @include portfolio-category;
         margin-top: 2em;
     }

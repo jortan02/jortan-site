@@ -44,7 +44,7 @@ const PersonalCard = () => {
 
     return (
         <div className="card-container">
-            <button className="button-wrapper" onClick={handleToggle}>
+            <button className="button-wrapper" aria-label="Toggle QR code with contact information" onClick={handleToggle}>
                 <FontAwesomeIcon icon={faQrcode} className="icon" />
             </button>
             {qrOpenCode ? (

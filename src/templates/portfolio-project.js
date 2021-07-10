@@ -32,16 +32,16 @@ const PortfolioProject = ({ data }) => {
                         />
                     )}
                     {project.portfolio_category && (
-                        <h3>
+                        <span className="category">
                             {project.portfolio_category.category.toUpperCase()}
-                        </h3>
+                        </span>
                     )}
                     <h2 className="title">{project.title}</h2>
                     {project.portfolio_skills && (
                         <ul className="skills-list">
                             {project.portfolio_skills.map((portfolio_skill) => (
                                 <li key={portfolio_skill.id} className="skill">
-                                    <span>{portfolio_skill.skill}</span>
+                                    {portfolio_skill.skill}
                                 </li>
                             ))}
                         </ul>
