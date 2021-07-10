@@ -41,8 +41,8 @@
             }
 
             .text-container {
-                max-width: calc(100% - 175px);
-                margin-left: 1em;
+                margin-left: 1.2em;
+                max-width: calc(100% - 175px - 1.2em);
 
                 .link {
                     color: $black;
@@ -103,6 +103,8 @@
                 }
 
                 .text-container {
+                    max-width: calc(100% - 130px - 1.2em);
+
                     .date {
                         margin-bottom: 0;
                     }
