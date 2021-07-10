@@ -19,13 +19,13 @@ const PortfolioProject = ({ data: { strapiPortfolioProjects: project } }) => {
     };
 
     return (
-        <Layout seo={seo} id="portfolio-project">
+        <Layout seo={seo} className="portfolio-project">
             <article className="content-container">
                 <div className="featured-image-container">
                     {project.image && (
                         <GatsbyImage
                             image={getImage(project.image.localFile)}
-                            alt={`${project.title} image`}
+                            alt={project.image.alternativeText}
                             className="center-wrapper"
                         />
                     )}
@@ -77,6 +77,7 @@ export const pageQuery = graphql`
                 id
             }
             image {
+                alternativeText
                 localFile {
                     childImageSharp {
                         gatsbyImageData(layout: CONSTRAINED)

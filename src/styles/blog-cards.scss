@@ -1,0 +1,117 @@
+@import "./variables";
+@import "./mixins";
+
+.blog-posts-container {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    margin-top: 2em;
+    width: 80%;
+    max-width: 45em;
+    list-style: none;
+
+    .blog-post-container {
+        @include black-text;
+        @include BoxShadow(4);
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        position: relative;
+        background: $white;
+        margin-bottom: 1.6em;
+        border-radius: 18px;
+        padding: 1em;
+        transition: 0.4s ease-in-out;
+
+        .blog-content-container {
+            display: flex;
+            align-items: center;
+
+            .picture-wrapper {
+                @include flex-center;
+                background-color: $grey;
+                border-radius: 18px;
+                width: 175px;
+                height: 175px;
+
+                .icon {
+                    font-size: 64px;
+                    color: $white;
+                }
+            }
+
+            .text-container {
+                display: flex;
+                max-width: calc(100% - 12.25em);
+                margin-left: 1.25em;
+                flex-direction: column;
+
+                .link {
+                    color: $black;
+                    text-decoration: none;
+
+                    // https://heydon.github.io/Inclusive-Components/cards-pseudo-content/
+
+                    &::after {
+                        content: "";
+                        position: absolute;
+                        left: 0;
+                        top: 0;
+                        right: 0;
+                        bottom: 0;
+                    }
+                }
+
+                .title {
+                    margin: 0 0 0.3em 0;
+                }
+
+                .date {
+                    @include blog-date;
+                    font-size: 14px;
+                }
+
+                .excerpt {
+                    margin: 0;
+                }
+            }
+        }
+
+        .excerpt-mobile {
+            display: none;
+            margin-bottom: 0;
+        }
+
+        &:hover {
+            background-color: $off-white;
+            @include BoxShadow(6);
+        }
+    }
+}
+
+@media screen and (max-width: 615px) {
+    .blog-posts-container {
+        .blog-post-container {
+            .blog-content-container {
+                .picture-wrapper {
+                    width: 140px !important;
+                    height: 140px !important;
+                }
+
+                .text-container {
+                    .date {
+                        margin-bottom: 0;
+                    }
+
+                    .excerpt {
+                        display: none;
+                    }
+                }
+            }
+
+            .excerpt-mobile {
+                display: block;
+            }
+        }
+    }
+}

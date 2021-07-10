@@ -8,7 +8,8 @@ const path = require("path");
 // TODO: Create a tag system for blog and portfolio categories
 
 module.exports.onCreateNode = async ({ node, actions, createNodeId, createContentDigest }) => {
-    if (node.internal.type === "StrapiBlogPosts" || node.internal.type === "StrapiPortfolioProjects") {
+    const type = node.internal.type;
+    if (type === "StrapiBlogPosts" || type === "StrapiPortfolioProjects" || type === "StrapiResume") {
         createContentNode(node, actions, createNodeId, createContentDigest);
     }
 };

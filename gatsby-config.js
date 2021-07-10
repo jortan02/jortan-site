@@ -32,7 +32,7 @@ module.exports = {
             resolve: "gatsby-plugin-web-font-loader",
             options: {
                 google: {
-                    families: ["Poppins", "Roboto"],
+                    families: ["Nunito Sans", "Roboto"],
                 },
             },
         },
@@ -52,13 +52,8 @@ module.exports = {
             resolve: "gatsby-source-strapi",
             options: {
                 apiURL: process.env.API_URL || "http://localhost:1337",
-                collectionTypes: [
-                    "blog-posts",
-                    "blog-categories",
-                    "portfolio-projects",
-                    "portfolio-categories",
-                ],
-                singleTypes: ["global"],
+                collectionTypes: ["blog-posts", "portfolio-projects"],
+                singleTypes: ["global", "resume"],
                 queryLimit: 1000,
             },
         },

@@ -1,9 +1,9 @@
 import React from "react";
 import { graphql } from "gatsby";
 import Layout from "../components/layout";
-import BlogCard from "../components/blog-card";
 import "../styles/blog.scss";
 import Pagination from "../components/pagination";
+import BlogCards from "../components/blog-cards";
 
 // https://nickymeuleman.netlify.app/blog/gatsby-pagination
 // https://dev.to/steelvoltage/tip-disabling-buttons-as-links-in-gatsby-3o5n
@@ -25,11 +25,7 @@ const BlogPage = ({ pageContext, data }) => {
                         <hr />
                     </div>
                 </div>
-                <ul className="blog-posts-container">
-                    {posts.map(({ node: post }) => (
-                        <BlogCard key={post.id} post={post} />
-                    ))}
-                </ul>
+                <BlogCards posts={posts} />
                 <Pagination currentPage={currentPage} numPages={numPages} />
             </section>
         </Layout>

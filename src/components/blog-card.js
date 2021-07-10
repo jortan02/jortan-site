@@ -3,7 +3,6 @@ import { Link } from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShapes } from "@fortawesome/free-solid-svg-icons";
-import "../styles/blog-card.scss";
 import BlogDate from "./blog-date";
 
 const BlogCard = ({ post }) => {
@@ -13,7 +12,7 @@ const BlogCard = ({ post }) => {
                 {post.image ? (
                     <GatsbyImage
                         image={getImage(post.image.localFile)}
-                        alt="Blog post image"
+                        alt={post.image.alternativeText}
                         className="picture-wrapper"
                     />
                 ) : (

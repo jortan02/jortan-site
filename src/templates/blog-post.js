@@ -21,13 +21,13 @@ const BlogPost = ({ data: { strapiBlogPosts: post } }) => {
     };
 
     return (
-        <Layout seo={seo} id="blog-post">
+        <Layout seo={seo} className="blog-post">
             <article className="content-container">
                 <div className="featured-image-container">
                     {post.image && (
                         <GatsbyImage
                             image={getImage(post.image.localFile)}
-                            alt="Blog post image"
+                            alt={post.image.alternativeText}
                             className="center-wrapper"
                         />
                     )}
@@ -54,6 +54,7 @@ export const pageQuery = graphql`
                 category
             }
             image {
+                alternativeText
                 localFile {
                     childImageSharp {
                         gatsbyImageData(layout: CONSTRAINED)

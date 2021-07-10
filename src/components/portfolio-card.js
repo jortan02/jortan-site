@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
-import "../styles/portfolio-card.scss";
 
 const PortfolioCard = ({ project }) => {
     return (
@@ -9,7 +8,7 @@ const PortfolioCard = ({ project }) => {
             {project.image && (
                 <GatsbyImage
                     image={getImage(project.image.localFile)}
-                    alt={`${project.title} image`}
+                    alt={project.image.alternativeText}
                     className="picture-wrapper"
                     imgClassName="picture"
                 />

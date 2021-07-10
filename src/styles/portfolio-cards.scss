@@ -1,0 +1,73 @@
+@import "./mixins";
+
+.portfolio-projects-container {
+    margin-top: 3em;
+    padding: 0;
+    list-style: none;
+
+    .portfolio-project-container {
+        @include flex-center;
+        margin-bottom: 2em;
+
+        .picture-wrapper {
+            width: 47.5%;
+            border-radius: 18px;
+            flex-shrink: 0;
+            @include BoxShadow(2);
+        }
+
+        .text-container {
+            margin-left: 3em;
+            width: 47.5%;
+
+            h3 {
+                @include portfolio-category;
+            }
+
+            button {
+                @include button;
+                margin-top: 0.5em;
+                margin-right: 0.5em;
+            }
+
+            .skills-list {
+                @include portfolio-skills;
+            }
+        }
+
+        &:nth-child(even) {
+            .picture-wrapper {
+                order: 2;
+            }
+
+            .text-container {
+                order: 1;
+                margin-left: 0;
+                margin-right: 3em;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 615px) {
+    .portfolio-projects-container {
+        .portfolio-project-container {
+            flex-direction: column;
+
+            .picture-wrapper {
+                order: 1 !important;
+                width: auto;
+            }
+
+            .text-container {
+                order: 2 !important;
+                margin: 0;
+                width: auto;
+
+                h3 {
+                    margin-top: 2em;
+                }
+            }
+        }
+    }
+}

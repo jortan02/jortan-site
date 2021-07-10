@@ -1,7 +1,7 @@
 import React from "react";
 import { graphql } from "gatsby";
 import Layout from "../components/layout";
-import PortfolioCard from "../components/portfolio-card";
+import PortfolioCards from "../components/portfolio-cards";
 import Pagination from "../components/pagination";
 import "../styles/portfolio.scss";
 
@@ -22,11 +22,7 @@ const PortfolioPage = ({ pageContext, data }) => {
                         <hr />
                     </div>
                 </div>
-                <ul className="portfolio-projects-container">
-                    {projects.map(({ node: project }) => (
-                        <PortfolioCard key={project.id} project={project} />
-                    ))}
-                </ul>
+                <PortfolioCards projects={projects}/>
                 <Pagination currentPage={currentPage} numPages={numPages} />
             </section>
         </Layout>
@@ -56,6 +52,7 @@ export const listQuery = graphql`
                         id
                     }
                     image {
+                        alternativeText
                         localFile {
                             childImageSharp {
                                 gatsbyImageData(layout: CONSTRAINED)
