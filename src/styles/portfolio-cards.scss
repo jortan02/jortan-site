@@ -1,13 +1,13 @@
 @import "./mixins";
 
 .portfolio-projects-container {
-    margin-top: 3em;
+    margin-top: 2.4em;
     padding: 0;
     list-style: none;
 
     .portfolio-project-container {
         @include flex-center;
-        margin-bottom: 2em;
+        margin-bottom: 2.4em;
 
         .picture-wrapper {
             width: 47.5%;

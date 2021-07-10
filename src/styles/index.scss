@@ -15,11 +15,33 @@
 
         button {
             @include button;
-            padding: 0.8em;
         }
 
         p {
             max-width: 24em;
+        }
+    }
+
+    .recent-blog-posts-container {
+        @include flex-center;
+        padding-left: 2.4em;
+        padding-right: 2.4em;
+        margin-bottom: 2.4em;
+        flex-direction: column;
+
+        button {
+            @include button;
+        }
+    }
+
+    .recent-portfolio-projects-container {
+        @include flex-center;
+        margin: 0 2.4em 1.2em 2.4em;
+        flex-direction: column;
+
+        button {
+            @include button;
+            margin-bottom: 1.2em;
         }
     }
 }
@@ -31,7 +53,6 @@
             order: 2;
             margin-left: 0;
             margin-right: 0;
-            padding: 0 2.4em;
         }
 
         .card-container {

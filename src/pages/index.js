@@ -52,13 +52,19 @@ const IndexPage = () => {
                 </div>
                 <PersonalCard />
             </Hero>
-            <div className="blog-posts-container">
+            <div className="recent-blog-posts-container">
                 <h2>Recent Blog Posts</h2>
                 <BlogCards posts={posts}/>
+                <Link to="/blog">
+                        <button>View More Posts</button>
+                </Link>
             </div>
-            <div className="portfolio-projects-container">
+            <div className="recent-portfolio-projects-container">
                 <h2>Recent Portfolio Projects</h2>
                 <PortfolioCards projects={projects} />
+                <Link to="/portfolio">
+                        <button>View More Projects</button>
+                </Link>
             </div>
         </Layout>
     );
