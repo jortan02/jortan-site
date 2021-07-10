@@ -10,26 +10,26 @@ const ContactForm = () => {
         >
             <label>
                 <div className="input-type">
-                    <p>Name</p>
-                    <input type="text" name="name" id="name" required />
+                    <p>Name *</p>
+                    <input type="text" name="name" id="name" required aria-required="true" />
                 </div>
             </label>
             <label>
                 <div className="input-type">
-                    <p>Email</p>
-                    <input type="email" name="email" id="email" required />
+                    <p>Email *</p>
+                    <input type="email" name="email" id="email" required aria-required="true" />
                 </div>
             </label>
             <label>
                 <div className="input-type">
-                    <p>Subject</p>
-                    <input type="text" name="subject" id="subject" required />
+                    <p>Subject *</p>
+                    <input type="text" name="subject" id="subject" required aria-required="true"/>
                 </div>
             </label>
             <label>
                 <div className="input-type">
-                    <p>Message</p>
-                    <textarea name="message" id="message" rows="6" required />
+                    <p>Message *</p>
+                    <textarea name="message" id="message" rows="6" required aria-required="true"/>
                 </div>
             </label>
             <button type="submit">Send</button>
