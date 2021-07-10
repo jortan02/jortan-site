@@ -22,7 +22,7 @@ const BlogCard = ({ post }) => {
                 )}
                 <div className="text-container">
                     <h2 className="title">
-                        <Link to={post.slug} className="link">
+                        <Link to={post.fields.absoluteSlug} className="link">
                             {post.title}
                         </Link>
                     </h2>

@@ -46,7 +46,9 @@ export const listQueryFragment = graphql`
         edges {
             node {
                 id
-                slug
+                fields {
+                    absoluteSlug
+                }
                 title
                 description
                 content

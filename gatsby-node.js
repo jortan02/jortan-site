@@ -1,4 +1,3 @@
-const { createFilePath } = require("gatsby-source-filesystem");
 const path = require("path");
 
 // https://www.gatsbyjs.com/docs/mdx/programmatically-creating-pages/
@@ -7,10 +6,32 @@ const path = require("path");
 
 // TODO: Create a tag system for blog and portfolio categories
 
-module.exports.onCreateNode = async ({ node, actions, createNodeId, createContentDigest }) => {
+exports.onCreateNode = ({
+    node,
+    actions,
+    createNodeId,
+    createContentDigest,
+}) => {
     const type = node.internal.type;
-    if (type === "StrapiBlogPosts" || type === "StrapiPortfolioProjects" || type === "StrapiResume") {
+    if (
+        type === "StrapiBlogPosts" ||
+        type === "StrapiPortfolioProjects" ||
+        type === "StrapiResume"
+    ) {
         createContentNode(node, actions, createNodeId, createContentDigest);
+    }
+    if (type === "StrapiBlogPosts") {
+        actions.createNodeField({
+            name: "absoluteSlug",
+            node,
+            value: `/blog/${node.slug}`,
+        });
+    } else if (type === "StrapiPortfolioProjects") {
+        actions.createNodeField({
+            name: "absoluteSlug",
+            node,
+            value: `/portfolio/${node.slug}`,
+        });
     }
 };
 
@@ -34,29 +55,37 @@ function createContentNode(node, actions, createNodeId, createContentDigest) {
 }
 
 exports.createPages = async ({ graphql, actions, reporter }) => {
-    // Blog:
-    const blogResult = await graphql(`
-        query {
-            allStrapiBlogPosts(
-                sort: { fields: date, order: DESC }
-                limit: 1000
-                ) {
+    const result = await graphql(`
+        {
+            allStrapiPortfolioProjects {
                 edges {
                     node {
+                        fields {
+                            absoluteSlug
+                        }
                         id
-                        slug
+                    }
+                }
+            }
+            allStrapiBlogPosts {
+                edges {
+                    node {
+                        fields {
+                            absoluteSlug
+                        }
+                        id
                     }
                 }
             }
         }
     `);
 
-    if (blogResult.errors) {
+    if (result.errors) {
         reporter.panicOnBuild('🚨  ERROR: Loading "createPages" query');
     }
 
     // Create blog post pages.
-    const blogPosts = blogResult.data.allStrapiBlogPosts.edges;
+    const blogPosts = result.data.allStrapiBlogPosts.edges;
 
     createListandPages(
         "blog",
@@ -67,29 +96,9 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         actions
     );
 
-    // Portfolio:
-    const portfolioResult = await graphql(`
-        query {
-            allStrapiPortfolioProjects(
-                sort: { fields: order, order: DESC }
-                limit: 1000
-                ) {
-                edges {
-                    node {
-                        id
-                        slug
-                    }
-                }
-            }
-        }
-    `);
-
-    if (portfolioResult.errors) {
-        reporter.panicOnBuild('🚨  ERROR: Loading "createPages" query');
-    }
-
     // Create portfolio post pages.
-    const portfolioPosts = portfolioResult.data.allStrapiPortfolioProjects.edges;
+    const portfolioPosts =
+        result.data.allStrapiPortfolioProjects.edges;
 
     createListandPages(
         "portfolio",
@@ -114,11 +123,10 @@ function createListandPages(
 
     // you'll call `createPage` for each blogResult
     posts.forEach((post, index) => {
-
         createPage({
             // This is the slug you created before
             // (or `node.frontmatter.slug`)
-            path: `/${type}/${post.node.slug}`,
+            path: post.node.fields.absoluteSlug,
             // This component will wrap our MDX content
             component: path.resolve(postTemplate),
             // You can use the values in this context in

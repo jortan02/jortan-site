@@ -50,7 +50,9 @@ export const listQueryFragment = graphql`
         edges {
             node {
                 id
-                slug
+                fields {
+                    absoluteSlug
+                }
                 date(formatString: "MM/DD/YYYY")
                 title
                 description

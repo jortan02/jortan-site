@@ -29,7 +29,7 @@ const PortfolioCard = ({ project }) => {
                     </ul>
                 )}
                 <span>
-                    <Link to={project.slug} className="link">
+                    <Link to={project.fields.absoluteSlug} className="link">
                         <button>Read More</button>
                     </Link>
                     {project.github && (
