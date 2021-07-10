@@ -50,6 +50,7 @@ export const listQuery = graphql`
                         category
                     }
                     image {
+                        alternativeText
                         localFile {
                             childImageSharp {
                                 gatsbyImageData(
