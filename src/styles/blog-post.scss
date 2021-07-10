@@ -1,6 +1,6 @@
 @import "../styles/mixins";
 
-.blog-post {
+#blog-post {
     .date {
         @include blog-date;
 

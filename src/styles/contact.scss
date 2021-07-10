@@ -4,7 +4,6 @@
 #contact {
     .hero-container {
         @include black-text;
-        align-items: flex-start;
         background-color: $off-white;
 
         .contact-form-container {
@@ -20,6 +19,7 @@
         }
 
         .personal-info-container {
+            align-self: flex-start;
             margin: 2.4em 2.4em 2.4em 0;
 
             .qr-code-wrapper {

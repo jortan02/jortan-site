@@ -11,7 +11,9 @@ import "../styles/portfolio-project.scss";
 
 const shortcodes = { Link }; // Provide common components here
 
-const PortfolioProject = ({ data: { strapiPortfolioProjects: project } }) => {
+const PortfolioProject = ({ data }) => {
+    const project = data.strapiPortfolioProjects;
+    
     const seo = {
         metaTitle: project.title,
         metaDescription: project.description,
@@ -19,7 +21,7 @@ const PortfolioProject = ({ data: { strapiPortfolioProjects: project } }) => {
     };
 
     return (
-        <Layout seo={seo} className="portfolio-project">
+        <Layout seo={seo} id="portfolio-project">
             <article className="content-container">
                 <div className="featured-image-container">
                     {project.image && (

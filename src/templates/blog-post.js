@@ -4,16 +4,18 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import { MDXProvider } from "@mdx-js/react";
 import { MDXRenderer } from "gatsby-plugin-mdx";
 import { Link } from "gatsby";
-
 import Layout from "../components/layout";
-import "../styles/blog-post.scss";
 import BlogDate from "../components/blog-date";
+import "../styles/blog-post.scss";
+
 
 // https://www.gatsbyjs.com/docs/mdx/programmatically-creating-pages/
 
 const shortcodes = { Link }; // Provide common components here
 
-const BlogPost = ({ data: { strapiBlogPosts: post } }) => {
+const BlogPost = ({ data }) => {
+    const post = data.strapiBlogPosts;
+
     const seo = {
         metaTitle: post.title,
         metaDescription: post.description,
@@ -21,7 +23,7 @@ const BlogPost = ({ data: { strapiBlogPosts: post } }) => {
     };
 
     return (
-        <Layout seo={seo} className="blog-post">
+        <Layout seo={seo} id="blog-post">
             <article className="content-container">
                 <div className="featured-image-container">
                     {post.image && (

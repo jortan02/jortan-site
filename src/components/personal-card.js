@@ -1,11 +1,45 @@
 import React, { useState } from "react";
-import { StaticImage } from "gatsby-plugin-image";
+import { useStaticQuery, graphql } from "gatsby";
+import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faQrcode } from "@fortawesome/free-solid-svg-icons";
 import ContactInfo from "../components/contact-info";
 import "../styles/personal-card.scss";
 
 const PersonalCard = () => {
+    const data = useStaticQuery(graphql`
+        {
+            strapiGlobal {
+                contactInformation {
+                    profilePicture {
+                        localFile {
+                            childImageSharp {
+                                gatsbyImageData(
+                                    width: 150
+                                    height: 150
+                                    layout: FIXED
+                                )
+                            }
+                        }
+                    }
+                    qrCode {
+                        localFile {
+                            childImageSharp {
+                                gatsbyImageData(
+                                    width: 150
+                                    height: 150
+                                    layout: FIXED
+                                )
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    `);
+
+    const contact = data.strapiGlobal.contactInformation;
+
     const [qrOpenCode, setQrOpen] = useState(false);
 
     const handleToggle = () => {
@@ -18,15 +52,15 @@ const PersonalCard = () => {
                 <FontAwesomeIcon icon={faQrcode} className="icon" />
             </button>
             {qrOpenCode ? (
-                <StaticImage
-                    src="../images/qr-code.png"
+                <GatsbyImage
+                    image={getImage(contact.qrCode.localFile)}
                     alt="QR code with contact information"
                     className="qr-code-wrapper"
                     imgClassName="qr-code"
                 />
             ) : (
-                <StaticImage
-                    src="../images/profile_picture.jpg"
+                <GatsbyImage
+                    image={getImage(contact.profilePicture.localFile)}
                     alt="Jordan Tan"
                     className="profile-picture-wrapper"
                     imgClassName="profile-picture"

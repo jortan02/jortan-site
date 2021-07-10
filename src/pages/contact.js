@@ -1,15 +1,43 @@
 import React from "react";
-import { StaticImage } from "gatsby-plugin-image";
+import { useStaticQuery, graphql } from "gatsby";
+import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import Layout from "../components/layout";
 import Hero from "../components/hero";
 import ContactInfo from "../components/contact-info";
 import ContactForm from "../components/contact-form";
 import "../styles/contact.scss";
 
+export const query = graphql`
+    fragment ContactImages on StrapiGlobal {
+        contactInformation {
+            qrCode {
+                localFile {
+                    childImageSharp {
+                        gatsbyImageData(
+                            width: 180
+                            height: 180
+                            layout: FIXED
+                        )
+                    }
+                }
+            }
+        }
+    }
+`
+
 const ContactPage = () => {
     const seo = {
         metaTitle: "Contact",
     };
+
+    const data = useStaticQuery(graphql`
+        {
+            strapiGlobal {
+                ...ContactImages
+            }
+        }
+    `);
+    const contact = data.strapiGlobal.contactInformation;
 
     return (
         <Layout seo={seo} id="contact">
@@ -19,8 +47,8 @@ const ContactPage = () => {
                     <ContactForm />
                 </div>
                 <div className="personal-info-container">
-                    <StaticImage
-                        src="../images/qr-code.png"
+                    <GatsbyImage
+                        image={getImage(contact.qrCode.localFile)}
                         alt="QR code with contact information"
                         className="qr-code-wrapper"
                         imgClassName="qr-code"

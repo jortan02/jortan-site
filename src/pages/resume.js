@@ -1,15 +1,41 @@
 import React from "react";
-import { graphql } from "gatsby";
+import { graphql, useStaticQuery } from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import Layout from "../components/layout";
 import "../styles/resume.scss";
 import { MDXProvider } from "@mdx-js/react";
 import { MDXRenderer } from "gatsby-plugin-mdx";
 
-const ResumePage = ({ data: { strapiResume: resume } }) => {
+const ResumePage = () => {
     const seo = {
         metaTitle: "Resume",
     };
+
+    const data = useStaticQuery(graphql`
+    {
+        strapiResume {
+            childStrapiResumeContent {
+                childMdx {
+                    body
+                }
+            }
+            file {
+                localFile {
+                    publicURL
+                }
+            }
+            image {
+                localFile {
+                    childImageSharp {
+                        gatsbyImageData(layout: CONSTRAINED)
+                    }
+                }
+            }
+        }
+    }
+    `)
+
+    const resume = data.strapiResume;
 
     return (
         <Layout seo={seo} id="resume">
@@ -50,29 +76,5 @@ const ResumePage = ({ data: { strapiResume: resume } }) => {
         </Layout>
     );
 };
-
-export const ResumePagequery = graphql`
-    {
-        strapiResume {
-            childStrapiResumeContent {
-                childMdx {
-                    body
-                }
-            }
-            file {
-                localFile {
-                    publicURL
-                }
-            }
-            image {
-                localFile {
-                    childImageSharp {
-                        gatsbyImageData(layout: CONSTRAINED)
-                    }
-                }
-            }
-        }
-    }
-`;
 
 export default ResumePage;

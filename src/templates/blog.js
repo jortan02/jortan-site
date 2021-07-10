@@ -1,9 +1,10 @@
 import React from "react";
 import { graphql } from "gatsby";
 import Layout from "../components/layout";
-import "../styles/blog.scss";
-import Pagination from "../components/pagination";
 import BlogCards from "../components/blog-cards";
+import Pagination from "../components/pagination";
+import "../styles/blog.scss";
+
 
 // https://nickymeuleman.netlify.app/blog/gatsby-pagination
 // https://dev.to/steelvoltage/tip-disabling-buttons-as-links-in-gatsby-3o5n
@@ -13,7 +14,7 @@ const BlogPage = ({ pageContext, data }) => {
         metaTitle: "Blog",
     };
 
-    const { edges: posts } = data.allStrapiBlogPosts;
+    const posts = data.allStrapiBlogPosts.edges;
     const { currentPage, numPages } = pageContext;
 
     return (
@@ -39,32 +40,38 @@ export const listQuery = graphql`
             limit: $limit
             skip: $skip
         ) {
-            edges {
-                node {
-                    id
-                    slug
-                    date(formatString: "MM/DD/YYYY")
-                    title
-                    description
-                    blog_category {
-                        category
-                    }
-                    image {
-                        alternativeText
-                        localFile {
-                            childImageSharp {
-                                gatsbyImageData(
-                                    width: 175
-                                    height: 175
-                                    layout: FIXED
-                                )
-                            }
+            ...AllBlogData
+        }
+    }
+`;
+
+export const listQueryFragment = graphql`
+    fragment AllBlogData on StrapiBlogPostsConnection {
+        edges {
+            node {
+                id
+                slug
+                date(formatString: "MM/DD/YYYY")
+                title
+                description
+                blog_category {
+                    category
+                }
+                image {
+                    alternativeText
+                    localFile {
+                        childImageSharp {
+                            gatsbyImageData(
+                                width: 175
+                                height: 175
+                                layout: FIXED
+                            )
                         }
                     }
                 }
             }
         }
     }
-`;
+`
 
 export default BlogPage;
