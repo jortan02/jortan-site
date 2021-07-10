@@ -62,11 +62,15 @@
                     }
                 }
 
+                // https://stackoverflow.com/questions/3922739/limit-text-length-to-n-lines-using-css
+
                 .title {
+                    @include blog-title;
                     margin: 0 0 0.3em 0;
                 }
 
                 .date {
+                    @include blog-title;
                     @include blog-date;
                     font-size: 14px;
                 }
