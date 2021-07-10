@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useStaticQuery, graphql } from "gatsby";
-import { GatsbyImage, getImage } from "gatsby-plugin-image";
+import { StaticImage, GatsbyImage, getImage } from "gatsby-plugin-image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faQrcode } from "@fortawesome/free-solid-svg-icons";
 import ContactInfo from "../components/contact-info";
@@ -55,8 +55,8 @@ const PersonalCard = () => {
                     imgClassName="qr-code"
                 />
             ) : (
-                <GatsbyImage
-                    image={getImage(contact.profilePicture.localFile)}
+                <StaticImage
+                    src="../images/profile_picture.jpg"
                     alt="Jordan Tan"
                     className="profile-picture-wrapper"
                     imgClassName="profile-picture"
