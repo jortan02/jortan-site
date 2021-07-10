@@ -23,7 +23,7 @@ const PortfolioPage = ({ pageContext, data }) => {
                     </div>
                 </div>
                 <PortfolioCards projects={projects}/>
-                <Pagination currentPage={currentPage} numPages={numPages} />
+                <Pagination page="portfolio" currentPage={currentPage} numPages={numPages} />
             </section>
         </Layout>
     );

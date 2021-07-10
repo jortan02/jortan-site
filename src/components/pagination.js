@@ -2,33 +2,33 @@ import React from "react";
 import { Link } from "gatsby";
 import "../styles/pagination.scss";
 
-const Pagination = ({ currentPage, numPages }) => {
+const Pagination = ({ page, currentPage, numPages }) => {
     const isFirst = currentPage === 1;
     const isLast = currentPage === numPages;
 
     return (
         <div className="pagination-container">
             <Link
-                to="/blog"
+                to={`/${page}`}
                 className={`first ${!isFirst ? "" : "disabled-link"}`}
             >
-                <span>{`<<`}</span>
+                {`<<`}
             </Link>
             {Array.from({ length: numPages }, (_, i) => (
                 <Link
-                    key={`blog-number-${i + 1}`}
-                    to={`/blog${i === 0 ? "" : "/" + (i + 1)}`}
+                    key={`${page}-number-${i + 1}`}
+                    to={`/${page}${i === 0 ? "" : "/" + (i + 1)}`}
                     activeClassName="active-link"
                     className="number"
                 >
-                    <span>{i + 1}</span>
+                    {i + 1}
                 </Link>
             ))}
             <Link
-                to={`/blog${numPages ? "/" + numPages : ""}`}
+                to={`/${page}${numPages ? "/" + numPages : ""}`}
                 className={`last ${!isLast ? "" : "disabled-link"}`}
             >
-                <span>{`>>`}</span>
+                {`>>`}
             </Link>
         </div>
     );

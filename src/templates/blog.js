@@ -26,7 +26,7 @@ const BlogPage = ({ pageContext, data }) => {
                     </div>
                 </div>
                 <BlogCards posts={posts} />
-                <Pagination currentPage={currentPage} numPages={numPages} />
+                <Pagination page="blog" currentPage={currentPage} numPages={numPages} />
             </section>
         </Layout>
     );

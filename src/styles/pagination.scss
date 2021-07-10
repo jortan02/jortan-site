@@ -1,4 +1,4 @@
-@import "./mixins";
+@import "./variables";
 
 .pagination-container {
     display: flex;
@@ -11,15 +11,16 @@
     .last {
         text-decoration: none;
         padding: 0 0.4em 0 0.4em;
+        font-size: 18px;
+        color: $grey;
+        transition: 0.4s ease-in-out;
 
-        span {
-            @include pagination-text;
+        &:hover {
+            color: $white;
         }
 
         &.active-link {
-            span {
-                color: $white;
-            }
+            color: $white;
         }
 
         &.disabled-link {

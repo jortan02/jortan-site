@@ -76,16 +76,6 @@
     }
 }
 
-@mixin pagination-text {
-    font-size: 18px;
-    color: $grey;
-    transition: 0.4s ease-in-out;
-
-    &:hover {
-        color: $white;
-    }
-}
-
 @mixin flex-center {
     display: flex;
     justify-content: center;
