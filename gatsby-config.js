@@ -74,21 +74,6 @@ module.exports = {
                 },
             },
         },
-        {
-            resolve: `gatsby-plugin-manifest`,
-            options: {
-                icon: `src/images/logos/jt-logo-bg.svg`,
-                cache_busting_mode: "none",
-            },
-        },
-        {
-            resolve: "gatsby-plugin-offline",
-            options: {
-                workboxConfig: {
-                    globPatterns: ["**/src/images/*"],
-                },
-            },
-        },
     ],
     flags: {
         DEV_SSR: false,

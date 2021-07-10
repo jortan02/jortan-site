@@ -15,9 +15,7 @@ const PersonalCard = () => {
                         localFile {
                             childImageSharp {
                                 gatsbyImageData(
-                                    width: 150
-                                    height: 150
-                                    layout: FIXED
+                                    layout: CONSTRAINED
                                 )
                             }
                         }
@@ -26,9 +24,7 @@ const PersonalCard = () => {
                         localFile {
                             childImageSharp {
                                 gatsbyImageData(
-                                    width: 150
-                                    height: 150
-                                    layout: FIXED
+                                    layout: CONSTRAINED
                                 )
                             }
                         }

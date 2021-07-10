@@ -4,14 +4,14 @@ import { faCircle } from "@fortawesome/free-solid-svg-icons";
 
 const BlogDate = ({ post }) => {
     return (
-        <div className="date">
+        <div className="date-container">
             {post.blog_category && (
                 <>
                     <span>{post.blog_category.category.toUpperCase()}</span>
                     <FontAwesomeIcon icon={faCircle} className="icon" />
                 </>
             )}
-            <span>{post.date}</span>
+            <span className="date">{post.date}</span>
         </div>
     );
 };

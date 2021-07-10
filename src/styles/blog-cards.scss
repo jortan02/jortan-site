@@ -41,10 +41,8 @@
             }
 
             .text-container {
-                display: flex;
-                max-width: calc(100% - 12.25em);
-                margin-left: 1.25em;
-                flex-direction: column;
+                max-width: calc(100% - 175px);
+                margin-left: 1em;
 
                 .link {
                     color: $black;
@@ -69,8 +67,10 @@
                     margin: 0 0 0.3em 0;
                 }
 
-                .date {
-                    @include blog-title;
+                .date-container {
+                    span {
+                        @include blog-title;
+                    }
                     @include blog-date;
                     font-size: 14px;
                 }
@@ -98,8 +98,8 @@
         .blog-post-container {
             .blog-content-container {
                 .picture-wrapper {
-                    width: 140px !important;
-                    height: 140px !important;
+                    width: 130px !important;
+                    height: 130px !important;
                 }
 
                 .text-container {

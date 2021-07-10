@@ -4,7 +4,7 @@
 #blog {
     .content-container {
         @include flex-center;
-        padding: 2.4em;
+        padding: 2.4em 5%;
         flex-direction: column;
 
         .center-wrapper {

@@ -13,7 +13,7 @@ const shortcodes = { Link }; // Provide common components here
 
 const PortfolioProject = ({ data }) => {
     const project = data.strapiPortfolioProjects;
-    
+
     const seo = {
         metaTitle: project.title,
         metaDescription: project.description,
@@ -38,14 +38,14 @@ const PortfolioProject = ({ data }) => {
                     )}
                     <h2 className="title">{project.title}</h2>
                     {project.portfolio_skills && (
-                    <ul className="skills-list">
-                        {project.portfolio_skills.map((portfolio_skill) => (
-                            <li key={portfolio_skill.id} className="skill">
-                                <span>{portfolio_skill.skill}</span>
-                            </li>
-                        ))}
-                    </ul>
-                )}
+                        <ul className="skills-list">
+                            {project.portfolio_skills.map((portfolio_skill) => (
+                                <li key={portfolio_skill.id} className="skill">
+                                    <span>{portfolio_skill.skill}</span>
+                                </li>
+                            ))}
+                        </ul>
+                    )}
                 </div>
                 <MDXProvider components={shortcodes}>
                     <MDXRenderer>
