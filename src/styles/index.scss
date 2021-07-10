@@ -23,11 +23,11 @@
     }
 
     .recent-blog-posts-container {
+        @include black-text;
         @include flex-center;
-        padding-left: 2.4em;
-        padding-right: 2.4em;
-        margin-bottom: 2.4em;
+        padding: 2.4em;
         flex-direction: column;
+        background-color: $off-white;
 
         button {
             @include button;
@@ -35,13 +35,24 @@
     }
 
     .recent-portfolio-projects-container {
+        @include black-text;
         @include flex-center;
-        margin: 0 2.4em 1.2em 2.4em;
+        padding: 2.4em;
         flex-direction: column;
+        background-color: $off-white;
 
         button {
             @include button;
-            margin-bottom: 1.2em;
+        }
+
+        .portfolio-projects-container {
+            .portfolio-project-container {
+                .text-container {
+                    h3 {
+                        border: 2px solid $black;
+                    }
+                }
+            }
         }
     }
 }
