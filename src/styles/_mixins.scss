@@ -162,10 +162,11 @@
 }
 
 @mixin portfolio-skills {
+    margin-bottom: 0.5em;
     padding: 0;
     list-style: none;
     display: flex;
-    margin-bottom: 0.5em;
+    flex-wrap: wrap;
 
     li {
         color: $white;
