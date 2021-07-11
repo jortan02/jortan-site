@@ -67,9 +67,9 @@ module.exports = {
             },
         },
         {
-            resolve: `gatsby-plugin-manifest`,
+            resolve: "gatsby-plugin-manifest",
             options: {
-                icon: `./src/images/logos/jt-logo-bg.svg`,
+                icon: "./src/images/logos/jt-logo-bg.svg",
                 cache_busting_mode: "none",
             },
         },
@@ -77,7 +77,7 @@ module.exports = {
             resolve: "gatsby-plugin-offline",
             options: {
                 workboxConfig: {
-                    globPatterns: ["./src/images/*"],
+                    globPatterns: ["**/src/images/logos/*"],
                 },
             },
         },
