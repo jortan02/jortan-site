@@ -31,21 +31,28 @@ const PortfolioProject = ({ data }) => {
                             className="center-wrapper"
                         />
                     )}
-                    {project.portfolio_category && (
-                        <span className="category">
-                            {project.portfolio_category.category.toUpperCase()}
-                        </span>
-                    )}
-                    <h2 className="title">{project.title}</h2>
-                    {project.portfolio_skills && (
-                        <ul className="skills-list">
-                            {project.portfolio_skills.map((portfolio_skill) => (
-                                <li key={portfolio_skill.id} className="skill">
-                                    {portfolio_skill.skill}
-                                </li>
-                            ))}
-                        </ul>
-                    )}
+                    <div className="project-info">
+                        {project.portfolio_category && (
+                            <p className="category">
+                                {project.portfolio_category.category.toUpperCase()}
+                            </p>
+                        )}
+                        <h2 className="title">{project.title}</h2>
+                        {project.portfolio_skills && (
+                            <ul className="skills-list">
+                                {project.portfolio_skills.map(
+                                    (portfolio_skill) => (
+                                        <li
+                                            key={portfolio_skill.id}
+                                            className="skill"
+                                        >
+                                            {portfolio_skill.skill}
+                                        </li>
+                                    )
+                                )}
+                            </ul>
+                        )}
+                    </div>
                 </div>
                 <MDXProvider components={shortcodes}>
                     <MDXRenderer>

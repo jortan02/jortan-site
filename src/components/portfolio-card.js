@@ -15,7 +15,7 @@ const PortfolioCard = ({ project }) => {
             )}
             <div className="text-container">
                 {project.portfolio_category && (
-                    <span className="category">{project.portfolio_category.category.toUpperCase()}</span>
+                    <p className="category">{project.portfolio_category.category.toUpperCase()}</p>
                 )}
                 <h2 className="title">{project.title}</h2>
                 <p className="excerpt">{project.description}</p>

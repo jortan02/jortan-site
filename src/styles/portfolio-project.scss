@@ -2,10 +2,16 @@
 
 #portfolio-project {
 
-    .category {
-        @include portfolio-category;
+    .project-info {
         margin-top: 2em;
+
+        .category {
+            @include portfolio-category;
+        }
+
     }
+
+
     
     .center-wrapper {
         display: flex;
