@@ -11,15 +11,6 @@ const PersonalCard = () => {
         {
             strapiGlobal {
                 contactInformation {
-                    profilePicture {
-                        localFile {
-                            childImageSharp {
-                                gatsbyImageData(
-                                    layout: CONSTRAINED
-                                )
-                            }
-                        }
-                    }
                     qrCode {
                         localFile {
                             childImageSharp {
@@ -59,8 +50,8 @@ const PersonalCard = () => {
                     src="../images/profile_picture.jpg"
                     alt="Jordan Tan"
                     layout="fixed"
-                    width={150}
-                    height={150}
+                    width={300}
+                    height={300}
                     className="profile-picture-wrapper"
                     imgClassName="profile-picture"
                 />
