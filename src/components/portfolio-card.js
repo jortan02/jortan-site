@@ -9,6 +9,9 @@ const PortfolioCard = ({ project }) => {
                 <GatsbyImage
                     image={getImage(project.image.localFile)}
                     alt={project.image.alternativeText}
+                    layout="fixed"
+                    width={150}
+                    height={150}
                     className="picture-wrapper"
                     imgClassName="picture"
                 />
