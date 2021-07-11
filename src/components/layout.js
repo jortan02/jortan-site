@@ -3,6 +3,8 @@ import Header from "./header";
 import Footer from "./footer";
 import "../styles/layout.scss";
 import Seo from "./seo";
+import "@fontsource/roboto"; 
+import "@fontsource/noto-sans";
 
 const Layout = ({ seo, id, children }) => {
 
