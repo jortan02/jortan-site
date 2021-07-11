@@ -1,20 +1,22 @@
 @import "../styles/mixins";
 
 #blog-post {
-    .date-container {
-        @include blog-date;
+    .content-wrapper {
+        .date-container {
+            @include blog-date;
 
-        svg {
-            color: $white;
+            svg {
+                color: $white;
+            }
         }
-    }
 
-    .center-wrapper {
-        display: flex;
-        justify-content: center;
-    }
+        .center-wrapper {
+            display: flex;
+            justify-content: center;
+        }
 
-    button {
-        @include button;
+        button {
+            @include button;
+        }
     }
 }
