@@ -1,28 +1,26 @@
 @import "../styles/mixins";
 
 #portfolio-project {
+    .content-container {
+        .project-info {
+            margin-top: 2em;
 
-    .project-info {
-        margin-top: 2em;
-
-        .category {
-            @include portfolio-category;
+            .category {
+                @include portfolio-category;
+            }
         }
 
-    }
+        .center-wrapper {
+            display: flex;
+            justify-content: center;
+        }
 
+        .skills-list {
+            @include portfolio-skills;
+        }
 
-    
-    .center-wrapper {
-        display: flex;
-        justify-content: center;
-    }
-    
-    .skills-list {
-        @include portfolio-skills;
-    }
-
-    button {
-        @include button;
+        button {
+            @include button;
+        }
     }
 }
