@@ -53,7 +53,7 @@ module.exports = {
             options: {
                 apiURL: process.env.API_URL || "http://localhost:1337",
                 collectionTypes: ["blog-posts", "portfolio-projects"],
-                singleTypes: ["global", "resume"],
+                singleTypes: ["global"],
                 queryLimit: 1000,
             },
         },
