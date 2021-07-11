@@ -4,7 +4,7 @@
 #portfolio {
     .content-container {
         @include flex-center;
-        padding: 2.4em 5%;
+        padding: 2.4em;
         flex-direction: column;
 
         .center-wrapper {
@@ -14,6 +14,14 @@
                 @include title;
                 align-self: center;
             }
+        }
+    }
+}
+
+@media screen and (max-width: 615px) {
+    #portfolio {
+        .content-container {
+            padding: 2.4em 5%;
         }
     }
 }
