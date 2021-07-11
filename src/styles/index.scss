@@ -22,10 +22,11 @@
         }
     }
 
-    .recent-blog-posts-container {
+    .content-container {
         @include black-text;
         @include flex-center;
         padding: 2.4em;
+        flex-direction: column;
         flex-direction: column;
         background-color: $off-white;
 
@@ -34,23 +35,11 @@
         }
     }
 
-    .recent-portfolio-projects-container {
-        @include black-text;
-        @include flex-center;
-        padding: 2.4em;
-        flex-direction: column;
-        background-color: $off-white;
-
-        button {
-            @include button;
-        }
-
-        .portfolio-projects-container {
-            .portfolio-project-container {
-                .text-container {
-                    .category {
-                        border: 2px solid $black;
-                    }
+    .portfolio-projects-container {
+        .portfolio-project-container {
+            .text-container {
+                .category {
+                    border: 2px solid $black;
                 }
             }
         }
@@ -74,11 +63,7 @@
             align-self: center;
         }
 
-        .recent-blog-posts-container {
-            padding: 2.4em 5%;
-        }
-
-        .recent-portfolio-projects-container {
+        .content-container {
             padding: 2.4em 5%;
         }
     }
