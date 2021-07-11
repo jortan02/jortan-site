@@ -28,14 +28,6 @@ module.exports = {
         ],
     },
     plugins: [
-        {
-            resolve: "gatsby-plugin-web-font-loader",
-            options: {
-                google: {
-                    families: ["Nunito Sans", "Roboto"],
-                },
-            },
-        },
         "gatsby-plugin-sass",
         "gatsby-plugin-gatsby-cloud",
         "gatsby-plugin-image",

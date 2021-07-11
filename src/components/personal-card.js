@@ -58,6 +58,9 @@ const PersonalCard = () => {
                 <StaticImage
                     src="../images/profile_picture.jpg"
                     alt="Jordan Tan"
+                    layout="fixed"
+                    width={150}
+                    height={150}
                     className="profile-picture-wrapper"
                     imgClassName="profile-picture"
                 />

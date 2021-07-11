@@ -1,10 +1,10 @@
 @import "../styles/mixins";
 
 #blog-post {
-    .content-wrapper {
+    .content-container {
         .date-container {
             @include blog-date;
-
+    
             svg {
                 color: $white;
             }
