@@ -74,6 +74,7 @@ module.exports = {
                 },
             },
         },
+        "gatsby-plugin-fontawesome-css",
     ],
     flags: {
         DEV_SSR: false,
