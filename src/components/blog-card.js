@@ -14,6 +14,7 @@ const BlogCard = ({ post }) => {
                         image={getImage(post.image.localFile)}
                         alt={post.image.alternativeText}
                         className="picture-wrapper"
+                        imgClassName="picture"
                     />
                 ) : (
                     <div className="picture-wrapper">

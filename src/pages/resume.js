@@ -24,14 +24,14 @@ const ResumePage = () => {
                         when it benefits myself or others.
                     </p>
                 </div>
-                <figure>
-                    <StaticImage
-                        src="../images/resume.jpg"
-                        alt="Jordan Tan's resume"
-                        className="resume-wrapper"
-                        imgClassName="resume"
-                    />
-                </figure>
+                    <figure>
+                        <StaticImage
+                            src="../images/resume.jpg"
+                            alt="Jordan Tan's resume"
+                            className="resume-wrapper"
+                            imgClassName="resume"
+                        />
+                    </figure>
                 <dl id="resume-text" aria-label="Resume text">
                     <dt>Information</dt>
                     <dl>

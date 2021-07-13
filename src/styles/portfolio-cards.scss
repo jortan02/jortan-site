@@ -14,6 +14,10 @@
             border-radius: 18px;
             flex-shrink: 0;
             @include BoxShadow(2);
+
+            .picture {
+                border-radius: 18px;
+            }
         }
 
         .text-container {
