@@ -28,14 +28,14 @@
                 @include portfolio-category;
             }
 
-            button {
-                @include button;
+            .button {
                 margin-top: 0.5em;
                 margin-right: 0.5em;
             }
 
             .skills-list {
                 @include portfolio-skills;
+                margin-bottom: 2em;
             }
         }
 

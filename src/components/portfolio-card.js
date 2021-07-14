@@ -29,12 +29,12 @@ const PortfolioCard = ({ project }) => {
                     </ul>
                 )}
                 <span>
-                    <Link to={project.fields.absoluteSlug} className="link">
-                        <button>Go to Project</button>
+                    <Link to={project.fields.absoluteSlug} className="button">
+                        Go to Project
                     </Link>
                     {project.github && (
-                        <a href={project.github} className="link">
-                            <button>View on Github</button>
+                        <a href={project.github} className="button">
+                            View on Github
                         </a>
                     )}
                 </span>

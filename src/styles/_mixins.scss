@@ -17,14 +17,14 @@
     cursor: pointer;
     background-color: transparent;
 
-    .icon-wrapper {
+    .button-wrapper {
         .icon {
             transition: 0.4s ease-in-out;
         }
     }
 
     &:hover {
-        .icon-wrapper {
+        .button-wrapper {
             .icon {
                 color: $grey;
             }
@@ -33,6 +33,8 @@
 }
 
 @mixin button {
+    margin-top: 1em;
+    margin-bottom: 1em;
     padding: 0.8em;
     font-size: 16px;
     cursor: pointer;
@@ -41,6 +43,7 @@
     border-radius: 5px;
     border: transparent;
     transition: 0.4s ease-in-out;
+    text-decoration: none;
 
     &:hover {
         background-color: $dark-grey;

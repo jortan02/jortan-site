@@ -98,8 +98,8 @@ const ResumePage = () => {
                     </dl>
                 </dl>
                 <div className="link-wrapper">
-                    <a href={ResumeFile} download>
-                        <button>Download PDF of Resume</button>
+                    <a href={ResumeFile} download className="button">
+                        Download PDF of Resume
                     </a>
                 </div>
             </article>

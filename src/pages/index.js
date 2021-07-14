@@ -13,9 +13,7 @@ import "../styles/index.scss";
 const IndexPage = () => {
     const data = useStaticQuery(graphql`
         {
-            allStrapiBlogPosts(
-                sort: { fields: date, order: DESC }
-                limit: 3) {
+            allStrapiBlogPosts(sort: { fields: date, order: DESC }, limit: 3) {
                 ...AllBlogData
             }
             allStrapiPortfolioProjects(
@@ -46,24 +44,26 @@ const IndexPage = () => {
                         website for myself and to show some of my work. Nice to
                         meet you!
                     </p>
-                    <Link to="/resume">
-                        <button>View My Resume</button>
+                    <div>
+                    <Link to="/resume" className="button">
+                        View My Resume
                     </Link>
+                    </div>
                 </div>
                 <PersonalCard />
             </Hero>
             <div className="content-container">
                 <h1>Recent Blog Posts</h1>
-                <BlogCards posts={posts}/>
-                <Link to="/blog">
-                        <button>View More Posts</button>
+                <BlogCards posts={posts} />
+                <Link to="/blog" className="button">
+                    View More Posts
                 </Link>
             </div>
             <div className="content-container">
                 <h1>Recent Portfolio Projects</h1>
                 <PortfolioCards projects={projects} />
-                <Link to="/portfolio">
-                        <button>View More Projects</button>
+                <Link to="/portfolio" className="button">
+                    View More Projects
                 </Link>
             </div>
         </Layout>

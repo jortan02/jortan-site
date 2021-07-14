@@ -18,5 +18,13 @@
         button {
             @include button;
         }
+
+        a {
+            color: $light-blue;
+        
+            &:visited {
+                color: $grey-blue;
+            }
+        }
     }
 }
