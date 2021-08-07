@@ -36,6 +36,10 @@
             .skills-list {
                 @include portfolio-skills;
                 margin-bottom: 2em;
+
+                .skill {
+                    margin-top: 0.5em;
+                }
             }
         }
 
