@@ -16,6 +16,7 @@ const PersonalCard = () => {
                             childImageSharp {
                                 gatsbyImageData(
                                     layout: CONSTRAINED
+                                    quality: 90
                                 )
                             }
                         }
