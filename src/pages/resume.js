@@ -24,14 +24,14 @@ const ResumePage = () => {
                         when it benefits myself or others.
                     </p>
                 </div>
-                    <figure>
-                        <StaticImage
-                            src="../images/resume.jpg"
-                            alt="Jordan Tan's resume"
-                            className="resume-wrapper"
-                            imgClassName="resume"
-                        />
-                    </figure>
+                <figure>
+                    <StaticImage
+                        src="../images/resume.jpg"
+                        alt="Jordan Tan's resume"
+                        className="resume-wrapper"
+                        imgClassName="resume"
+                    />
+                </figure>
                 <dl id="resume-text" aria-label="Resume text">
                     <dt>Information</dt>
                     <dl>
@@ -44,13 +44,17 @@ const ResumePage = () => {
                     <dl>
                         <dt>Union High School, Roosevelt, UT</dt>
                         <dl>AUG 2016 - MAY 2020</dl>
-                        <dl>4.00 GPA, 1st in Class Ranking, Valedictorian</dl>
+                        <dl>4.00 GPA, 1st in Class Ranking, Valedictorian, Distinguished Leadership Award</dl>
                         <dl>
                             2019 - 2020 Sterling Scholar for Computer Technology
                         </dl>
                         <dt>The University of Utah, Salt Lake City, UT</dt>
                         <dl>AUG 2020 - CURRENT</dl>
+                        <dl>4.00 GPA, 2020-2021 Dean’s List</dl>
                         <dl>School of Engineering, Computer Science Major</dl>
+                        <dt>UBTech, Roosevelt, UT</dt>
+                        <dl>JUL 2021 - AUG 2021</dl>
+                        <dl>IT Support Technician</dl>
                     </dl>
                     <dt>Employment</dt>
                     <dl>
@@ -62,40 +66,29 @@ const ResumePage = () => {
                         </dt>
                         <dl>JUL 2019</dl>
                     </dl>
+                    <dt>Projects</dt>
+                    <dl>
+                        <dt>
+                            Devcamp Fries - Website, from devCamp Bootcamp Course
+                        </dt>
+                        <dl>HTML, CSS</dl>
+                        <dt>
+                            Portfolio Site - Website, from devCamp Bootcamp Course
+                        </dt>
+                        <dl>ReactJS, HTML, SASS, REST API</dl>
+                        <dt>
+                            Jordan Tan Site - My Personal Website
+                        </dt>
+                        <dl>GatsbyJS, HTML, SASS, GraphQL</dl>
+                    </dl>
                     <dt>Skills</dt>
                     <dl>
-                        HTML, CSS, SASS, Javascript, React, Jekyll, and Gatsby
+                        HTML, CSS, SASS, Javascript, React, Jekyll, Gatsby, Java, and Python
                     </dl>
-                    <dl>Java and Python</dl>
                     <dl>Adobe Photoshop and Illustrator</dl>
-                    <dl>MOS Certified 2016</dl>
-                    <dl>
-                        Communication skills in customer service and from
-                        working with coworkers
-                    </dl>
-                    <dl>
-                        Leadership skills from being elected into student
-                        council
-                    </dl>
-                    <dt>Leadership</dt>
-                    <dl>
-                        <dt>
-                            Student Council - Student Body Historian/Technology
-                            Specialist
-                        </dt>
-                        <dl>AUG 2019 - MAY 2020</dl>
-                        <dt>
-                            CAPS Television Broadcasting -Technical Director
-                        </dt>
-                        <dl>AUG 2019 - MAY 2020</dl>
-                    </dl>
-                    <dt>Service</dt>
-                    <dl>
-                        <dt>Technical Assistant for Theater</dt>
-                        <dl>NOV 2019 - MAY 2020</dl>
-                        <dt>Interact/ Rotary International Club</dt>
-                        <dl>AUG 2018 - MAY 2020</dl>
-                    </dl>
+                    <dl>MOS Certified 2016 for Word, Powerpoint, and Excel</dl>
+                    <dl>Communication skills in customer service and from working with coworkers</dl>
+                    <dl>Leadership skills from being elected into student council and supporting school activities</dl>
                 </dl>
                 <div className="link-wrapper">
                     <a href={ResumeFile} download className="button">
