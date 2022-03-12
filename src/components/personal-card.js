@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useStaticQuery, graphql } from "gatsby";
-import { StaticImage, GatsbyImage, getImage } from "gatsby-plugin-image";
+import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faQrcode } from "@fortawesome/free-solid-svg-icons";
 import ContactInfo from "../components/contact-info";
@@ -12,6 +12,16 @@ const PersonalCard = () => {
             strapiGlobal {
                 contactInformation {
                     qrCode {
+                        localFile {
+                            childImageSharp {
+                                gatsbyImageData(
+                                    layout: CONSTRAINED
+                                    quality: 90
+                                )
+                            }
+                        }
+                    }
+                    profilePicture {
                         localFile {
                             childImageSharp {
                                 gatsbyImageData(
@@ -36,7 +46,11 @@ const PersonalCard = () => {
 
     return (
         <div className="card-container">
-            <button className="button-wrapper" aria-label="Toggle QR code with contact information" onClick={handleToggle}>
+            <button
+                className="button-wrapper"
+                aria-label="Toggle QR code with contact information"
+                onClick={handleToggle}
+            >
                 <FontAwesomeIcon icon={faQrcode} className="icon" />
             </button>
             {qrOpenCode ? (
@@ -47,12 +61,9 @@ const PersonalCard = () => {
                     imgClassName="qr-code"
                 />
             ) : (
-                <StaticImage
-                    src="../images/profile_picture.jpg"
+                <GatsbyImage
+                    image={getImage(contact.profilePicture.localFile)}
                     alt="Jordan Tan"
-                    layout="fixed"
-                    width={150}
-                    height={150}
                     className="profile-picture-wrapper"
                     imgClassName="profile-picture"
                 />
