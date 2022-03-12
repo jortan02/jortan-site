@@ -35,6 +35,13 @@ exports.onCreateNode = ({
     }
 };
 
+/**
+ * Helper method that creates the markdown content node for the given node
+ * @param {*} node
+ * @param {*} actions
+ * @param {*} createNodeId
+ * @param {*} createContentDigest
+ */
 function createContentNode(node, actions, createNodeId, createContentDigest) {
     const newNode = {
         id: createNodeId(`${node.internal.type}Content-${node.id}`),
@@ -82,6 +89,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
     if (result.errors) {
         reporter.panicOnBuild('🚨  ERROR: Loading "createPages" query');
+        return;
     }
 
     // Create blog post pages.
@@ -97,8 +105,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     );
 
     // Create portfolio post pages.
-    const portfolioPosts =
-        result.data.allStrapiPortfolioProjects.edges;
+    const portfolioPosts = result.data.allStrapiPortfolioProjects.edges;
 
     createListandPages(
         "portfolio",
@@ -110,6 +117,15 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     );
 };
 
+/**
+ * Helper method that creates the pagination list and pages based on the given posts query snippet
+ * @param {*} type
+ * @param {*} posts
+ * @param {*} postsPerPage
+ * @param {*} listTemplate
+ * @param {*} postTemplate
+ * @param {*} actions
+ */
 function createListandPages(
     type,
     posts,

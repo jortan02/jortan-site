@@ -29,7 +29,7 @@ const Seo = ({ seo = {} }) => {
         if (fullSeo.shareImage) {
             const image = getSrc(fullSeo.shareImage.localFile);
             const imageUrl =
-                (process.env.GATSBY_ROOT_URL || "http://localhost:8000") +
+                process.env.GATSBY_ROOT_URL +
                 image;
             tags.push(
                 {
