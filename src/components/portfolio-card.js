@@ -8,7 +8,7 @@ const PortfolioCard = ({ project }) => {
             {project.image && (
                 <GatsbyImage
                     image={getImage(project.image.localFile)}
-                    alt={project.image.alternativeText}
+                    alt={project.image.alternativeText ? project.image.alternativeText : ""}
                     className="picture-wrapper"
                     imgClassName="picture"
                 />

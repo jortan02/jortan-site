@@ -1,7 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Helmet } from "react-helmet";
-import { getSrc } from "gatsby-plugin-image";
 import { useStaticQuery, graphql } from "gatsby";
 
 // https://strapi.io/blog/build-a-static-blog-with-gatsby-and-strapi
@@ -27,10 +26,10 @@ const Seo = ({ seo = {} }) => {
         }
 
         if (fullSeo.shareImage) {
-            const image = getSrc(fullSeo.shareImage.localFile);
+            const imagePath = fullSeo.shareImage.localFile.publicURL;
             const imageUrl =
                 process.env.GATSBY_ROOT_URL +
-                image;
+                imagePath;
             tags.push(
                 {
                     name: "image",

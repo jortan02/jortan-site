@@ -1,10 +1,14 @@
 import React from "react";
-import { StaticImage } from "gatsby-plugin-image";
+import { useStaticQuery, graphql } from "gatsby";
+import { GatsbyImage, getImage } from "gatsby-plugin-image";
+import { MDXProvider } from "@mdx-js/react";
+import { MDXRenderer } from "gatsby-plugin-mdx";
 import Layout from "../components/layout";
-import ResumeFile from "../files/Resume - Jordan Tan.pdf";
 import "../styles/resume.scss";
 
 const ResumePage = () => {
+    const { strapiResume } = useStaticQuery(query);
+
     const seo = {
         metaTitle: "Resume",
     };
@@ -25,87 +29,32 @@ const ResumePage = () => {
                     </p>
                 </div>
                 <figure>
-                    <StaticImage
+                    {/* <StaticImage
                         src="../images/Resume - Jordan Tan.jpg"
                         alt="Jordan Tan's resume"
+                        className="resume-wrapper"
+                        imgClassName="resume"
+                    /> */}
+                    <GatsbyImage
+                        image={getImage(strapiResume.image.localFile)}
+                        alt={
+                            strapiResume.image.alternativeText
+                                ? strapiResume.image.alternativeText
+                                : ""
+                        }
                         className="resume-wrapper"
                         imgClassName="resume"
                     />
                 </figure>
                 <dl id="resume-text" aria-label="Resume text">
-                    <dt>Information</dt>
-                    <dl>
-                        <dt>Jordan Tan</dt>
-                        <dt>741 E 600 N Roosevelt, UT 84066</dt>
-                        <dt>(435) 823-0976</dt>
-                        <dt>jortan.2002@gmail.com</dt>
-                    </dl>
-                    <dt>Education</dt>
-                    <dl>
-                        <dt>Union High School, Roosevelt, UT</dt>
-                        <dl>AUG 2016 - MAY 2020</dl>
-                        <dl>
-                            4.00 GPA, 1st in Class Ranking, Valedictorian,
-                            Distinguished Leadership Award
-                        </dl>
-                        <dl>
-                            2019 - 2020 Sterling Scholar for Computer Technology
-                        </dl>
-                        <dt>The University of Utah, Salt Lake City, UT</dt>
-                        <dl>AUG 2020 - CURRENT</dl>
-                        <dl>4.00 GPA, 2020-2021 Dean’s List</dl>
-                        <dl>School of Engineering, Computer Science Major</dl>
-                        <dt>UBTech, Roosevelt, UT</dt>
-                        <dl>JUL 2021 - AUG 2021</dl>
-                        <dl>IT Support Technician</dl>
-                    </dl>
-                    <dt>Employment</dt>
-                    <dl>
-                        <dt>China Star, Roosevelt, UT - Cashier/ Host</dt>
-                        <dl>JUL 2016 - CURRENT (Summers)</dl>
-                        <dt>
-                            The University of Utah, Salt Lake City, Utah -
-                            Teaching Assistant
-                        </dt>
-                        <dl>JAN 2022 - CURRENT</dl>
-                    </dl>
-                    <dt>Projects</dt>
-                    <dl>
-                        <dt>
-                            Portfolio Site - Website, from devCamp Bootcamp
-                            Course
-                        </dt>
-                        <dl>ReactJS, HTML, SASS, REST API</dl>
-                        <dt>Jordan Tan Site - My Personal Website</dt>
-                        <dl>GatsbyJS, HTML, SASS, GraphQL</dl>
-                        <dt>
-                            Tank Wars - Online Game, from CS 3500 (Software
-                            Design I)
-                        </dt>
-                        <dl>C#, Windows Forms</dl>
-                    </dl>
-                    <dt>Skills</dt>
-                    <dl>
-                        HTML, CSS, SASS, Javascript, React, Jekyll, Gatsby,
-                        Java, and Python
-                    </dl>
-                    <dl>
-                        Data Structures and Algorithms, Software Design, Unit
-                        Testing
-                    </dl>
-                    <dl>Adobe Photoshop and Illustrator</dl>
-                    <dl>MOS Certified 2016 for Word, Powerpoint, and Excel</dl>
-                    <dl>
-                        Communication skills in customer service and from
-                        working with coworkers
-                    </dl>
-                    <dl>
-                        Leadership skills from being elected into student
-                        council and supporting school activities
-                    </dl>
+                    <MDXProvider>
+                        <MDXRenderer>
+                            {strapiResume.childStrapiResumeContent.childMdx.body}
+                        </MDXRenderer>
+                    </MDXProvider>
                 </dl>
                 <div className="link-wrapper">
-                    <a href={ResumeFile} download className="button">
+                    <a href={strapiResume.link} download className="button">
                         Download PDF of Resume
                     </a>
                 </div>
@@ -113,5 +62,25 @@ const ResumePage = () => {
         </Layout>
     );
 };
+
+const query = graphql`
+    query {
+        strapiResume {
+            childStrapiResumeContent {
+                childMdx {
+                    body
+                }
+            }
+            link
+            image {
+                localFile {
+                    childImageSharp {
+                        gatsbyImageData(layout: CONSTRAINED, quality: 90)
+                    }
+                }
+            }
+        }
+    }
+`;
 
 export default ResumePage;

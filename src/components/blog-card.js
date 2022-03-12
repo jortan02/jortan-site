@@ -12,7 +12,7 @@ const BlogCard = ({ post }) => {
                 {post.image ? (
                     <GatsbyImage
                         image={getImage(post.image.localFile)}
-                        alt={post.image.alternativeText}
+                        alt={post.image.alternativeText ? post.image.alternativeText: ""}
                         className="picture-wrapper"
                         imgClassName="picture"
                     />

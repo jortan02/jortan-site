@@ -27,7 +27,7 @@ const PortfolioProject = ({ data }) => {
                     {project.image && (
                         <GatsbyImage
                             image={getImage(project.image.localFile)}
-                            alt={project.image.alternativeText}
+                            alt={project.image.alternativeText ? project.image.alternativeText : ""}
                             className="center-wrapper"
                         />
                     )}

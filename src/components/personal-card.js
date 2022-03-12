@@ -7,36 +7,8 @@ import ContactInfo from "../components/contact-info";
 import "../styles/personal-card.scss";
 
 const PersonalCard = () => {
-    const data = useStaticQuery(graphql`
-        {
-            strapiGlobal {
-                contactInformation {
-                    qrCode {
-                        localFile {
-                            childImageSharp {
-                                gatsbyImageData(
-                                    layout: CONSTRAINED
-                                    quality: 90
-                                )
-                            }
-                        }
-                    }
-                    profilePicture {
-                        localFile {
-                            childImageSharp {
-                                gatsbyImageData(
-                                    layout: CONSTRAINED
-                                    quality: 90
-                                )
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    `);
-
-    const contact = data.strapiGlobal.contactInformation;
+    const { strapiGlobal } = useStaticQuery(query);
+    const { contactInformation } = strapiGlobal;
 
     const [qrOpenCode, setQrOpen] = useState(false);
 
@@ -55,14 +27,14 @@ const PersonalCard = () => {
             </button>
             {qrOpenCode ? (
                 <GatsbyImage
-                    image={getImage(contact.qrCode.localFile)}
+                    image={getImage(contactInformation.qrCode.localFile)}
                     alt="QR code with contact information"
                     className="qr-code-wrapper"
                     imgClassName="qr-code"
                 />
             ) : (
                 <GatsbyImage
-                    image={getImage(contact.profilePicture.localFile)}
+                    image={getImage(contactInformation.profilePicture.localFile)}
                     alt="Jordan Tan"
                     className="profile-picture-wrapper"
                     imgClassName="profile-picture"
@@ -78,5 +50,34 @@ const PersonalCard = () => {
         </div>
     );
 };
+
+const query = graphql`
+{
+    strapiGlobal {
+        contactInformation {
+            qrCode {
+                localFile {
+                    childImageSharp {
+                        gatsbyImageData(
+                            layout: CONSTRAINED
+                            quality: 90
+                        )
+                    }
+                }
+            }
+            profilePicture {
+                localFile {
+                    childImageSharp {
+                        gatsbyImageData(
+                            layout: CONSTRAINED
+                            quality: 90
+                        )
+                    }
+                }
+            }
+        }
+    }
+}
+`;
 
 export default PersonalCard;

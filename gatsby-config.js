@@ -46,7 +46,7 @@ module.exports = {
                 apiURL: process.env.API_URL,
                 queryLimit: 1000, // Defaults to 100
                 collectionTypes: ["blog-posts", "portfolio-projects"],
-                singleTypes: ["global"],
+                singleTypes: ["global", "resume"],
             },
         },
         "gatsby-remark-images",

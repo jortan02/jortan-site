@@ -29,7 +29,7 @@ const BlogPost = ({ data }) => {
                     {post.image && (
                         <GatsbyImage
                             image={getImage(post.image.localFile)}
-                            alt={post.image.alternativeText}
+                            alt={post.image.alternativeText ? post.image.alternativeText : ""}
                             className="center-wrapper"
                         />
                     )}
