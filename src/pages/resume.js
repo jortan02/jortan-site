@@ -26,7 +26,7 @@ const ResumePage = () => {
                 </div>
                 <figure>
                     <StaticImage
-                        src="../images/resume.jpg"
+                        src="../images/Resume - Jordan Tan.jpg"
                         alt="Jordan Tan's resume"
                         className="resume-wrapper"
                         imgClassName="resume"
