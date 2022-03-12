@@ -38,13 +38,16 @@ const ResumePage = () => {
                         <dt>Jordan Tan</dt>
                         <dt>741 E 600 N Roosevelt, UT 84066</dt>
                         <dt>(435) 823-0976</dt>
-                        <dt>jortan2002@gmail.com</dt>
+                        <dt>jortan.2002@gmail.com</dt>
                     </dl>
                     <dt>Education</dt>
                     <dl>
                         <dt>Union High School, Roosevelt, UT</dt>
                         <dl>AUG 2016 - MAY 2020</dl>
-                        <dl>4.00 GPA, 1st in Class Ranking, Valedictorian, Distinguished Leadership Award</dl>
+                        <dl>
+                            4.00 GPA, 1st in Class Ranking, Valedictorian,
+                            Distinguished Leadership Award
+                        </dl>
                         <dl>
                             2019 - 2020 Sterling Scholar for Computer Technology
                         </dl>
@@ -61,34 +64,45 @@ const ResumePage = () => {
                         <dt>China Star, Roosevelt, UT - Cashier/ Host</dt>
                         <dl>JUL 2016 - CURRENT (Summers)</dl>
                         <dt>
-                            Vallkyrie Management Solutions, Los Angeles, CA -
-                            Survey Proctor
+                            The University of Utah, Salt Lake City, Utah -
+                            Teaching Assistant
                         </dt>
-                        <dl>JUL 2019</dl>
+                        <dl>JAN 2022 - CURRENT</dl>
                     </dl>
                     <dt>Projects</dt>
                     <dl>
                         <dt>
-                            Devcamp Fries - Website, from devCamp Bootcamp Course
-                        </dt>
-                        <dl>HTML, CSS</dl>
-                        <dt>
-                            Portfolio Site - Website, from devCamp Bootcamp Course
+                            Portfolio Site - Website, from devCamp Bootcamp
+                            Course
                         </dt>
                         <dl>ReactJS, HTML, SASS, REST API</dl>
-                        <dt>
-                            Jordan Tan Site - My Personal Website
-                        </dt>
+                        <dt>Jordan Tan Site - My Personal Website</dt>
                         <dl>GatsbyJS, HTML, SASS, GraphQL</dl>
+                        <dt>
+                            Tank Wars - Online Game, from CS 3500 (Software
+                            Design I)
+                        </dt>
+                        <dl>C#, Windows Forms</dl>
                     </dl>
                     <dt>Skills</dt>
                     <dl>
-                        HTML, CSS, SASS, Javascript, React, Jekyll, Gatsby, Java, and Python
+                        HTML, CSS, SASS, Javascript, React, Jekyll, Gatsby,
+                        Java, and Python
+                    </dl>
+                    <dl>
+                        Data Structures and Algorithms, Software Design, Unit
+                        Testing
                     </dl>
                     <dl>Adobe Photoshop and Illustrator</dl>
                     <dl>MOS Certified 2016 for Word, Powerpoint, and Excel</dl>
-                    <dl>Communication skills in customer service and from working with coworkers</dl>
-                    <dl>Leadership skills from being elected into student council and supporting school activities</dl>
+                    <dl>
+                        Communication skills in customer service and from
+                        working with coworkers
+                    </dl>
+                    <dl>
+                        Leadership skills from being elected into student
+                        council and supporting school activities
+                    </dl>
                 </dl>
                 <div className="link-wrapper">
                     <a href={ResumeFile} download className="button">
