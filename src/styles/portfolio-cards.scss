@@ -10,8 +10,8 @@
         margin-bottom: 3.6em;
 
         .picture-wrapper {
-            width: 47.5%;
-            max-height: 600px;
+            width: 45vw;
+            max-height: 45vw;
             border-radius: 18px;
             flex-shrink: 0;
             @include BoxShadow(2);
@@ -22,8 +22,8 @@
         }
 
         .text-container {
-            margin-left: 3em;
-            width: 47.5%;
+            margin-left: 2.4vw;
+            width: 45vw;
 
             .category {
                 @include portfolio-category;
@@ -52,7 +52,7 @@
             .text-container {
                 order: 1;
                 margin-left: 0;
-                margin-right: 3em;
+                margin-right: 2.4vw;
             }
         }
     }
@@ -66,6 +66,7 @@
             .picture-wrapper {
                 order: 1 !important;
                 width: auto;
+                max-height: fit-content;
             }
 
             .text-container {
