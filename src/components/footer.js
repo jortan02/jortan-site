@@ -2,7 +2,6 @@ import React from "react";
 import CircleLinks from "./circle-links";
 import "../styles/footer.scss";
 
-
 const Footer = () => {
     return (
         <footer>

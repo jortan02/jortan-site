@@ -45,9 +45,9 @@ const IndexPage = () => {
                         meet you!
                     </p>
                     <div>
-                    <Link to="/resume" className="button">
-                        View My Resume
-                    </Link>
+                        <Link to="/resume" className="button">
+                            View My Resume
+                        </Link>
                     </div>
                 </div>
                 <PersonalCard />

@@ -34,7 +34,9 @@ const PersonalCard = () => {
                 />
             ) : (
                 <GatsbyImage
-                    image={getImage(contactInformation.profilePicture.localFile)}
+                    image={getImage(
+                        contactInformation.profilePicture.localFile
+                    )}
                     alt="Jordan Tan"
                     className="profile-picture-wrapper"
                     imgClassName="profile-picture"
@@ -43,7 +45,7 @@ const PersonalCard = () => {
             <div className="personal-info-container">
                 <div className="name-container">
                     <h2>Jordan Tan</h2>
-                    <h3>Student</h3>
+                    <h3>{contactInformation.role}</h3>
                 </div>
                 <ContactInfo />
             </div>
@@ -51,33 +53,55 @@ const PersonalCard = () => {
     );
 };
 
-const query = graphql`
-{
-    strapiGlobal {
+export const contactInformationTextQuery = graphql`
+    fragment ContactInformationText on StrapiGlobal {
         contactInformation {
-            qrCode {
-                localFile {
-                    childImageSharp {
-                        gatsbyImageData(
-                            layout: CONSTRAINED
-                            quality: 90
-                        )
-                    }
-                }
-            }
+            emailAddress
+            github
+            id
+            linkedin
+            phoneNumber
+            role
+        }
+    }
+`;
+
+export const profilePictureQuery = graphql`
+    fragment ProfileImageFile on StrapiGlobal {
+        contactInformation {
             profilePicture {
                 localFile {
                     childImageSharp {
-                        gatsbyImageData(
-                            layout: CONSTRAINED
-                            quality: 90
-                        )
+                        gatsbyImageData(layout: CONSTRAINED)
                     }
                 }
             }
         }
     }
-}
+`;
+
+export const qrCodeQuery = graphql`
+    fragment QrImageFile on StrapiGlobal {
+        contactInformation {
+            qrCode {
+                localFile {
+                    childImageSharp {
+                        gatsbyImageData(layout: CONSTRAINED)
+                    }
+                }
+            }
+        }
+    }
+`;
+
+const query = graphql`
+    {
+        strapiGlobal {
+            ...ContactInformationText
+            ...QrImageFile
+            ...ProfileImageFile
+        }
+    }
 `;
 
 export default PersonalCard;

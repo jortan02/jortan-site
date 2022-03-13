@@ -9,7 +9,11 @@ const Links = ({ menuLinks, styleClass, handleClick }) => {
                 <li key={link.name}>
                     <Link
                         to={link.link}
-                        onClick={typeof handleClick === "function" ? handleClick : null}
+                        onClick={
+                            typeof handleClick === "function"
+                                ? handleClick
+                                : null
+                        }
                         className="navigation-link"
                     >
                         {link.name}
@@ -18,18 +22,18 @@ const Links = ({ menuLinks, styleClass, handleClick }) => {
             ))}
         </ul>
     );
-}
+};
 
 Links.propTypes = {
     menuLinks: PropTypes.array,
     styleClass: PropTypes.string,
     handleClick: PropTypes.func,
-}
+};
 
 Links.defaultProps = {
     menuLinks: "",
     styleClass: "",
     handleClick: null,
-}
+};
 
 export default Links;

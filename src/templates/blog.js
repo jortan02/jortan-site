@@ -5,7 +5,6 @@ import BlogCards from "../components/blog-cards";
 import Pagination from "../components/pagination";
 import "../styles/blog.scss";
 
-
 // https://nickymeuleman.netlify.app/blog/gatsby-pagination
 // https://dev.to/steelvoltage/tip-disabling-buttons-as-links-in-gatsby-3o5n
 
@@ -27,7 +26,11 @@ const BlogPage = ({ pageContext, data }) => {
                     </div>
                 </div>
                 <BlogCards posts={posts} />
-                <Pagination page="blog" currentPage={currentPage} numPages={numPages} />
+                <Pagination
+                    page="blog"
+                    currentPage={currentPage}
+                    numPages={numPages}
+                />
             </section>
         </Layout>
     );
@@ -45,7 +48,7 @@ export const listQuery = graphql`
     }
 `;
 
-export const listQueryFragment = graphql`
+export const blogQuery = graphql`
     fragment AllBlogData on StrapiBlogPostsConnection {
         edges {
             node {
@@ -74,6 +77,6 @@ export const listQueryFragment = graphql`
             }
         }
     }
-`
+`;
 
 export default BlogPage;

@@ -17,27 +17,21 @@ const Seo = ({ seo = {} }) => {
         const tags = [];
 
         if (fullSeo.metaDescription) {
-            tags.push(
-                {
-                    name: "description",
-                    content: fullSeo.metaDescription,
-                }
-            );
+            tags.push({
+                name: "description",
+                content: fullSeo.metaDescription,
+            });
         }
 
         if (fullSeo.shareImage) {
             const imagePath = fullSeo.shareImage.localFile.publicURL;
-            const imageUrl =
-                process.env.GATSBY_ROOT_URL +
-                imagePath;
-            tags.push(
-                {
-                    name: "image",
-                    content: imageUrl,
-                }
-            );
+            const imageUrl = process.env.GATSBY_ROOT_URL + imagePath;
+            tags.push({
+                name: "image",
+                content: imageUrl,
+            });
         }
-        
+
         return tags;
     };
 
@@ -49,7 +43,7 @@ const Seo = ({ seo = {} }) => {
             titleTemplate={`%s | ${siteName}`}
             meta={metaTags}
             htmlAttributes={{
-                lang: 'en',
+                lang: "en",
             }}
         />
     );
@@ -82,6 +76,5 @@ const query = graphql`
         }
     }
 `;
-
 
 export default Seo;

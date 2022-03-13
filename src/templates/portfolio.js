@@ -22,8 +22,12 @@ const PortfolioPage = ({ pageContext, data }) => {
                         <hr />
                     </div>
                 </div>
-                <PortfolioCards projects={projects}/>
-                <Pagination page="portfolio" currentPage={currentPage} numPages={numPages} />
+                <PortfolioCards projects={projects} />
+                <Pagination
+                    page="portfolio"
+                    currentPage={currentPage}
+                    numPages={numPages}
+                />
             </section>
         </Layout>
     );
@@ -41,7 +45,7 @@ export const listQuery = graphql`
     }
 `;
 
-export const listQueryFragment = graphql`
+export const portfolioQuery = graphql`
     fragment AllPortfolioData on StrapiPortfolioProjectsConnection {
         edges {
             node {
@@ -64,13 +68,13 @@ export const listQueryFragment = graphql`
                     alternativeText
                     localFile {
                         childImageSharp {
-                            gatsbyImageData(layout: CONSTRAINED)
+                            gatsbyImageData(layout: CONSTRAINED, quality: 90)
                         }
                     }
                 }
             }
         }
     }
-`
+`;
 
 export default PortfolioPage;

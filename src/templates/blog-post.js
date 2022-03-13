@@ -8,7 +8,6 @@ import Layout from "../components/layout";
 import BlogDate from "../components/blog-date";
 import "../styles/blog-post.scss";
 
-
 // https://www.gatsbyjs.com/docs/mdx/programmatically-creating-pages/
 
 const shortcodes = { Link }; // Provide common components here
@@ -29,7 +28,11 @@ const BlogPost = ({ data }) => {
                     {post.image && (
                         <GatsbyImage
                             image={getImage(post.image.localFile)}
-                            alt={post.image.alternativeText ? post.image.alternativeText : ""}
+                            alt={
+                                post.image.alternativeText
+                                    ? post.image.alternativeText
+                                    : ""
+                            }
                             className="center-wrapper"
                         />
                     )}

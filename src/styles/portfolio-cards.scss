@@ -11,6 +11,7 @@
 
         .picture-wrapper {
             width: 47.5%;
+            max-height: 600px;
             border-radius: 18px;
             flex-shrink: 0;
             @include BoxShadow(2);

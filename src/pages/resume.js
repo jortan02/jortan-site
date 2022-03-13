@@ -49,7 +49,10 @@ const ResumePage = () => {
                 <dl id="resume-text" aria-label="Resume text">
                     <MDXProvider>
                         <MDXRenderer>
-                            {strapiResume.childStrapiResumeContent.childMdx.body}
+                            {
+                                strapiResume.childStrapiResumeContent.childMdx
+                                    .body
+                            }
                         </MDXRenderer>
                     </MDXProvider>
                 </dl>

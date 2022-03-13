@@ -7,22 +7,6 @@ import ContactInfo from "../components/contact-info";
 import ContactForm from "../components/contact-form";
 import "../styles/contact.scss";
 
-export const query = graphql`
-    fragment ContactImages on StrapiGlobal {
-        contactInformation {
-            qrCode {
-                localFile {
-                    childImageSharp {
-                        gatsbyImageData(
-                            layout: CONSTRAINED
-                        )
-                    }
-                }
-            }
-        }
-    }
-`
-
 const ContactPage = () => {
     const seo = {
         metaTitle: "Contact",
@@ -31,11 +15,11 @@ const ContactPage = () => {
     const data = useStaticQuery(graphql`
         {
             strapiGlobal {
-                ...ContactImages
+                ...QrImageFile
             }
         }
     `);
-    const contact = data.strapiGlobal.contactInformation;
+    const { contactInformation } = data.strapiGlobal;
 
     return (
         <Layout seo={seo} id="contact">
@@ -46,7 +30,7 @@ const ContactPage = () => {
                 </div>
                 <div className="personal-info-container">
                     <GatsbyImage
-                        image={getImage(contact.qrCode.localFile)}
+                        image={getImage(contactInformation.qrCode.localFile)}
                         alt="QR code with contact information"
                         className="qr-code-wrapper"
                         imgClassName="qr-code"

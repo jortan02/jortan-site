@@ -13,17 +13,17 @@ import "../styles/header.scss";
 
 const Header = () => {
     const data = useStaticQuery(graphql`
-    {
-        site {
-          siteMetadata {
-            menuLinks {
-                link
-                name
+        {
+            site {
+                siteMetadata {
+                    menuLinks {
+                        link
+                        name
+                    }
+                }
             }
-          }
         }
-      }
-    `)
+    `);
 
     const [menuOpen, setMenuOpen] = useState(false);
 
@@ -38,7 +38,11 @@ const Header = () => {
     return (
         <header>
             <ReactModal isOpen={menuOpen} className="mobile-menu">
-                <button onClick={handleToggle} aria-label="Close site menu" className="button-wrapper">
+                <button
+                    onClick={handleToggle}
+                    aria-label="Close site menu"
+                    className="button-wrapper"
+                >
                     <FontAwesomeIcon icon={faTimes} className="icon" />
                 </button>
                 <nav>
@@ -65,7 +69,11 @@ const Header = () => {
                             styleClass="header-links"
                         />
                     </nav>
-                    <button onClick={handleToggle} aria-label="Open site menu" className="button-wrapper" >
+                    <button
+                        onClick={handleToggle}
+                        aria-label="Open site menu"
+                        className="button-wrapper"
+                    >
                         <FontAwesomeIcon icon={faBars} className="icon" />
                     </button>
                 </div>

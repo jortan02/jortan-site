@@ -8,14 +8,20 @@ const PortfolioCard = ({ project }) => {
             {project.image && (
                 <GatsbyImage
                     image={getImage(project.image.localFile)}
-                    alt={project.image.alternativeText ? project.image.alternativeText : ""}
+                    alt={
+                        project.image.alternativeText
+                            ? project.image.alternativeText
+                            : ""
+                    }
                     className="picture-wrapper"
                     imgClassName="picture"
                 />
             )}
             <div className="text-container">
                 {project.portfolio_category && (
-                    <p className="category">{project.portfolio_category.category.toUpperCase()}</p>
+                    <p className="category">
+                        {project.portfolio_category.category.toUpperCase()}
+                    </p>
                 )}
                 <h2 className="title">{project.title}</h2>
                 <p className="excerpt">{project.description}</p>
