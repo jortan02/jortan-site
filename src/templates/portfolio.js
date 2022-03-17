@@ -18,7 +18,7 @@ const PortfolioPage = ({ pageContext, data }) => {
             <section className="content-container">
                 <div className="center-wrapper">
                     <div className="title-container">
-                        <h1>My Previous Works</h1>
+                        <h1>My Previous Projects</h1>
                         <hr />
                     </div>
                 </div>
