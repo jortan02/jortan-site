@@ -93,7 +93,7 @@ export const pageQuery = graphql`
                 alternativeText
                 localFile {
                     childImageSharp {
-                        gatsbyImageData(layout: CONSTRAINED)
+                        gatsbyImageData(layout: FULL_WIDTH)
                     }
                 }
             }

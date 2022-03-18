@@ -68,7 +68,7 @@ export const portfolioQuery = graphql`
                     alternativeText
                     localFile {
                         childImageSharp {
-                            gatsbyImageData(layout: CONSTRAINED, quality: 90)
+                            gatsbyImageData(layout: FULL_WIDTH)
                         }
                     }
                 }
