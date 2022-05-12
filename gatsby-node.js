@@ -98,7 +98,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     createListandPages(
         "blog",
         blogPosts,
-        10,
+        5,
         "./src/templates/blog.js",
         "./src/templates/blog-post.js",
         actions
@@ -110,7 +110,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     createListandPages(
         "portfolio",
         portfolioPosts,
-        10,
+        5,
         "./src/templates/portfolio.js",
         "./src/templates/portfolio-project.js",
         actions
