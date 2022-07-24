@@ -7,7 +7,7 @@ const Footer = () => {
         <footer>
             <CircleLinks />
             <div className="footer-container">
-                <span className="copyright">&copy; 2021 Jordan Tan</span>
+                <span className="copyright">&copy; 2022 Jordan Tan</span>
                 <span className="creation">Created using Gatsby</span>
             </div>
         </footer>
