@@ -13,7 +13,7 @@ const BlogPage = ({ pageContext, data }) => {
         metaTitle: "Blog",
     };
 
-    const posts = data.allStrapiBlogPosts.edges;
+    const posts = data.allStrapiBlogPost.edges;
     const { currentPage, numPages } = pageContext;
 
     return (
@@ -36,20 +36,8 @@ const BlogPage = ({ pageContext, data }) => {
     );
 };
 
-export const listQuery = graphql`
-    query BlogListQuery($skip: Int!, $limit: Int!) {
-        allStrapiBlogPosts(
-            sort: { fields: date, order: DESC }
-            limit: $limit
-            skip: $skip
-        ) {
-            ...AllBlogData
-        }
-    }
-`;
-
 export const blogQuery = graphql`
-    fragment AllBlogData on StrapiBlogPostsConnection {
+    fragment AllBlogData on STRAPI_BLOG_POSTConnection {
         edges {
             node {
                 id
@@ -75,6 +63,18 @@ export const blogQuery = graphql`
                     }
                 }
             }
+        }
+    }
+`;
+
+export const listQuery = graphql`
+    query BlogListQuery($skip: Int!, $limit: Int!) {
+        allStrapiBlogPost(
+            sort: { fields: date, order: DESC }
+            limit: $limit
+            skip: $skip
+        ) {
+            ...AllBlogData
         }
     }
 `;

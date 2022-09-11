@@ -12,7 +12,7 @@ import "../styles/portfolio-project.scss";
 const shortcodes = { Link }; // Provide common components here
 
 const PortfolioProject = ({ data }) => {
-    const project = data.strapiPortfolioProjects;
+    const project = data.strapiPortfolioProject;
 
     const seo = {
         metaTitle: project.title,
@@ -61,8 +61,7 @@ const PortfolioProject = ({ data }) => {
                 <MDXProvider components={shortcodes}>
                     <MDXRenderer>
                         {
-                            project.childStrapiPortfolioProjectsContent.childMdx
-                                .body
+                            project.content.data.content
                         }
                     </MDXRenderer>
                 </MDXProvider>
@@ -78,7 +77,7 @@ const PortfolioProject = ({ data }) => {
 
 export const pageQuery = graphql`
     query PortfolioProjectQuery($id: String) {
-        strapiPortfolioProjects(id: { eq: $id }) {
+        strapiPortfolioProject(id: { eq: $id }) {
             id
             title
             github
@@ -97,9 +96,9 @@ export const pageQuery = graphql`
                     }
                 }
             }
-            childStrapiPortfolioProjectsContent {
-                childMdx {
-                    body
+            content {
+                data {
+                    content
                 }
             }
         }

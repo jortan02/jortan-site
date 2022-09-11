@@ -2,6 +2,32 @@ require("dotenv").config({
     path: `.env.${process.env.NODE_ENV}`,
 });
 
+const globalQuery = {
+    // Populate media and relations
+    // Make sure to not specify the fields key so the api always returns the updatedAt
+    populate: {
+        contactInformation: {
+            populate: {
+                emailAddress: "*",
+                github: "*",
+                id: "*",
+                linkedin: "*",
+                phoneNumber: "*",
+                role: "*",
+                qrCode: "*",
+                profilePicture: "*",
+            },
+        },
+        defaultSeo: {
+            populate: {
+                metaTitle: "*",
+                metaDescription: "*",
+                shareImage: "*",
+            },
+        },
+    },
+};
+
 module.exports = {
     siteMetadata: {
         menuLinks: [
@@ -41,12 +67,15 @@ module.exports = {
             },
         },
         {
-            resolve: "gatsby-source-strapi",
+            resolve: `gatsby-source-strapi`,
             options: {
-                apiURL: process.env.API_URL,
-                queryLimit: 1000, // Defaults to 100
-                collectionTypes: ["blog-posts", "portfolio-projects"],
-                singleTypes: ["global", "resume"],
+                apiURL: process.env.STRAPI_API_URL,
+                accessToken: process.env.STRAPI_TOKEN,
+                collectionTypes: ["blog-post", "portfolio-project"],
+                singleTypes: [
+                    { singularName: "global", queryParams: globalQuery },
+                    "resume",
+                ],
             },
         },
         "gatsby-remark-images",

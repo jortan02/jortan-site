@@ -10,7 +10,7 @@ const PortfolioPage = ({ pageContext, data }) => {
         metaTitle: "Portfolio",
     };
 
-    const projects = data.allStrapiPortfolioProjects.edges;
+    const projects = data.allStrapiPortfolioProject.edges;
     const { currentPage, numPages } = pageContext;
 
     return (
@@ -33,20 +33,8 @@ const PortfolioPage = ({ pageContext, data }) => {
     );
 };
 
-export const listQuery = graphql`
-    query PortfolioListQuery($skip: Int!, $limit: Int!) {
-        allStrapiPortfolioProjects(
-            sort: { fields: order, order: DESC }
-            limit: $limit
-            skip: $skip
-        ) {
-            ...AllPortfolioData
-        }
-    }
-`;
-
 export const portfolioQuery = graphql`
-    fragment AllPortfolioData on StrapiPortfolioProjectsConnection {
+    fragment AllPortfolioData on STRAPI_PORTFOLIO_PROJECTConnection {
         edges {
             node {
                 id
@@ -55,7 +43,6 @@ export const portfolioQuery = graphql`
                 }
                 title
                 description
-                content
                 github
                 portfolio_category {
                     category
@@ -77,4 +64,16 @@ export const portfolioQuery = graphql`
     }
 `;
 
+
+export const listQuery = graphql`
+    query PortfolioListQuery($skip: Int!, $limit: Int!) {
+        allStrapiPortfolioProject(
+            sort: { fields: order, order: DESC }
+            limit: $limit
+            skip: $skip
+        ) {
+            ...AllPortfolioData
+        }
+    }
+`;
 export default PortfolioPage;

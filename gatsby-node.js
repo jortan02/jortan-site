@@ -5,6 +5,7 @@ const path = require("path");
 // https://github.com/strapi/gatsby-source-strapi/issues/89
 
 // TODO: Create a tag system for blog and portfolio categories
+// TODO: Update gatsby-plugin-mdx to v4 once loading MDX from other sources as the file system is supported
 
 exports.onCreateNode = ({
     node,
@@ -13,20 +14,20 @@ exports.onCreateNode = ({
     createContentDigest,
 }) => {
     const type = node.internal.type;
-    if (
-        type === "StrapiBlogPosts" ||
-        type === "StrapiPortfolioProjects" ||
-        type === "StrapiResume"
-    ) {
-        createContentNode(node, actions, createNodeId, createContentDigest);
-    }
-    if (type === "StrapiBlogPosts") {
+    // if (
+    //     type === "StrapiBlogPosts" ||
+    //     type === "StrapiPortfolioProjects" ||
+    //     type === "StrapiResume"
+    // ) {
+    //     createContentNode(node, actions, createNodeId, createContentDigest);
+    // }
+    if (type === "STRAPI_BLOG_POST") {
         actions.createNodeField({
             name: "absoluteSlug",
             node,
             value: `/blog/${node.slug}`,
         });
-    } else if (type === "StrapiPortfolioProjects") {
+    } else if (type === "STRAPI_PORTFOLIO_PROJECT") {
         actions.createNodeField({
             name: "absoluteSlug",
             node,
@@ -35,36 +36,36 @@ exports.onCreateNode = ({
     }
 };
 
-/**
- * Helper method that creates the markdown content node for the given node
- * @param {*} node
- * @param {*} actions
- * @param {*} createNodeId
- * @param {*} createContentDigest
- */
-function createContentNode(node, actions, createNodeId, createContentDigest) {
-    const newNode = {
-        id: createNodeId(`${node.internal.type}Content-${node.id}`),
-        parent: node.id,
-        children: [],
-        internal: {
-            content: node.content || " ",
-            type: `${node.internal.type}Content`,
-            mediaType: "text/markdown",
-            contentDigest: createContentDigest(node.content),
-        },
-    };
-    actions.createNode(newNode);
-    actions.createParentChildLink({
-        parent: node,
-        child: newNode,
-    });
-}
+// /**
+//  * Helper method that creates the markdown content node for the given node
+//  * @param {*} node
+//  * @param {*} actions
+//  * @param {*} createNodeId
+//  * @param {*} createContentDigest
+//  */
+// function createContentNode(node, actions, createNodeId, createContentDigest) {
+//     const newNode = {
+//         id: createNodeId(`${node.internal.type}Content-${node.id}`),
+//         parent: node.id,
+//         children: [],
+//         internal: {
+//             content: node.content || " ",
+//             type: `${node.internal.type}Content`,
+//             mediaType: "text/markdown",
+//             contentDigest: createContentDigest(node.content),
+//         },
+//     };
+//     actions.createNode(newNode);
+//     actions.createParentChildLink({
+//         parent: node,
+//         child: newNode,
+//     });
+// }
 
 exports.createPages = async ({ graphql, actions, reporter }) => {
     const result = await graphql(`
         {
-            allStrapiPortfolioProjects {
+            allStrapiPortfolioProject {
                 edges {
                     node {
                         fields {
@@ -74,7 +75,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
                     }
                 }
             }
-            allStrapiBlogPosts {
+            allStrapiBlogPost {
                 edges {
                     node {
                         fields {
@@ -93,7 +94,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     }
 
     // Create blog post pages.
-    const blogPosts = result.data.allStrapiBlogPosts.edges;
+    const blogPosts = result.data.allStrapiBlogPost.edges;
 
     createListandPages(
         "blog",
@@ -105,7 +106,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     );
 
     // Create portfolio post pages.
-    const portfolioPosts = result.data.allStrapiPortfolioProjects.edges;
+    const portfolioPosts = result.data.allStrapiPortfolioProject.edges;
 
     createListandPages(
         "portfolio",
