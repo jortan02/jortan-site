@@ -10,17 +10,8 @@ const path = require("path");
 exports.onCreateNode = ({
     node,
     actions,
-    createNodeId,
-    createContentDigest,
 }) => {
     const type = node.internal.type;
-    // if (
-    //     type === "StrapiBlogPosts" ||
-    //     type === "StrapiPortfolioProjects" ||
-    //     type === "StrapiResume"
-    // ) {
-    //     createContentNode(node, actions, createNodeId, createContentDigest);
-    // }
     if (type === "STRAPI_BLOG_POST") {
         actions.createNodeField({
             name: "absoluteSlug",
@@ -35,32 +26,6 @@ exports.onCreateNode = ({
         });
     }
 };
-
-// /**
-//  * Helper method that creates the markdown content node for the given node
-//  * @param {*} node
-//  * @param {*} actions
-//  * @param {*} createNodeId
-//  * @param {*} createContentDigest
-//  */
-// function createContentNode(node, actions, createNodeId, createContentDigest) {
-//     const newNode = {
-//         id: createNodeId(`${node.internal.type}Content-${node.id}`),
-//         parent: node.id,
-//         children: [],
-//         internal: {
-//             content: node.content || " ",
-//             type: `${node.internal.type}Content`,
-//             mediaType: "text/markdown",
-//             contentDigest: createContentDigest(node.content),
-//         },
-//     };
-//     actions.createNode(newNode);
-//     actions.createParentChildLink({
-//         parent: node,
-//         child: newNode,
-//     });
-// }
 
 exports.createPages = async ({ graphql, actions, reporter }) => {
     const result = await graphql(`

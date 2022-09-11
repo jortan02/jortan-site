@@ -41,7 +41,7 @@ const BlogPost = ({ data }) => {
                 </div>
                 <MDXProvider components={shortcodes}>
                     <MDXRenderer>
-                        {post.content.data.content}
+                        {post.content.data.childMdx.body}
                     </MDXRenderer>
                 </MDXProvider>
             </article>
@@ -68,7 +68,9 @@ export const pageQuery = graphql`
             }
             content {
                 data {
-                    content
+                    childMdx {
+                        body
+                    }
                 }
             }
         }

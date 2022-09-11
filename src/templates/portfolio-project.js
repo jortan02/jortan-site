@@ -61,7 +61,7 @@ const PortfolioProject = ({ data }) => {
                 <MDXProvider components={shortcodes}>
                     <MDXRenderer>
                         {
-                            project.content.data.content
+                            project.content.data.childMdx.body
                         }
                     </MDXRenderer>
                 </MDXProvider>
@@ -98,7 +98,9 @@ export const pageQuery = graphql`
             }
             content {
                 data {
-                    content
+                    childMdx {
+                        body
+                    }
                 }
             }
         }

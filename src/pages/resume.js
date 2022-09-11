@@ -49,7 +49,7 @@ const ResumePage = () => {
                 <dl id="resume-text" aria-label="Resume text">
                     <MDXProvider>
                         <MDXRenderer>
-                            {strapiResume.content.data.content}
+                            {strapiResume.content.data.childMdx.body}
                         </MDXRenderer>
                     </MDXProvider>
                 </dl>
@@ -68,9 +68,11 @@ const query = graphql`
         strapiResume {
             content {
                 data {
-                    content
+                  childMdx {
+                    body
+                  }
                 }
-            }
+              }
             link
             image {
                 localFile {
