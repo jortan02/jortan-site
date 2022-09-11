@@ -13,10 +13,10 @@ import "../styles/index.scss";
 const IndexPage = () => {
     const data = useStaticQuery(graphql`
         {
-            allStrapiBlogPosts(sort: { fields: date, order: DESC }, limit: 3) {
+            allStrapiBlogPost(sort: { fields: date, order: DESC }, limit: 3) {
                 ...AllBlogData
             }
-            allStrapiPortfolioProjects(
+            allStrapiPortfolioProject(
                 sort: { fields: order, order: DESC }
                 limit: 3
             ) {
@@ -25,8 +25,8 @@ const IndexPage = () => {
         }
     `);
 
-    const posts = data.allStrapiBlogPosts.edges;
-    const projects = data.allStrapiPortfolioProjects.edges;
+    const posts = data.allStrapiBlogPost.edges;
+    const projects = data.allStrapiPortfolioProject.edges;
 
     const seo = {
         metaTitle: "Home",

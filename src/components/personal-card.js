@@ -54,7 +54,7 @@ const PersonalCard = () => {
 };
 
 export const contactInformationTextQuery = graphql`
-    fragment ContactInformationText on StrapiGlobal {
+    fragment ContactInformationText on STRAPI_GLOBAL {
         contactInformation {
             emailAddress
             github
@@ -67,7 +67,7 @@ export const contactInformationTextQuery = graphql`
 `;
 
 export const profilePictureQuery = graphql`
-    fragment ProfileImageFile on StrapiGlobal {
+    fragment ProfileImageFile on STRAPI_GLOBAL {
         contactInformation {
             profilePicture {
                 localFile {
@@ -81,7 +81,7 @@ export const profilePictureQuery = graphql`
 `;
 
 export const qrCodeQuery = graphql`
-    fragment QrImageFile on StrapiGlobal {
+    fragment QrImageFile on STRAPI_GLOBAL {
         contactInformation {
             qrCode {
                 localFile {

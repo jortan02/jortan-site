@@ -13,7 +13,7 @@ import "../styles/blog-post.scss";
 const shortcodes = { Link }; // Provide common components here
 
 const BlogPost = ({ data }) => {
-    const post = data.strapiBlogPosts;
+    const post = data.strapiBlogPost;
 
     const seo = {
         metaTitle: post.title,
@@ -41,7 +41,7 @@ const BlogPost = ({ data }) => {
                 </div>
                 <MDXProvider components={shortcodes}>
                     <MDXRenderer>
-                        {post.childStrapiBlogPostsContent.childMdx.body}
+                        {post.content.data.childMdx.body}
                     </MDXRenderer>
                 </MDXProvider>
             </article>
@@ -51,7 +51,7 @@ const BlogPost = ({ data }) => {
 
 export const pageQuery = graphql`
     query BlogPostQuery($id: String) {
-        strapiBlogPosts(id: { eq: $id }) {
+        strapiBlogPost(id: { eq: $id }) {
             id
             title
             date(formatString: "MM/DD/YYYY")
@@ -66,9 +66,11 @@ export const pageQuery = graphql`
                     }
                 }
             }
-            childStrapiBlogPostsContent {
-                childMdx {
-                    body
+            content {
+                data {
+                    childMdx {
+                        body
+                    }
                 }
             }
         }
