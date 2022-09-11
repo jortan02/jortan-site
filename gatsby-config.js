@@ -54,13 +54,13 @@ module.exports = {
         ],
     },
     plugins: [
-        "gatsby-plugin-sass",
-        "gatsby-plugin-gatsby-cloud",
-        "gatsby-plugin-image",
-        "gatsby-plugin-sharp",
-        "gatsby-transformer-sharp",
+        `gatsby-plugin-sass`,
+        `gatsby-plugin-gatsby-cloud`,
+        `gatsby-plugin-image`,
+        `gatsby-plugin-sharp`,
+        `gatsby-transformer-sharp`,
         {
-            resolve: "gatsby-source-filesystem",
+            resolve: `gatsby-source-filesystem`,
             options: {
                 name: `images`,
                 path: `${__dirname}/src/images`,
@@ -71,16 +71,35 @@ module.exports = {
             options: {
                 apiURL: process.env.STRAPI_API_URL,
                 accessToken: process.env.STRAPI_TOKEN,
-                collectionTypes: ["blog-post", "portfolio-project"],
+                collectionTypes: [
+                    {
+                        singularName: "blog-post",
+                        queryParams: {
+                            publicationState:
+                                process.env.GATSBY_IS_PREVIEW === "true"
+                                    ? "preview"
+                                    : "live",
+                        },
+                    },
+                    {
+                        singularName: "portfolio-project",
+                        queryParams: {
+                            publicationState:
+                                process.env.GATSBY_IS_PREVIEW === "true"
+                                    ? "preview"
+                                    : "live",
+                        },
+                    },
+                ],
                 singleTypes: [
                     { singularName: "global", queryParams: globalQuery },
                     "resume",
                 ],
             },
         },
-        "gatsby-remark-images",
+        `gatsby-remark-images`,
         {
-            resolve: "gatsby-plugin-mdx",
+            resolve: `gatsby-plugin-mdx`,
             options: {
                 gatsbyRemarkPlugins: [
                     {
@@ -96,21 +115,21 @@ module.exports = {
             },
         },
         {
-            resolve: "gatsby-plugin-manifest",
+            resolve: `gatsby-plugin-manifest`,
             options: {
                 icon: "./src/images/logos/jt-logo-bg.svg",
                 cache_busting_mode: "none",
             },
         },
         {
-            resolve: "gatsby-plugin-offline",
+            resolve: `gatsby-plugin-offline`,
             options: {
                 workboxConfig: {
                     globPatterns: ["**/*(*.png|*.jpg|*.svg)"],
                 },
             },
         },
-        "gatsby-plugin-fontawesome-css",
+        `gatsby-plugin-fontawesome-css`,
     ],
     flags: {
         DEV_SSR: false,
