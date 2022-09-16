@@ -40,7 +40,7 @@ const Seo = ({ seo = {} }) => {
     return (
         <Helmet
             title={fullSeo.metaTitle}
-            titleTemplate={`%s | ${siteName}`}
+            titleTemplate={`${siteName} | %s`}
             meta={metaTags}
             htmlAttributes={{
                 lang: "en",
