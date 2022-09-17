@@ -1,10 +1,17 @@
 import React from "react";
+import ReCAPTCHA  from "react-google-recaptcha";
 import "../styles/contact-form.scss";
 
+// require("dotenv").config({
+//     path: `.env.${process.env.NODE_ENV}`,
+// });
+
 const ContactForm = () => {
+    const [allowSubmit, setSubmit] = useState(false);
+
     return (
         <form
-            action="https://formspree.io/f/xleankyo"
+            action="?"
             method="POST"
             id="contact-form"
         >
@@ -56,7 +63,11 @@ const ContactForm = () => {
                     />
                 </div>
             </label>
-            <button type="submit">Send</button>
+            <ReCAPTCHA
+            sitekey= {process.env.RECAPTCHA_CLIENT_KEY}
+            onChange={() => setSubmit(true)}
+            />,
+            <button type="submit" disabled={allowSubmit}>Send</button>
         </form>
     );
 };
