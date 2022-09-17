@@ -10,10 +10,10 @@ const PersonalCard = () => {
     const { strapiGlobal } = useStaticQuery(query);
     const { contactInformation } = strapiGlobal;
 
-    const [qrOpenCode, setQrOpen] = useState(false);
+    const [viewQr, setViewQr] = useState(false);
 
     const handleToggle = () => {
-        setQrOpen((prev) => !prev);
+        setViewQr((prev) => !prev);
     };
 
     return (
@@ -25,7 +25,7 @@ const PersonalCard = () => {
             >
                 <FontAwesomeIcon icon={faQrcode} className="icon" />
             </button>
-            {qrOpenCode ? (
+            {viewQr ? (
                 <GatsbyImage
                     image={getImage(contactInformation.qrCode.localFile)}
                     alt="QR code with contact information"

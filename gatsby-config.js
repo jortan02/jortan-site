@@ -51,6 +51,10 @@ module.exports = {
                 name: "Contact",
                 link: "/contact",
             },
+            {
+                name: "Privacy",
+                link: "/privacy",
+            },
         ],
     },
     plugins: [
