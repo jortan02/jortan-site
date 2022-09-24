@@ -1,8 +1,8 @@
 import React from "react";
 import { useStaticQuery, graphql } from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
-import { MDXProvider } from "@mdx-js/react";
-import { MDXRenderer } from "gatsby-plugin-mdx";
+// import { MDXProvider } from "@mdx-js/react";
+// import { MDXRenderer } from "gatsby-plugin-mdx";
 import Layout from "../components/layout";
 import "../styles/resume.scss";
 
@@ -29,12 +29,6 @@ const ResumePage = () => {
                     </p>
                 </div>
                 <figure>
-                    {/* <StaticImage
-                        src="../images/Resume - Jordan Tan.jpg"
-                        alt="Jordan Tan's resume"
-                        className="resume-wrapper"
-                        imgClassName="resume"
-                    /> */}
                     <GatsbyImage
                         image={getImage(strapiResume.image.localFile)}
                         alt={
@@ -46,16 +40,17 @@ const ResumePage = () => {
                         imgClassName="resume"
                     />
                 </figure>
-                <dl id="resume-text" aria-label="Resume text">
+                {/* TODO: Find an alternative to manually typing resume text */}
+                {/* <dl id="resume-text" aria-label="Resume text">
                     <MDXProvider>
                         <MDXRenderer>
                             {strapiResume.content.data.childMdx.body}
                         </MDXRenderer>
                     </MDXProvider>
-                </dl>
+                </dl> */}
                 <div className="link-wrapper">
                     <a href={strapiResume.link} download className="button">
-                        Download PDF of Resume
+                        View PDF of Resume
                     </a>
                 </div>
             </article>
@@ -68,11 +63,11 @@ const query = graphql`
         strapiResume {
             content {
                 data {
-                  childMdx {
-                    body
-                  }
+                    childMdx {
+                        body
+                    }
                 }
-              }
+            }
             link
             image {
                 localFile {
