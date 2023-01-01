@@ -33,6 +33,7 @@ const PortfolioProject = ({ data }) => {
                                     : ""
                             }
                             className="center-wrapper"
+                            objectFit="contain"
                         />
                     )}
                     <div className="project-info">

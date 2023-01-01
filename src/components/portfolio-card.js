@@ -14,7 +14,7 @@ const PortfolioCard = ({ project }) => {
                             : ""
                     }
                     className="picture-wrapper"
-                    imgClassName="picture"
+                    objectFit="contain"
                 />
             )}
             <div className="text-container">
